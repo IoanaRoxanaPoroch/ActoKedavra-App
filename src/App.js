@@ -7,7 +7,7 @@ function App() {
     hobbies: "Music and dancing naked in the rain",
     description: "He is a good guy with a thick mustache",
   };
-  const arr = [1, 2, 3];
+  const arr = [1, 2, 3, 4];
   return (
     <div className="App">
       <div className="actor">
