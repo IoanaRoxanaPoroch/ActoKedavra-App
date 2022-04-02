@@ -7,18 +7,20 @@ function App() {
     hobbies: "Music and dancing naked in the rain",
     description: "He is a good guy with a thick mustache",
   };
-  const arr = [1, 2, 3, 4];
+
+  const listItems = Object.keys(actor).map((key) => (
+    <li key={key}>{actor[key]}</li>
+  ));
+
+  // let listItems1 = [];
+  // for (const [key, value] of Object.entries(actor)) {
+  //   listItems1.push(<li key={key}>{value}</li>);
+  // }
   return (
     <div className="App">
       <div className="actor">
-        <ul>
-          {/* {for(const prop in actor)
-            {
-              <li>
-                {`${prop}:${actor[prop]}`}
-              </li>
-            }} */}
-        </ul>
+        <ul>{listItems}</ul>
+        {/* <ul>{listItems1}</ul> */}
       </div>
     </div>
   );
