@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.actor {
+  padding: 10px;
+}
+
+.actor ul {
+  list-style: none;
+}
