@@ -1,5 +1,7 @@
 import "./App.css";
 import Actor from "./components/actor/Actor";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
 
 function App() {
   const actor = {
@@ -10,7 +12,9 @@ function App() {
   };
   return (
     <div className="App">
+      <Header />
       <Actor actor={actor} />
+      <Footer />
     </div>
   );
 }
