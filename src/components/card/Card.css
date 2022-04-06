@@ -1,0 +1,45 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 285px;
+  height: auto;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px 10px 0px 0px;
+  margin-left: 20px;
+}
+
+.actor-img {
+  width: 285px;
+  height: 301px;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+}
+
+.job-likes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.jobs {
+  color: rgba(78, 75, 102, 1);
+  font-weight: 300;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+.likes {
+  color: rgba(244, 183, 64, 1);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 130%;
+  margin-right: 20px;
+}
+
+.description p {
+  display: flex;
+  text-align: justify;
+  font-size: 16px;
+  font-weight: 300;
+  padding: 24px;
+  color: rgba(110, 113, 145, 1);
+}
+
