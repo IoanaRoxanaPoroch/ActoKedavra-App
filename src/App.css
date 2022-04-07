@@ -11,6 +11,8 @@
   list-style: none;
 }
 
+/* buttons */
+
 .sort-btn {
   background-color: rgba(238, 229, 254, 1);
   border: 1px solid rgba(99, 8, 247, 1);
@@ -50,7 +52,7 @@
   /* x trebuie sa fie mai mare */
 }
 
-.readmore-readless {
+.readmore-readless-btn {
   color: rgba(244, 183, 64, 1);
   font-weight: 600;
   font-size: 16px;
@@ -58,7 +60,7 @@
   border: none;
 }
 
-.forward {
+.forward-arrow-btn {
   color: rgba(244, 183, 64, 1);
   font-weight: 600;
   font-size: 16px;
@@ -66,7 +68,7 @@
   /* background-color: #ffffff; */
 }
 
-.edit {
+.edit-btn {
   color: rgba(42, 0, 162, 1);
   font-size: 16px;
   line-height: 120%;
@@ -81,7 +83,7 @@
   padding: 10px;
 }
 
-.new-actor {
+.new-actor-btn {
   background-color: rgba(99, 8, 247, 1);
   border-radius: 12px;
   border: none;
@@ -91,4 +93,16 @@
   height: 40px;
   font-size: 21px;
   line-height: 24px;
+  /*  doar proprietetile comune! */
 }
+
+.changed-mind-btn {
+  border: none;
+  background-color: #ffffff;
+  color: #14142b;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+/* btns end  */

@@ -5,6 +5,7 @@ export const Field = ({ children, type, value, className }) => {
     <form action="" className={className}>
       <label htmlFor={value}>{children}</label>
       <input type={type} required />
+      <span></span>
     </form>
   );
 };

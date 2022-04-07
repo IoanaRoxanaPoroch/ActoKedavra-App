@@ -9,6 +9,7 @@ import { MdOutlineModeEdit } from "react-icons/md";
 import { Tag } from "./components/tag/Tag";
 import { Title } from "./components/title/Title";
 import { Modal } from "./components/modal/Modal";
+import { NoActors } from "./components/noActors/NoActors";
 
 function App() {
   const actor = {
@@ -34,14 +35,14 @@ function App() {
       <br />
       <br />
       <Title>Leonardo Dicaprio</Title>
-      <Button className="readmore-readless">
+      <Button className="readmore-readless-btn">
         Read more
-        <IoIosArrowForward className="forward" />
+        <IoIosArrowForward className="forward-arrow-btn" />
       </Button>
 
       <br />
       <br />
-      <Button className="edit">
+      <Button className="edit-btn">
         Edit
         <MdOutlineModeEdit />
       </Button>
@@ -54,7 +55,7 @@ function App() {
       <Tag>Modeling</Tag>
       <br />
       <br />
-      <Button className="new-actor">Add new actor</Button>
+      <Button className="new-actor-btn">Add new actor</Button>
 
       <br />
       <br />
@@ -66,7 +67,15 @@ function App() {
       <br />
       <br />
       <Modal modalType="add" />
-
+      <br />
+      <br />
+      <Modal modalType="edit" />
+      <br />
+      <br />
+      <Modal modalType="addRqrd" />
+      <br />
+      <br />
+      <NoActors />
       <Footer />
     </div>
   );
