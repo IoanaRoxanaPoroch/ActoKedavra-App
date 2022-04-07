@@ -48,8 +48,7 @@
   width: 40px;
   height: 40px;
   border: none;
-
-  /* x trebuie sa fie mai mare */
+  font-size: 30px;
 }
 
 .readmore-readless-btn {

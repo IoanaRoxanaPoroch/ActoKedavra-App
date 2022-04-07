@@ -10,6 +10,10 @@ import { Tag } from "./components/tag/Tag";
 import { Title } from "./components/title/Title";
 import { Modal } from "./components/modal/Modal";
 import { NoActors } from "./components/noActors/NoActors";
+import {
+  Notification,
+  NotificationWindow,
+} from "./components/notificationWindow/NotificationWindow";
 
 function App() {
   const actor = {
@@ -76,6 +80,17 @@ function App() {
       <br />
       <br />
       <NoActors />
+      <br />
+      <br />
+      <NotificationWindow text="Actor added successfully" ntfcType="success" />
+      <br />
+      <br />
+      <NotificationWindow
+        text="You can add max. 7 actors."
+        ntfcType="warning"
+      />
+      <br />
+      <br />
       <Footer />
     </div>
   );
