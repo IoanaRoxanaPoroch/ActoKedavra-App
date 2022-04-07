@@ -1,0 +1,31 @@
+.no-actors-container {
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  height: auto;
+}
+
+.no-actors-btn {
+  width: 211px;
+  height: 44px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.content-wrapper p {
+  color: #14142b;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.sad-icon {
+  width: 91px;
+  height: 91px;
+}

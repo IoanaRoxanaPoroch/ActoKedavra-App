@@ -1,20 +1,19 @@
 import "./TextArea.css";
 
-export const TextArea = ({ id, name, maxlength, children, className }) => {
+export const TextArea = ({ id, name, maxLength, labelText, className }) => {
   return (
     <form action="">
       <label htmlFor="" className={className}>
-        Short description
+        {labelText}
       </label>
       <textarea
         id={id}
         name={name}
-        maxLength={maxlength}
-        required
+        maxLength={maxLength}
         placeholder="number of characters remained"
-      >
-        {children}
-      </textarea>
+        required
+      ></textarea>
+      <span></span>
     </form>
   );
 };

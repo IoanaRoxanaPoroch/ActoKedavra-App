@@ -16,8 +16,30 @@ textarea {
   box-sizing: border-box;
   display: inline-block;
 }
+
 ::-webkit-textarea-placeholder {
   display: flex;
   align-items: end;
   justify-content: flex-start;
+  /* stanga jos */
 }
+
+/* required */
+
+/* textarea:required {
+  background-color: #ffe5f2;
+}
+
+textarea:required:focus {
+  border: 2px solid #ed2e7e;
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+textarea:required + span::after {
+  content: "Field required";
+  color: #98014c;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 22px;
+} */
