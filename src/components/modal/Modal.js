@@ -80,7 +80,7 @@ export const Modal = ({ modalType }) => {
           name="description"
           maxLength="50"
           className="text-label-add"
-          labelText=" Short description"
+          labelText="Description"
         ></TextArea>
       </div>
       <Button className=" new-actor-btn add-edit-btn">Add new actor</Button>
@@ -123,7 +123,7 @@ export const Modal = ({ modalType }) => {
           name="description"
           maxLength="50"
           className="text-label-add"
-          labelText=" Short description"
+          labelText="Description"
         ></TextArea>
       </div>
       <Button className=" new-actor-btn add-edit-btn">Add new actor</Button>
@@ -165,7 +165,7 @@ export const Modal = ({ modalType }) => {
           name="description"
           maxLength="50"
           className="text-label-add"
-          labelText=" Short description"
+          labelText="Description"
         ></TextArea>
       </div>
       <Button className=" new-actor-btn add-edit-btn">Update</Button>

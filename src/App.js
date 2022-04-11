@@ -10,10 +10,7 @@ import { Tag } from "./components/tag/Tag";
 import { Title } from "./components/title/Title";
 import { Modal } from "./components/modal/Modal";
 import { NoActors } from "./components/noActors/NoActors";
-import {
-  Notification,
-  NotificationWindow,
-} from "./components/notificationWindow/NotificationWindow";
+import { NotificationWindow } from "./components/notificationWindow/NotificationWindow";
 
 function App() {
   const actor = {
@@ -25,7 +22,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Button className="sort-btn">Sort</Button>
+      <div>
+        <Button className="sort-btn">Sort</Button>
+      </div>
       <br />
       <br />
       <Button className="select-btn"> Select</Button>

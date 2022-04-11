@@ -1,10 +1,45 @@
-html {
+
+
+/* html {
   min-height: 100%;
 }
+
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
+  /* margin: 0; */
+ 
+  /* display: flex;
+  flex-direction: column; */
+  /* min-height: 100%; */
+
+
+/* variables */
+:root {
+  --white: #fff;
+  --off-black: #14142b;
+  --gray-background: #E5E5E5:
+
 }
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* base styles */
+body{
+  background: var(--gray-background);
+}
+
+button{
+  background: none;
+}
+input, textarea{
+
+}
+/* fonts */
+*{
+  font-family: "Poppins", sans-serif;
+}
+
+/* mobile styles */

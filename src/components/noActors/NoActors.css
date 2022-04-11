@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 375px;
   height: auto;
+  margin-left: 75px;
 }
 
 .no-actors-btn {
