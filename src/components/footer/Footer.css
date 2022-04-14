@@ -1,3 +1,5 @@
+/* mobile styles */
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -11,22 +13,14 @@
 .footer-logo {
   margin-right: 20px;
   line-height: 24px;
+  font-size: 13px;
 }
 
 .footer p {
   margin-left: 20px;
   line-height: 24px;
   color: #14142b;
-}
-
-/* For Mobile Phones */
-@media (max-width: 480px) {
-  .footer-logo {
-    font-size: 13px;
-  }
-  .footer p {
-    font-size: 13px;
-  }
+  font-size: 13px;
 }
 
 /* For Tablets */

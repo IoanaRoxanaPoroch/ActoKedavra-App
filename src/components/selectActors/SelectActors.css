@@ -1,0 +1,35 @@
+/* Select modal */
+.select-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn {
+  color: rgba(99, 8, 247, 1);
+  font-size: 16px;
+  line-height: 120%;
+  font-weight: 600;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid rgba(99, 8, 247, 1);
+  box-sizing: border-box;
+  text-align: center;
+  width: 180px;
+  height: 40px;
+  padding: 10px;
+}
+
+.checkbox-select-modal {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: rgba(78, 75, 102, 1);
+  display: flex;
+  justify-content: space-between;
+}

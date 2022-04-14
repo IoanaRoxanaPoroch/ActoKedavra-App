@@ -1,5 +1,19 @@
+/* mobile styles */
 .logo {
-  color: rgba(20, 20, 43, 1);
-  font-weight: bold;
+  color: var(--off-black);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  font-style: normal;
 }
 
+/* For Tablets */
+/* vezi daca sunt corecte dimensiunile */
+/* @media (max-width: 960px) {
+ 
+  } */
+
+/* For Laptops/Desktop */
+/* @media (min-width: 1025px) {
+
+} */

@@ -31,7 +31,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <p>{date}</p>
-      <Logo className="footer-logo" />
+      <Logo className="footer-logo" text="ActoKedavra" />
     </div>
   );
 };

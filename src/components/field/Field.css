@@ -15,12 +15,13 @@ input[type="checkbox"]:checked {
 }
 
 /* checkbox checked */
+/* vezi icon buton selectat */
 input[type="checkbox"]:checked:before {
   content: "";
   display: block;
   width: 7px;
   height: 12px;
-  border: solid #fff;
+  border: solid var(--white);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   margin-left: 10px;
@@ -28,7 +29,6 @@ input[type="checkbox"]:checked:before {
 }
 
 /* input text */
-
 input[type="text"] {
   width: 335px;
   padding: 16px;
