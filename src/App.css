@@ -1,6 +1,6 @@
 /* mobile styles */
 .App {
-  background-color: #e5e5e5;
+  background-color: var(--gray-background);
 }
 
 .actor {
@@ -23,8 +23,4 @@
   margin-top: 10px;
   gap: 11px;
   justify-items: center;
-}
-
-.cards-container > div {
-  text-align: center;
 }

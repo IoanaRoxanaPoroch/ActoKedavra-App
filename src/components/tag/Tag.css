@@ -1,13 +1,19 @@
 .hobbie-tag {
   background-color: rgba(229, 235, 254, 1);
   border-radius: 8px;
-  width: 123px;
-  height: 41px;
-  margin: 0px 8px;
+  width: 59px;
+  height: 21px;
+  margin: 0px 4px;
+  /* vertical alignment !*/
+  padding: 5px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hobbie-tag p {
   color: rgba(3, 37, 150, 1);
   font-weight: 500;
-  font-size: 21px;
+  font-size: 9px;
   line-height: 120%;
-  /* vertical alignment !*/
-  margin-left: 75px;
 }

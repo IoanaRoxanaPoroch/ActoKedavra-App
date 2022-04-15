@@ -3,7 +3,6 @@ import { Button } from "./components/button/Button";
 import "./components/button/Button.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-
 import { Card } from "./components/card/Card";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { Tag } from "./components/tag/Tag";
@@ -61,12 +60,11 @@ function App() {
       <br />
       <Button className="edit-btn">
         Edit
-        <MdOutlineModeEdit />
+        <MdOutlineModeEdit className="edit-icon" />
       </Button>
       <br />
       <br />
       <Tag>Dancing</Tag>
-      <br />
       <br />
       <Tag>Modeling</Tag>
       <br />
@@ -74,7 +72,7 @@ function App() {
       <Button className="new-actor-btn">Add new actor</Button>
       <br />
       <br />
-      <Modal isVisible={true}>
+      <Modal isVisible={true} className="sort-type" displayCloseBtn="none">
         <SortActors />
       </Modal>
       <br />

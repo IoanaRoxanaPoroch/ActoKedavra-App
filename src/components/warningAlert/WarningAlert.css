@@ -8,7 +8,6 @@
   justify-content: space-between;
   /* mobile */
   width: 375px;
-  margin-left: 75px;
 }
 
 .notification-container-warning p {

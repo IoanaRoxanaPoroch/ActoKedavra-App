@@ -7,13 +7,13 @@ import "./SelectActors.css";
 const SelectActors = () => {
   return (
     <div className="select-container">
-      <Title>Number of items selected</Title>
+      <Title className="select-title-styles">Number of items selected</Title>
       <Field type="checkbox" value="all" className="checkbox-select-modal">
         Select all
       </Field>
       <div className="delete-btn-container">
         <Button className="delete-btn">
-          <RiDeleteBinLine />
+          <RiDeleteBinLine className="delete-icon" />
           Delete
         </Button>
       </div>

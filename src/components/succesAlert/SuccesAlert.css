@@ -4,8 +4,7 @@
   border-radius: 10px;
   box-sizing: border-box;
   /* mobile */
-  width: 375px;
-  margin-left: 75px;
+  width: 100%;
 }
 
 .notification-container-success p {

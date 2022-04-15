@@ -1,8 +1,9 @@
 /* variables */
-*/ :root {
+:root {
   --white: #fff;
   --off-black: #14142b;
   --gray-background: #e5e5e5;
+  --primary: #6308f7;
 }
 
 /* reset */
@@ -15,6 +16,9 @@
 
 button {
   background: none;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
 }
 
 /* fonts */

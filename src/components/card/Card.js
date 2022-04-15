@@ -4,6 +4,8 @@ import { Title } from "../title/Title";
 import { Button } from "../button/Button";
 import { IoIosArrowForward } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
+import { MdOutlineModeEdit } from "react-icons/md";
+import { Tag } from "../tag/Tag";
 
 export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
   return (
@@ -22,13 +24,21 @@ export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
           <AiOutlineLike />
         </p>
       </div>
+      <div className="tags-container">
+        <Tag>Dancing</Tag>
+        <Tag>Modeling</Tag>
+      </div>
+      <div className="description">
+        <p>{description}</p>
+      </div>
       <Button className="readmore-readless-btn">
         Read more
         <IoIosArrowForward className="forward-arrow-btn" />
       </Button>
-      <div className="description">
-        <p>{description}</p>
-      </div>
+      <Button className="edit-btn">
+        Edit
+        <MdOutlineModeEdit className="edit-icon" />
+      </Button>
     </div>
   );
 };

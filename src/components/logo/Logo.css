@@ -7,6 +7,16 @@
   font-style: normal;
 }
 
+.header-logo {
+  text-align: center;
+  padding: 60px 133px 17px;
+}
+
+.footer-logo {
+  font-size: 13px;
+  margin-right: 20px;
+}
+
 /* For Tablets */
 /* vezi daca sunt corecte dimensiunile */
 /* @media (max-width: 960px) {
