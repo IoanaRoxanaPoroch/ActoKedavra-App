@@ -1,0 +1,37 @@
+/* mobile styles */
+
+.notification {
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.success {
+  background-color: #e5fff2;
+  color: #00994d;
+}
+
+.warning {
+  background-color: #fefee5;
+  color: #6a5300;
+}
+
+.error {
+  background-color: #ffe5f2;
+  color: #ed2e7e;
+}
+
+.icon-text-container {
+  display: flex;
+}
+
+.icon-text-container p {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  margin-left: 15px;
+}
