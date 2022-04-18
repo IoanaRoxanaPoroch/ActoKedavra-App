@@ -63,7 +63,13 @@
   display: none;
 }
 
-.close-btn-success-notification-window {
+.close-btn-notification-window {
+  box-shadow: none;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+/* .close-btn-success-notification-window {
   background-color: #e5fff2;
   color: #00994d;
   box-shadow: none;
@@ -85,7 +91,7 @@
   box-shadow: none;
   font-size: 20px;
   opacity: 0.5;
-}
+} */
 
 /* ends close button */
 

@@ -13,9 +13,6 @@ import { AddActor } from "./components/addActor/AddActor";
 import { EditActor } from "./components/editActor/EditActor";
 import SelectActors from "./components/selectActors/SelectActors";
 import { SortActors } from "./components/sortActors/SortActors";
-import SuccesAlert from "./components/succesAlert/SuccesAlert";
-import { WarningAlert } from "./components/warningAlert/WarningAlert";
-import ErrorAlert from "./components/errorAlert/ErrorAlert";
 
 function App() {
   const actor = {
@@ -98,29 +95,23 @@ function App() {
       <br />
       <NotificationWindow
         isVisible={true}
-        containerClassName="notification-container-success"
-        btnClassName="close-btn-success-notification-window"
-      >
-        <SuccesAlert text="Actor added successfully." />
-      </NotificationWindow>
+        className="success"
+        text="Actor added successfully."
+      ></NotificationWindow>
       <br />
       <br />
       <NotificationWindow
         isVisible={true}
-        containerClassName="notification-container-warning"
-        btnClassName="close-btn-warning-notification-window"
-      >
-        <WarningAlert text="You can add max. 7 actors." />
-      </NotificationWindow>
+        className="warning"
+        text="You can add max. 7 actors."
+      ></NotificationWindow>
       <br />
       <br />
       <NotificationWindow
         isVisible={true}
-        containerClassName="notification-container-error"
-        btnClassName="close-btn-error-notification-window"
-      >
-        <ErrorAlert text="Your changes were not saved." />
-      </NotificationWindow>
+        className="error"
+        text="Your changes were not saved."
+      ></NotificationWindow>
       <br />
       <br />
       <Footer />
