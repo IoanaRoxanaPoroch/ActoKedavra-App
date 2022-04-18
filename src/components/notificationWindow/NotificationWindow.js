@@ -1,39 +1,26 @@
 import { Button } from "../button/Button";
 import "./NotificationWindow.css";
 import { VscClose } from "react-icons/vsc";
-import { AiOutlineCheckCircle } from "react-icons/ai";
-import { BsQuestionCircle } from "react-icons/bs";
+import { useState } from "react";
 
-export const NotificationWindow = ({ text, ntfcType }) => {
-  let model = <div></div>;
+export const NotificationWindow = ({
+  isVisible,
+  children,
+  containerClassName,
+  btnClassName,
+}) => {
+  const [visible, setIsVisible] = useState(isVisible);
 
-  let successType = (
-    <div className="notification-container-success">
-      <div className="icon-contaier">
-        <AiOutlineCheckCircle className="icon-checked-notification-window" />
+  return (
+    visible && (
+      <div className={containerClassName}>
+        {children}
+        <div className="close-btn-alert-container">
+          <Button className={`close-btn ${btnClassName}`}>
+            <VscClose onClick={() => setIsVisible(false)} />
+          </Button>
+        </div>
       </div>
-      <div className="text-container">
-        <p>{text}</p>
-      </div>
-      <Button className="close-btn close-btn-success-notification-window">
-        <VscClose />
-      </Button>
-    </div>
+    )
   );
-  let warningType = (
-    <div className="notification-container-warning">
-      <BsQuestionCircle className="icon-question-mark-notification-window" />
-      <p>{text}</p>
-      <Button className="close-btn close-btn-warning-notification-window">
-        <VscClose />
-      </Button>
-    </div>
-  );
-
-  if (ntfcType === "success") {
-    model = successType;
-  } else {
-    model = warningType;
-  }
-  return <div>{model}</div>;
 };

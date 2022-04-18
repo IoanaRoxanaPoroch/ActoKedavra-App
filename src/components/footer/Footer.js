@@ -30,8 +30,8 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <p>{date}</p>
-      <Logo className="footer-logo" />
+      <p className="date-style">{date}</p>
+      <Logo className="footer-logo" text="ActoKedavra" />
     </div>
   );
 };

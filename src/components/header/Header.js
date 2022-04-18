@@ -3,9 +3,9 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <div className="header">
-      <Logo className="header-logo" />
-    </div>
+    <header className="header">
+      <Logo className="header-logo" text="ActoKedavra" />
+    </header>
   );
 };
 

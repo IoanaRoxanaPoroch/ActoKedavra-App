@@ -1,8 +1,7 @@
 input[type="checkbox"] {
   height: 32px;
   width: 32px;
-  vertical-align: middle;
-  margin: 0 0.4em 0.4em 0;
+  margin: -8px 10px 10px 200px;
   background-color: #d9dbe9;
   -webkit-appearance: none;
   border-radius: 22px;
@@ -15,30 +14,43 @@ input[type="checkbox"]:checked {
 }
 
 /* checkbox checked */
+/* vezi icon button selectat */
 input[type="checkbox"]:checked:before {
   content: "";
   display: block;
   width: 7px;
   height: 12px;
-  border: solid #fff;
+  border: solid var(--white);
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
   margin-left: 10px;
   margin-top: 7px;
 }
 
-/* input text */
+.checkbox-select-modal {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  letter-spacing: 0.75px;
+  color: rgba(78, 75, 102, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
 
+/* input text */
 input[type="text"] {
+  background-color: #eff0f7;
   width: 335px;
+  height: 50px;
   padding: 16px;
+  border-radius: 10px;
   margin: 16px 0;
   display: inline-block;
   border: none;
-  border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgba(239, 240, 246, 1);
-  height: 50px;
 }
 
 /* input text required */

@@ -1,6 +1,6 @@
+/* mobile styles */
 .App {
-  /* text-align: center; */
-  background-color: #e5e5e5;
+  background-color: var(--gray-background);
 }
 
 .actor {
@@ -11,97 +11,16 @@
   list-style: none;
 }
 
-/* buttons */
-
-.sort-btn {
-  background-color: rgba(238, 229, 254, 1);
-  border: 1px solid rgba(99, 8, 247, 1);
-  border-radius: 10px;
-  color: rgba(20, 20, 43, 1);
-  font-size: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 400px;
-  height: 40px;
-  padding: 10px;
+.top-btns-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 39px;
 }
 
-.select-btn {
-  background-color: rgba(238, 229, 254, 1);
-  border: 1px solid rgba(99, 8, 247, 1);
-  border-radius: 10px;
-  color: rgba(20, 20, 43, 1);
-  font-size: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  width: 400px;
-  height: 40px;
-  padding: 10px;
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+  gap: 11px;
+  justify-items: center;
 }
-
-.close-btn {
-  background-color: #ffffff;
-  color: rgba(110, 113, 145, 1);
-  border-radius: 30px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  padding: 4px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  font-size: 30px;
-}
-
-.readmore-readless-btn {
-  color: rgba(244, 183, 64, 1);
-  font-weight: 600;
-  font-size: 16px;
-  /* background-color: #ffffff; */
-  border: none;
-}
-
-.forward-arrow-btn {
-  color: rgba(244, 183, 64, 1);
-  font-weight: 600;
-  font-size: 16px;
-  transform: rotate(90deg);
-  /* background-color: #ffffff; */
-}
-
-.edit-btn {
-  color: rgba(42, 0, 162, 1);
-  font-size: 16px;
-  line-height: 120%;
-  font-weight: 600;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid rgba(99, 8, 247, 1);
-  box-sizing: border-box;
-  text-align: center;
-  width: 180px;
-  height: 40px;
-  padding: 10px;
-}
-
-.new-actor-btn {
-  background-color: rgba(99, 8, 247, 1);
-  border-radius: 12px;
-  border: none;
-  color: #fcfcfc;
-  margin: 0px 12px;
-  width: 400px;
-  height: 40px;
-  font-size: 21px;
-  line-height: 24px;
-  /*  doar proprietetile comune! */
-}
-
-.changed-mind-btn {
-  border: none;
-  background-color: #ffffff;
-  color: #14142b;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 120%;
-}
-
-/* btns end  */

@@ -1,0 +1,241 @@
+/* mobile styles */
+
+/* sort button */
+.sort-btn {
+  background-color: rgba(238, 229, 254, 1);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  width: 160px;
+  height: 37px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.sort-btn:nth-child(1) {
+  color: var(--off-black);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+/* select button */
+.select-btn {
+  background-color: rgba(238, 229, 254, 1);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  width: 160px;
+  height: 37px;
+  padding: 10px;
+  gap: 10px;
+}
+
+.select-btn:nth-child(1) {
+  color: var(--off-black);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+/* close button */
+.close-btn {
+  background-color: var(--white);
+  color: rgba(110, 113, 145, 1);
+  border-radius: 30px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 15px;
+}
+
+.modal-close-btn {
+  background-color: var(--white);
+  color: rgba(110, 113, 145, 1);
+  padding: 4px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+}
+
+.none {
+  display: none;
+}
+
+.close-btn-success-notification-window {
+  background-color: #e5fff2;
+  color: #00994d;
+  box-shadow: none;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+.close-btn-warning-notification-window {
+  background-color: #fefee5;
+  color: #6a5300;
+  box-shadow: none;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+.close-btn-error-notification-window {
+  background-color: #ffe5f2;
+  color: #ed2e7e;
+  box-shadow: none;
+  font-size: 20px;
+  opacity: 0.5;
+}
+
+/* ends close button */
+
+/* readMore/readLess button */
+.readmore-readless-btn {
+  color: rgba(244, 183, 64, 1);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  margin: 0px 2px;
+  border: none;
+}
+
+.forward-arrow-btn {
+  color: rgba(244, 183, 64, 1);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  margin: -2px 2px;
+  transform: rotate(90deg);
+}
+
+/* edit button */
+.edit-btn {
+  color: var(--primary);
+  font-size: 10px;
+  line-height: 120%;
+  font-weight: 600;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  width: 155px;
+  height: 40px;
+  margin: 10px 3.5px;
+}
+
+.edit-icon {
+  font-size: 10px;
+  line-height: 120%;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* add new actor button */
+.new-actor-update-btn {
+  background-color: var(--primary);
+  width: 335px;
+  height: 56px;
+  border-radius: 12px;
+  margin: 0px 20px;
+  padding: 16px 24px;
+  color: #fcfcfc;
+  font-size: 15px;
+  line-height: 24px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-actors-add-actor-btn {
+  width: 159px;
+  height: 56px;
+  font-size: 14px;
+}
+
+/* ascending button */
+.ascending-btn {
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  box-sizing: border-box;
+  text-align: center;
+  width: 355px;
+  height: 56px;
+  padding: 10px;
+  margin: 10px;
+  color: var(--primary);
+  font-size: 15px;
+  line-height: 160%;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+}
+
+.ascending-arrow-icon {
+  font-size: 20px;
+  line-height: 160%;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* descending button */
+.descending-btn {
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  box-sizing: border-box;
+  text-align: center;
+  width: 355px;
+  height: 56px;
+  padding: 10px;
+  margin: 10px;
+  color: var(--primary);
+  font-size: 15px;
+  line-height: 160%;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+}
+
+.descending-arrow-icon {
+  font-size: 20px;
+  line-height: 160%;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+/* delete button */
+.delete-btn {
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  box-sizing: border-box;
+  text-align: center;
+  width: 355px;
+  height: 56px;
+  padding: 10px;
+  margin: 10px;
+  color: var(--primary);
+  font-size: 15px;
+  line-height: 160%;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+}
+
+.delete-icon {
+  font-size: 20px;
+  line-height: 160%;
+  font-weight: 600;
+  margin-right: 10px;
+  /* ar trebuie sa fie un pic mai jos, pe aceasi linie cu textul */
+}
+/* changed mind button */
+.changed-mind-btn {
+  background-color: var(--white);
+  color: var(--off-black);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 120%;
+  text-align: center;
+  margin: 16px 0px;
+}

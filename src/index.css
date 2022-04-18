@@ -1,10 +1,40 @@
-html {
-  min-height: 100%;
+/* variables */
+:root {
+  --white: #fff;
+  --off-black: #14142b;
+  --gray-background: #e5e5e5;
+  --primary: #6308f7;
 }
-body {
+
+/* reset */
+* {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
+  padding: 0;
 }
+
+/* base styles */
+
+button {
+  background: none;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+}
+
+/* fonts */
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* mobile styles */
+
+/* For Tablets */
+/* vezi daca sunt corecte dimensiunile */
+/* @media (max-width: 960px) {
+ 
+  } */
+
+/* For Laptops/Desktop */
+/* @media (min-width: 1025px) {
+
+} */

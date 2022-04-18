@@ -1,19 +1,21 @@
 import "./App.css";
 import { Button } from "./components/button/Button";
+import "./components/button/Button.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { VscClose } from "react-icons/vsc";
 import { Card } from "./components/card/Card";
-import { IoIosArrowForward } from "react-icons/io";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { Tag } from "./components/tag/Tag";
-import { Title } from "./components/title/Title";
 import { Modal } from "./components/modal/Modal";
 import { NoActors } from "./components/noActors/NoActors";
-import {
-  Notification,
-  NotificationWindow,
-} from "./components/notificationWindow/NotificationWindow";
+import { NotificationWindow } from "./components/notificationWindow/NotificationWindow";
+import { AddActor } from "./components/addActor/AddActor";
+import { EditActor } from "./components/editActor/EditActor";
+import SelectActors from "./components/selectActors/SelectActors";
+import { SortActors } from "./components/sortActors/SortActors";
+import SuccesAlert from "./components/succesAlert/SuccesAlert";
+import { WarningAlert } from "./components/warningAlert/WarningAlert";
+import ErrorAlert from "./components/errorAlert/ErrorAlert";
 
 function App() {
   const actor = {
@@ -25,70 +27,100 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Button className="sort-btn">Sort</Button>
-      <br />
-      <br />
-      <Button className="select-btn"> Select</Button>
-      <br />
-      <br />
-      <Button className="close-btn">
-        <VscClose />
-      </Button>
-      <br />
-      <Card />
-      <br />
-      <br />
-      <Title>Leonardo Dicaprio</Title>
-      <Button className="readmore-readless-btn">
-        Read more
-        <IoIosArrowForward className="forward-arrow-btn" />
-      </Button>
-
+      <div className="top-btns-container">
+        <Button className="sort-btn">Sort</Button>
+        <Button className="select-btn">Select</Button>
+      </div>
+      <div className="cards-container">
+        <Card
+          sourceImage="https://static.cinemagia.ro/img/resize/db/actor/00/19/00/leonardo-dicaprio-291378l-600x0-w-53f4f492.jpg"
+          textImage="Leonardo Dicaprio"
+          jobs="Actor & Writer"
+          likes=" 47"
+          description="Leonardo Wilhelm DiCaprio is an American actor and film producer.
+        Known for his work in biopics and period films, he is the recipient of
+        numerous accolades, including an Academy Award, a British Academy Film
+        Award, and three Golden Globe Awards. As of 2019, his films have
+        grossed over $7.2 billion worldwide, and he has been placed eight
+        times in annual rankings of the world's highest-paid actors."
+        />
+        <Card
+          sourceImage="https://static.cinemagia.ro/img/resize/db/actor/00/19/00/leonardo-dicaprio-291378l-600x0-w-53f4f492.jpg"
+          textImage="Leonardo Dicaprio"
+          jobs="Actor & Writer"
+          likes=" 47"
+          description="Leonardo Wilhelm DiCaprio is an American actor and film producer.
+        Known for his work in biopics and period films, he is the recipient of
+        numerous accolades, including an Academy Award, a British Academy Film
+        Award, and three Golden Globe Awards. As of 2019, his films have
+        grossed over $7.2 billion worldwide, and he has been placed eight
+        times in annual rankings of the world's highest-paid actors."
+        />
+      </div>
       <br />
       <br />
       <Button className="edit-btn">
         Edit
-        <MdOutlineModeEdit />
+        <MdOutlineModeEdit className="edit-icon" />
       </Button>
       <br />
       <br />
       <Tag>Dancing</Tag>
       <br />
-      <br />
-
       <Tag>Modeling</Tag>
       <br />
       <br />
-      <Button className="new-actor-btn">Add new actor</Button>
-
+      <Button className="new-actor-update-btn">Add new actor</Button>
       <br />
       <br />
-
-      <Modal modalType="sort" />
+      <Modal isVisible={true} className="sort-type" displayCloseBtn="none">
+        <SortActors />
+      </Modal>
       <br />
       <br />
-      <Modal modalType="select" />
+      <Modal isVisible={true} className="select-type">
+        <SelectActors />
+      </Modal>
       <br />
       <br />
-      <Modal modalType="add" />
+      <Modal isVisible={true} className="add-actor-type">
+        <AddActor />
+      </Modal>
       <br />
       <br />
-      <Modal modalType="edit" />
+      <Modal isVisible={true}>
+        <EditActor />
+      </Modal>
       <br />
       <br />
-      <Modal modalType="addRqrd" />
-      <br />
-      <br />
-      <NoActors />
-      <br />
-      <br />
-      <NotificationWindow text="Actor added successfully" ntfcType="success" />
+      <NoActors mainText="There are no actors here. Consider adding one." />
       <br />
       <br />
       <NotificationWindow
-        text="You can add max. 7 actors."
-        ntfcType="warning"
-      />
+        isVisible={true}
+        containerClassName="notification-container-success"
+        btnClassName="close-btn-success-notification-window"
+      >
+        <SuccesAlert text="Actor added successfully." />
+      </NotificationWindow>
+      <br />
+      <br />
+      <NotificationWindow
+        isVisible={true}
+        containerClassName="notification-container-warning"
+        btnClassName="close-btn-warning-notification-window"
+      >
+        <WarningAlert text="You can add max. 7 actors." />
+      </NotificationWindow>
+      <br />
+      <br />
+      <NotificationWindow
+        isVisible={true}
+        containerClassName="notification-container-error"
+        btnClassName="close-btn-error-notification-window"
+      >
+        <ErrorAlert text="Your changes were not saved." />
+      </NotificationWindow>
       <br />
       <br />
       <Footer />

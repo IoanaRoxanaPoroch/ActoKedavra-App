@@ -1,0 +1,30 @@
+/* mobile styles */
+.notification-container-warning {
+  background-color: #fefee5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 375px;
+  height: 72px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-text-container-warning {
+  display: flex;
+}
+
+.icon-text-container-warning p {
+  color: #6a5300;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  margin-left: 15px;
+}
+
+.icon-question-mark-notification-window {
+  width: 22px;
+  height: 22px;
+  color: #6a5300;
+  opacity: 0.5;
+}

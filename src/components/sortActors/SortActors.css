@@ -1,0 +1,8 @@
+/* Sort modal */
+.frame-sort {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 0px; */
+}
+

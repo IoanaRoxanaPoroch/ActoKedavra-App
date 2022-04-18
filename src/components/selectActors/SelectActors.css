@@ -1,0 +1,13 @@
+/* Select modal */
+.select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.delete-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

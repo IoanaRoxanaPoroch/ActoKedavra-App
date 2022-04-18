@@ -1,34 +1,25 @@
+/* mobile styles */
 .header {
-  background-color: #ffffff;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-}
-.header-logo {
-  padding-bottom: 17px;
-  margin-top: 0;
-  padding-top: 40px;
-  text-align: center;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px rgba(225, 225, 255, 1);
+  width: 100%;
+  height: 96px;
 }
 
-/* For Mobile Phones */
-@media (max-width: 480px) {
-  .header-logo {
-    font-size: 16px;
-    line-height: 19px;
-  }
-}
 
 /* For Tablets */
-@media (max-width: 960px) {
+/* vezi daca sunt corecte dimensiunile */
+/* @media (max-width: 960px) {
   .header-logo {
     font-size: 30px;
     line-height: 36px;
   }
-}
+} */
 
 /* For Laptops/Desktop */
-@media (min-width: 1025px) {
+/* @media (min-width: 1025px) {
   .header-logo {
     font-size: 32px;
     line-height: 38px;
   }
-}
+} */
