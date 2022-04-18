@@ -1,7 +1,5 @@
-/* mobile styles */
-
-.notification-container-success {
-  background-color: #e5fff2;
+.notification-container-error {
+  background-color: #ffe5f2;
   border-radius: 10px;
   box-sizing: border-box;
   width: 100%;
@@ -11,21 +9,21 @@
   align-items: center;
 }
 
-.icon-text-container-succes {
+.icon-text-container-error {
   display: flex;
 }
 
-.icon-text-container-succes p {
-  color: #00994d;
+.icon-text-container-error p {
+  color: #ed2e7e;
   font-weight: 600;
   font-size: 15px;
   line-height: 24px;
   margin-left: 15px;
 }
 
-.icon-checked-notification-window {
+.icon-exclamation-mark-notification-window {
   width: 22px;
   height: 22px;
-  color: #00994d;
+  color: #ed2e7e;
   opacity: 0.5;
 }

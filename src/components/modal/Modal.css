@@ -11,10 +11,18 @@
   height: 296px;
 }
 
+.select-type {
+  height: 280px;
+}
+
+.add-actor-type {
+  height: auto;
+}
+
 .modal-close-btn-div {
   display: flex;
   justify-content: end;
   position: absolute;
   left: 85%;
-  top: 6%;
+  top: 3%;
 }

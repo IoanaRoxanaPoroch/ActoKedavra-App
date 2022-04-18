@@ -42,15 +42,15 @@ input[type="checkbox"]:checked:before {
 
 /* input text */
 input[type="text"] {
+  background-color: #eff0f7;
   width: 335px;
+  height: 50px;
   padding: 16px;
+  border-radius: 10px;
   margin: 16px 0;
   display: inline-block;
   border: none;
-  border-radius: 10px;
   box-sizing: border-box;
-  background-color: rgba(239, 240, 246, 1);
-  height: 50px;
 }
 
 /* input text required */

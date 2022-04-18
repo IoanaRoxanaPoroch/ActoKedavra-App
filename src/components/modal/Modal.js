@@ -4,6 +4,7 @@ import "./Modal.css";
 import { VscClose } from "react-icons/vsc";
 
 export const Modal = ({ children, isVisible, className, displayCloseBtn }) => {
+
   const [visible, setIsVisible] = useState(isVisible);
   // solutie pentru displayCloseBtn- pentru celelate situatii, cand are valoarea undefined
   return (

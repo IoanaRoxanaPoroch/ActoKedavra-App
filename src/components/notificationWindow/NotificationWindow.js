@@ -15,9 +15,11 @@ export const NotificationWindow = ({
     visible && (
       <div className={containerClassName}>
         {children}
-        <Button className={`close-btn ${btnClassName}`}>
-          <VscClose onClick={() => setIsVisible(false)} />
-        </Button>
+        <div className="close-btn-alert-container">
+          <Button className={`close-btn ${btnClassName}`}>
+            <VscClose onClick={() => setIsVisible(false)} />
+          </Button>
+        </div>
       </div>
     )
   );

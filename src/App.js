@@ -15,6 +15,7 @@ import SelectActors from "./components/selectActors/SelectActors";
 import { SortActors } from "./components/sortActors/SortActors";
 import SuccesAlert from "./components/succesAlert/SuccesAlert";
 import { WarningAlert } from "./components/warningAlert/WarningAlert";
+import ErrorAlert from "./components/errorAlert/ErrorAlert";
 
 function App() {
   const actor = {
@@ -69,7 +70,7 @@ function App() {
       <Tag>Modeling</Tag>
       <br />
       <br />
-      <Button className="new-actor-btn">Add new actor</Button>
+      <Button className="new-actor-update-btn">Add new actor</Button>
       <br />
       <br />
       <Modal isVisible={true} className="sort-type" displayCloseBtn="none">
@@ -77,12 +78,12 @@ function App() {
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true}>
+      <Modal isVisible={true} className="select-type">
         <SelectActors />
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true}>
+      <Modal isVisible={true} className="add-actor-type">
         <AddActor />
       </Modal>
       <br />
@@ -100,7 +101,7 @@ function App() {
         containerClassName="notification-container-success"
         btnClassName="close-btn-success-notification-window"
       >
-        <SuccesAlert text="Actor added successfully" />
+        <SuccesAlert text="Actor added successfully." />
       </NotificationWindow>
       <br />
       <br />
@@ -110,6 +111,15 @@ function App() {
         btnClassName="close-btn-warning-notification-window"
       >
         <WarningAlert text="You can add max. 7 actors." />
+      </NotificationWindow>
+      <br />
+      <br />
+      <NotificationWindow
+        isVisible={true}
+        containerClassName="notification-container-error"
+        btnClassName="close-btn-error-notification-window"
+      >
+        <ErrorAlert text="Your changes were not saved." />
       </NotificationWindow>
       <br />
       <br />

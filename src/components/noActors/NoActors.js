@@ -14,7 +14,9 @@ export const NoActors = ({ mainText }) => {
         </div>
         <p>{mainText}</p>
         <div className="btn-container">
-          <Button className="new-actor-btn no-actors-btn">Add new actor</Button>
+          <Button className="new-actor-update-btn no-actors-add-actor-btn">
+            Add new actor
+          </Button>
         </div>
       </div>
       <Footer />

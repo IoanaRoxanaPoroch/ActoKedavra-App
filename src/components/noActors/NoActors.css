@@ -2,13 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: auto;
-}
-
-/* de pus in fisierul btn.css */
-.no-actors-btn {
-  width: 211px;
-  height: 44px;
+  height: 812px;
 }
 
 .content-wrapper {
@@ -16,10 +10,11 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  margin: 24px 20px;
 }
 
 .content-wrapper p {
-  color: #14142b;
+  color: var(--off-black);
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -29,4 +24,8 @@
 .sad-icon {
   width: 91px;
   height: 91px;
+}
+
+.btn-container {
+  margin: 40px auto;
 }

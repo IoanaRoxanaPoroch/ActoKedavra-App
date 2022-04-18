@@ -6,7 +6,7 @@ import { Button } from "../button/Button";
 export const EditActor = () => {
   return (
     <div className="container">
-      <Title>Edit actor</Title>
+      <Title className="edit-title-styles">Edit actor</Title>
       <div className="form-container">
         <Field type="text" value="name" className="text-label-add">
           Name
@@ -35,7 +35,7 @@ export const EditActor = () => {
           labelText="Description"
         ></TextArea>
       </div>
-      <Button className=" new-actor-btn add-edit-btn">Update</Button>
+      <Button className=" new-actor-update-btn add-edit-btn">Update</Button>
       <Button className="changed-mind-btn">I changed my mind</Button>
     </div>
   );

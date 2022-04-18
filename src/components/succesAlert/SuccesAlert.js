@@ -3,13 +3,9 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 
 const SuccesAlert = ({ text }) => {
   return (
-    <div>
-      <div className="icon-contaier">
-        <AiOutlineCheckCircle className="icon-checked-notification-window" />
-      </div>
-      <div className="text-container">
-        <p>{text}</p>
-      </div>
+    <div className="icon-text-container-succes">
+      <AiOutlineCheckCircle className="icon-checked-notification-window" />
+      <p>{text}</p>
     </div>
   );
 };
