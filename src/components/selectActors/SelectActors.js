@@ -4,7 +4,7 @@ import { Button } from "../button/Button";
 import { RiDeleteBinLine } from "react-icons/ri";
 import "./SelectActors.css";
 
-const SelectActors = () => {
+export const SelectActors = () => {
   return (
     <div className="select-container">
       <Title className="select-title-styles">Number of items selected</Title>
@@ -20,5 +20,3 @@ const SelectActors = () => {
     </div>
   );
 };
-
-export default SelectActors;

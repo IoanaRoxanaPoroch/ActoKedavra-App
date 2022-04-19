@@ -6,8 +6,18 @@ import { IoIosArrowForward } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { Tag } from "../tag/Tag";
+import PropTypes from "prop-types";
 
-export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
+export const Card = ({
+  title,
+  sourceImage,
+  textImage,
+  jobs,
+  likes,
+  hobbies,
+  description,
+}) => {
+  const hobbiesReceived = { hobbies };
   return (
     <div className="card">
       <div className="btn-card-container">
@@ -16,7 +26,7 @@ export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
         </Button>
       </div>
       <img src={sourceImage} alt={textImage} className="actor-img" />
-      <Title>Leonardo Dicaprio</Title>
+      <Title>{title}</Title>
       <div className="job-likes">
         <p className="jobs">{jobs}</p>
         <p className="likes">
@@ -25,8 +35,9 @@ export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
         </p>
       </div>
       <div className="tags-container">
-        <Tag>Dancing</Tag>
-        <Tag>Modeling</Tag>
+        {hobbiesReceived.hobbies?.map((hobbie, index) => (
+          <Tag key={index}>{hobbie}</Tag>
+        ))}
       </div>
       <div className="description">
         <p>{description}</p>
@@ -41,4 +52,13 @@ export const Card = ({ sourceImage, textImage, jobs, likes, description }) => {
       </Button>
     </div>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string,
+  sourceImage: PropTypes.string,
+  jobs: PropTypes.string,
+  likes: PropTypes.number,
+  hobbies: PropTypes.array,
+  description: PropTypes.string,
 };

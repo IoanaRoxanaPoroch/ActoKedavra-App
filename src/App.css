@@ -21,6 +21,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-top: 10px;
+  /* padding: 2%; */
   gap: 11px;
   justify-items: center;
 }

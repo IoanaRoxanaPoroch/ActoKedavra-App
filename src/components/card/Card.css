@@ -44,10 +44,13 @@
 
 .tags-container {
   display: flex;
-  justify-content: space-evenly;
-  margin: 0px 10px;
+  width: fit-content;
+  flex-wrap: wrap;
+  padding-left: 10px;
 }
-
+.tags-container > div {
+  margin: 2%;
+}
 .description p {
   display: flex;
   text-align: justify;

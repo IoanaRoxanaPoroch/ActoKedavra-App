@@ -1,7 +1,7 @@
 .hobbie-tag {
   background-color: rgba(229, 235, 254, 1);
   border-radius: 8px;
-  width: 59px;
+  width: auto;
   height: 21px;
   margin: 0px 4px;
   /* vertical alignment !*/

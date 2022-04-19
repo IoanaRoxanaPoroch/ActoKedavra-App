@@ -1,6 +1,6 @@
 import { Button } from "../button/Button";
-import Footer from "../footer/Footer";
-import Header from "../header/Header";
+import {Footer} from "../footer/Footer";
+import {Header} from "../header/Header";
 import "./NoActors.css";
 import { HiOutlineEmojiSad } from "react-icons/hi";
 
