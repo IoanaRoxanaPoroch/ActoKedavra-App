@@ -17,7 +17,7 @@ export const NotificationWindow = ({ isVisible, text, className }) => {
       icon: <BsQuestionCircle />,
     },
 
-    error: {
+    danger: {
       icon: <BsExclamationCircle />,
     },
   };
@@ -27,7 +27,7 @@ export const NotificationWindow = ({ isVisible, text, className }) => {
     } else if (param.className === "warning") {
       return alertTypes.warning.icon;
     } else {
-      return alertTypes.error.icon;
+      return alertTypes.danger.icon;
     }
   };
 

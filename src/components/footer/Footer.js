@@ -1,7 +1,7 @@
 import { Logo } from "../logo/Logo";
 import "./Footer.css";
 
-const Footer = () => {
+export const Footer = () => {
   const getCurrentDate = () => {
     let today = new Date();
     let currentYear = today.getFullYear();
@@ -35,5 +35,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;
