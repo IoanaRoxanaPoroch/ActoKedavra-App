@@ -1,6 +1,6 @@
 import { Button } from "../button/Button";
-import {Footer} from "../footer/Footer";
-import {Header} from "../header/Header";
+import { Footer } from "../footer/Footer";
+import { Header } from "../header/Header";
 import "./NoActors.css";
 import { HiOutlineEmojiSad } from "react-icons/hi";
 
@@ -14,7 +14,7 @@ export const NoActors = ({ mainText }) => {
         </div>
         <p>{mainText}</p>
         <div className="btn-container">
-          <Button className="new-actor-update-btn no-actors-add-actor-btn">
+          <Button type="btn-primary" className="no-actors-add-actor-btn">
             Add new actor
           </Button>
         </div>

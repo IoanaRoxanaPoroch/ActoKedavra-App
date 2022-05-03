@@ -4,7 +4,6 @@
   width: auto;
   height: 21px;
   margin: 0px 4px;
-  /* vertical alignment !*/
   padding: 5px 8px;
   display: flex;
   justify-content: center;
@@ -16,4 +15,17 @@
   font-weight: 500;
   font-size: 9px;
   line-height: 120%;
+}
+
+/* small */
+@media screen and (max-width: 480px) {
+}
+
+/* medium */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+
+/* large */
+@media (min-width: 1025px) {
 }

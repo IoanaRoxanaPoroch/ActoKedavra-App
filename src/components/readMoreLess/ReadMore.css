@@ -1,18 +1,17 @@
-/* Select modal */
-.select-container {
+.read-more-read-less-wrapper {
+  color: rgba(110, 113, 145, 1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.delete-btn-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: justify;
+  font-weight: 300;
 }
 
 /* small */
 @media screen and (max-width: 480px) {
+  .read-more-read-less-wrapper {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
 }
 
 /* medium */

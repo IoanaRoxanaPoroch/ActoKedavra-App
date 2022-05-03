@@ -73,11 +73,24 @@ input[type="text"]:required + span::after {
   /* invalid selector */
 }
 
-.text-label-add {
+.text-label {
   color: #4e4b66;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 120%;
   margin: 0px 10px;
+}
+
+/* small */
+@media screen and (max-width: 480px) {
+}
+
+/* medium */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+
+/* large */
+@media (min-width: 1025px) {
 }

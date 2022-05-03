@@ -19,7 +19,7 @@
       "description": "Angelina Jolie is an American actress, filmmaker, and humanitarian. The recipient of numerous accolades, including an Academy Award and three Golden Globe Awards, she has been named Hollywood's highest-paid actress multiple times."
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Jennifer Aniston",
       "picture": "https://m.media-amazon.com/images/M/MV5BNjk1MjIxNjUxNF5BMl5BanBnXkFtZTcwODk2NzM4Mg@@._V1_UY317_CR3,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
@@ -28,7 +28,7 @@
       "description": "Jennifer Aniston was born in Sherman Oaks, California, to actors John Aniston and Nancy Dow. Her father is Greek, and her mother was of English, Irish, Scottish, and Italian descent. Jennifer spent a year of her childhood living in Greece with her family."
     },
     {
-      "id": 5,
+      "id": 4,
       "name": "Dwayne Johnson",
       "picture": "https://m.media-amazon.com/images/M/MV5BMTkyNDQ3NzAxM15BMl5BanBnXkFtZTgwODIwMTQ0NTE@._V1_UX214_CR0,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
@@ -37,7 +37,7 @@
       "description": "Dwayne Douglas Johnson, also known as The Rock, was born on May 2, 1972 in Hayward, California. He is the son of Ata Johnson (born Feagaimaleata Fitisemanu Maivia) and professional wrestler Rocky Johnson (born Wayde Douglas Bowles). His father, from Amherst, Nova Scotia, Canada, is black (of Black Nova Scotian descent), and his mother is of Samoan background (her own father was Peter Fanene Maivia, also a professional wrestler). While growing up, Dwayne traveled around a lot with his parents and watched his father perform in the ring. During his high school years, Dwayne began playing football and he soon received a full scholarship from the University of Miami, where he had tremendous success as a football player. In 1995, Dwayne suffered a back injury which cost him a place in the NFL."
     },
     {
-      "id": 6,
+      "id": 5,
       "name": "Brad Pitt",
       "picture": "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX214_CR0,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
@@ -46,7 +46,7 @@
       "description": "An actor and producer known as much for his versatility as he is for his handsome face, Golden Globe-winner Brad Pitt's most widely recognized role may be Tyler Durden in Fight Club."
     },
     {
-      "id": 7,
+      "id": 6,
       "name": "Morgan Freeman",
       "picture": "https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_UX214_CR0,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
@@ -55,7 +55,7 @@
       "description": "With an authoritative voice and calm demeanor, this ever popular American actor has grown into one of the most respected figures in modern US cinema. Morgan was born on June 1, 1937 in Memphis, Tennessee, to Mayme Edna (Revere), a teacher, and Morgan Porterfield Freeman, a barber."
     },
     {
-      "id": 8,
+      "id": 7,
       "name": "Zendaya",
       "picture": "https://www.axn.ro/sites/ro.fern.axn/files/axn-zendaya-in-spider-man-homecoming-1600x900.jpg",
       "occupation": "Actor & Producer",
@@ -64,7 +64,7 @@
       "description": "Zendaya (which means to give thanks in the language of Shona) is an American actress and singer born in Oakland, California. She began her career appearing as a child model working for Macy's, Mervyns and Old Navy. She was a backup dancer before gaining prominence for her role as Rocky Blue on the Disney Channel sitcom Shake It Up (2010) which also includes Bella Thorne, Kenton Duty and Roshon Fegan."
     },
     {
-      "id": 9,
+      "id": 8,
       "name": "Blake Lively",
       "picture": "https://m.media-amazon.com/images/M/MV5BMTU2Njk0NTUyNl5BMl5BanBnXkFtZTcwODE0OTgyNw@@._V1_UY317_CR13,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
@@ -73,13 +73,22 @@
       "description": "Blake Ellender Lively was born Blake Ellender Brown on August 25, 1987 in Los Angeles, California to Elaine Lively & Ernie Lively. Her brother is actor Eric Lively, and her half-siblings are actors Lori Lively, Robyn Lively and Jason Lively."
     },
     {
-      "id": 10,
+      "id": 9,
       "name": "Johnny Depp",
       "picture": "https://m.media-amazon.com/images/M/MV5BMTM0ODU5Nzk2OV5BMl5BanBnXkFtZTcwMzI2ODgyNQ@@._V1_UY317_CR4,0,214,317_AL_.jpg",
       "occupation": "Actor & Producer",
       "score": 82,
       "hobbies": ["Playing Guitar", "Watching Cartoons"],
       "description": "Johnny Depp is perhaps one of the most versatile actors of his day and age in Hollywood. He was born John Christopher Depp II in Owensboro, Kentucky, on June 9, 1963, to Betty Sue (Wells), who worked as a waitress, and John Christopher Depp, a civil engineer. Depp was raised in Florida."
+    },
+    {
+      "id": 10,
+      "name": "Salma Hayek",
+      "picture": "https://static.cinemagia.ro/img/resize/db/actor/00/07/33/salma-hayek-632675l-214x0-wtm-c4a7c6e9.jpg",
+      "occupation": "Actor & Producer",
+      "score": 76,
+      "hobbies": ["Dancing", "Travelling", "Shopping"],
+      "description": "Salma Hayek was born on September 2, 1966 in Coatzacoalcos, Mexico. Her father is of Lebanese descent and her mother is of Mexican/Spanish ancestry."
     }
   ]
 }

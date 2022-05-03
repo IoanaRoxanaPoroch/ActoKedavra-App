@@ -6,14 +6,13 @@ import { Tag } from "../tag/Tag";
 import { Modal } from "../modal/Modal";
 import { SortActors } from "../sortActors/SortActors";
 import { SelectActors } from "../selectActors/SelectActors";
-import { AddActor } from "../addActor/AddActor";
-import { EditActor } from "../editActor/EditActor";
 import { NotificationWindow } from "../notificationWindow/NotificationWindow";
 import { NoActors } from "../noActors/NoActors";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { AddEditActor } from "../addEditActor/AddEditActor";
 
 const StyleGuidepage = () => {
   const [actors, setActors] = useState(null);
@@ -36,14 +35,14 @@ const StyleGuidepage = () => {
     <div>
       <Header />
       <div className="top-btns-container">
-        <Button className="sort-btn">Sort</Button>
-        <Button className="select-btn">Select</Button>
+        <Button type="btn-type-1">Sort</Button>
+        <Button type="btn-type-1">Select</Button>
       </div>
       <div className="cards-container">
         {actors?.map((actor, index) => (
           <Card
             key={index}
-            title={actor.name}
+            name={actor.name}
             sourceImage={actor.picture}
             textImage={actor.name}
             jobs={actor.occupation}
@@ -55,7 +54,7 @@ const StyleGuidepage = () => {
       </div>
       <br />
       <br />
-      <Button className="edit-btn">
+      <Button type="btn-type-2">
         Edit
         <MdOutlineModeEdit className="edit-icon" />
       </Button>
@@ -66,26 +65,30 @@ const StyleGuidepage = () => {
       <Tag>Modeling</Tag>
       <br />
       <br />
-      <Button className="new-actor-update-btn">Add new actor</Button>
+      <Button type="btn-primary">Add new actor</Button>
       <br />
       <br />
-      <Modal isVisible={true} className="sort-type" displayCloseBtn="none">
+      <Modal isVisible={true} className="sort-type" title="Select type of sort">
         <SortActors />
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true} className="select-type">
+      <Modal
+        isVisible={true}
+        className="select-type"
+        title="Number of items selected"
+      >
         <SelectActors />
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true} className="add-actor-type">
-        <AddActor />
+      <Modal isVisible={true} className="add-actor-type" title="Add new actor">
+        <AddEditActor btnPrimaryText="Add new actor" />
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true}>
-        <EditActor />
+      <Modal isVisible={true} title="Edit actor">
+        <AddEditActor btnPrimaryText="Update" />
       </Modal>
       <br />
       <br />
@@ -96,21 +99,21 @@ const StyleGuidepage = () => {
         isVisible={true}
         className="success"
         text="Actor added successfully."
-      ></NotificationWindow>
+      />
       <br />
       <br />
       <NotificationWindow
         isVisible={true}
         className="warning"
         text="You can add max. 7 actors."
-      ></NotificationWindow>
+      />
       <br />
       <br />
       <NotificationWindow
         isVisible={true}
         className="danger"
         text="Your changes were not saved."
-      ></NotificationWindow>
+      />
       <br />
       <br />
       <Footer />
