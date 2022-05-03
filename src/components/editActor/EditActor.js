@@ -1,14 +1,12 @@
-import { Title } from "../title/Title";
 import { Field } from "../field/Field";
 import { TextArea } from "../textarea/TextArea";
 import { Button } from "../button/Button";
 
-export const EditActor = () => {
+export const EditActor = ({btn}) => {
   return (
     <div className="container">
-      <Title className="edit-title-styles">Edit actor</Title>
       <div className="form-container">
-        <Field type="text" value="name" className="text-label-add">
+        <Field type="text" value="name" className="text-label">
           Name
         </Field>
       </div>
@@ -16,13 +14,13 @@ export const EditActor = () => {
         <Field
           type="text"
           value="occupation besides acting"
-          className="text-label-add"
+          className="text-label"
         >
           Principal job
         </Field>
       </div>
       <div className="form-container">
-        <Field type="text" value="name" className="text-label-add">
+        <Field type="text" value="name" className="text-label">
           Hobbies
         </Field>
       </div>
@@ -31,11 +29,11 @@ export const EditActor = () => {
           id="description"
           name="description"
           maxLength="50"
-          className="text-label-add"
+          className="text-label"
           labelText="Description"
         ></TextArea>
       </div>
-      <Button className=" new-actor-update-btn add-edit-btn">Update</Button>
+      <Button type="btn-type-3">Update</Button>
       <Button className="changed-mind-btn">I changed my mind</Button>
     </div>
   );

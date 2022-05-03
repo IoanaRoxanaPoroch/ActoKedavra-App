@@ -44,18 +44,24 @@
 
 .tags-container {
   display: flex;
-  width: fit-content;
+  /* width: fit-content; */
   flex-wrap: wrap;
   padding-left: 10px;
 }
+
 .tags-container > div {
   margin: 2%;
 }
-.description p {
-  display: flex;
-  text-align: justify;
-  font-size: 10px;
-  font-weight: 300;
-  padding: 5px 10px;
-  color: rgba(110, 113, 145, 1);
+
+/* small */
+@media screen and (max-width: 480px) {
+}
+
+/* medium */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+
+/* large */
+@media (min-width: 1025px) {
 }

@@ -6,14 +6,11 @@ import { Title } from "../title/Title";
 export const SortActors = () => {
   return (
     <div className="frame-sort">
-      <Title className="sort-title-styles">Select type of sort</Title>
-      <Button className="ascending-btn">
-        <div>
-          <AiOutlineArrowUp className="ascending-arrow-icon" />
-          Ascending
-        </div>
+      <Button type="btn-type-2">
+        <AiOutlineArrowUp className="ascending-arrow-icon" />
+        Ascending
       </Button>
-      <Button className="descending-btn">
+      <Button type="btn-type-2">
         <AiOutlineArrowDown className="descending-arrow-icon" />
         Descending
       </Button>
