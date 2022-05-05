@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
 
-const StyleGuidepage = () => {
+const Home = () => {
   const [actors, setActors] = useState(null);
 
   const getActors = async () => {
@@ -68,73 +68,10 @@ const StyleGuidepage = () => {
           />
         ))}
       </div>
-      {/* <br />
-      <br />
-      <Button type="btn-type-2">
-        Edit
-        <MdOutlineModeEdit className="edit-icon" />
-      </Button>
-      <br />
-      <br />
-      <Tag>Dancing</Tag>
-      <br />
-      <Tag>Modeling</Tag>
-      <br />
-      <br />
       <Button type="btn-primary">Add new actor</Button>
-      <br />
-      <br />
-      <Modal isVisible={true} className="sort-type" title="Select type of sort">
-        <SortActors />
-      </Modal>
-      <br />
-      <br />
-      <Modal
-        isVisible={true}
-        className="select-type"
-        title="Number of items selected"
-      >
-        <SelectActors />
-      </Modal>
-      <br />
-      <br />
-      <Modal isVisible={true} className="add-actor-type" title="Add new actor">
-        <AddEditActor btnPrimaryText="Add new actor" />
-      </Modal>
-      <br />
-      <br />
-      <Modal isVisible={true} title="Edit actor">
-        <AddEditActor btnPrimaryText="Update" />
-      </Modal>
-      <br />
-      <br />
-      <NoActors mainText="There are no actors here. Consider adding one." />
-      <br />
-      <br />
-      <NotificationWindow
-        isVisible={true}
-        className="success"
-        text="Actor added successfully."
-      />
-      <br />
-      <br />
-      <NotificationWindow
-        isVisible={true}
-        className="warning"
-        text="You can add max. 7 actors."
-      />
-      <br />
-      <br />
-      <NotificationWindow
-        isVisible={true}
-        className="danger"
-        text="Your changes were not saved."
-      />
-      <br />
-      <br /> */}
       <Footer />
     </div>
   );
 };
 
-export default StyleGuidepage;
+export default Home;
