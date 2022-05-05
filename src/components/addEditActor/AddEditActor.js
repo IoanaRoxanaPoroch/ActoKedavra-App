@@ -4,55 +4,93 @@ import "./AddEditActor.css";
 import { Button } from "../button/Button";
 import { useState } from "react";
 
-export const AddEditActor = ({ btnPrimaryText, openModal, actorDetails }) => {
-  const [name, setName] = useState(actorDetails?.name);
+export const AddEditActor = ({
+  btnPrimaryText,
+  openModal,
+  actorDetails,
+  updates,
+}) => {
+  const [actor, setActor] = useState({
+    id: actorDetails?.id,
+    name: actorDetails?.name,
+    occupation: actorDetails?.occupation,
+    hobbies: actorDetails?.hobbies,
+    description: actorDetails?.description,
+    characters: actorDetails?.description.length,
+  });
 
-  const handleSubmit = () => {
-    console.log(name);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    openModal(false);
   };
 
   return (
-    <div className="add-actor">
-      <div className="add-acto-group">
-        <Field
-          type="text"
-          value={name}
-          defaultValue={actorDetails?.name}
-          className="text-label"
-          onChange={(e) => setName(e.target.value)}
+    <form onSubmit={handleSubmit}>
+      <div className="add-actor">
+        <div className="add-acto-group">
+          <Field
+            className="text-label"
+            type="text"
+            value={actor.name}
+            onChange={(e) => setActor({ ...actor, name: e.target.value })}
+          >
+            Name
+          </Field>
+        </div>
+        <div className="add-acto-group">
+          <Field
+            className="text-label"
+            type="text"
+            value={actor.occupation}
+            onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
+          >
+            Occupation besides acting
+          </Field>
+        </div>
+        <div className="add-acto-group">
+          <Field
+            className="text-label"
+            type="text"
+            value={actor.hobbies}
+            onChange={(e) => setActor({ ...actor, hobbies: e.target.value })}
+          >
+            Hobbies
+          </Field>
+        </div>
+        <div className="add-acto-group">
+          <TextArea
+            className="text-label"
+            name="description"
+            maxLength="180"
+            labelText="Description"
+            value={actor.description}
+            characters={actor.characters}
+            onChange={(e) =>
+              setActor({
+                ...actor,
+                description: e.target.value,
+                characters: e.target.value.length,
+              })
+            }
+          />
+        </div>
+        <Button
+          type="btn-primary"
+          onClick={() => {
+            updates(actor.id, actor);
+          }}
         >
-          Name
-        </Field>
+          {btnPrimaryText}
+        </Button>
+        <Button
+          className="changed-mind-btn btn-positioning"
+          onClick={() => {
+            openModal(false);
+          }}
+        >
+          I changed my mind
+        </Button>
       </div>
-      <div className="add-acto-group">
-        <Field type="text" value={actorDetails?.jobs} className="text-label">
-          Occupation besides acting
-        </Field>
-      </div>
-      <div className="add-acto-group">
-        <Field type="text" value={actorDetails?.hobbies} className="text-label">
-          Hobbies
-        </Field>
-      </div>
-      <div className="add-acto-group">
-        <TextArea
-          id="description"
-          name="description"
-          maxLength="50"
-          className="text-label"
-          labelText="Description"
-          value={actorDetails?.description}
-        ></TextArea>
-      </div>
-      <Button type="btn-primary" onClick={handleSubmit}>
-        {btnPrimaryText}
-      </Button>
-      <Button
-        className="changed-mind-btn btn-positioning"
-        onClick={() => openModal(false)}
-      >
-        I changed my mind
-      </Button>
-    </div>
+    </form>
   );
 };

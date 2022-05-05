@@ -8,6 +8,8 @@ textarea {
   border: none;
   box-sizing: border-box;
   display: inline-block;
+  position: relative;
+  z-index: 1;
 }
 
 ::-webkit-textarea-placeholder {
@@ -21,6 +23,15 @@ textarea {
   color: #6e7191;
 
   /* stanga jos */
+}
+.chars-remained-text {
+  font-style: normal;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  color: #4e4b66;
+  z-index: 2;
+  position: absolute;
 }
 
 /* required */
@@ -45,6 +56,13 @@ textarea:required + span::after {
 
 /* small */
 @media screen and (max-width: 480px) {
+  .chars-remained-text {
+    font-weight: 300;
+    font-size: 10px;
+    left: 32px;
+    top: 734px;
+    /* situatia in care textul e mai mare */
+  }
 }
 
 /* medium */

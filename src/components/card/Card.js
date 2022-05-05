@@ -12,17 +12,23 @@ import { Modal } from "../modal/Modal";
 import { AddEditActor } from "../addEditActor/AddEditActor";
 
 export const Card = ({
+  id,
   name,
   sourceImage,
   textImage,
-  jobs,
+  occupation,
   likes,
   hobbies,
   description,
+  updates = { updates },
 }) => {
   const [open, setIsOpen] = useState(false);
   const hobbiesReceived = { hobbies };
-  const details = { name, jobs, hobbies, description };
+  const details = { id, name, occupation, hobbies, description };
+
+  const onClickOpen = () => {
+    setIsOpen(true);
+  };
 
   return (
     <div className="card">
@@ -34,7 +40,7 @@ export const Card = ({
       <img src={sourceImage} alt={textImage} className="actor-img" />
       <Title>{name}</Title>
       <div className="job-likes">
-        <p className="jobs">{jobs}</p>
+        <p className="jobs">{occupation}</p>
         <p className="likes">
           {likes}
           <AiOutlineLike />
@@ -48,21 +54,21 @@ export const Card = ({
       <div className="description">
         <Content text={description} />
       </div>
-      <Button
-        type="btn-type-2"
-        onClick={() => {
-          setIsOpen(true);
-        }}
-      >
+      <Button type="btn-type-2" onClick={onClickOpen}>
         Edit
         <MdOutlineModeEdit className="edit-icon" />
       </Button>
       {open && (
-        <Modal isVisible={open} title="Edit actor" className="modal-overlay">
+        <Modal
+          openModal={(open) => setIsOpen(open)}
+          title="Edit actor"
+          className="modal-overlay"
+        >
           <AddEditActor
             btnPrimaryText="Update"
             openModal={(open) => setIsOpen(open)}
             actorDetails={details}
+            updates={updates}
           />
         </Modal>
       )}
