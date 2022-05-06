@@ -29,7 +29,7 @@ const StyleGuidepage = () => {
             "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Brad_Pitt_2019_by_Glenn_Francis.jpg/220px-Brad_Pitt_2019_by_Glenn_Francis.jpg"
           }
           textImage={"Brad Pitt"}
-          occupation={"Actor & Prooducer"}
+          occupation={"Actor & Producer"}
           likes={82}
           hobbies={["Reading", "Swimming"]}
           description={

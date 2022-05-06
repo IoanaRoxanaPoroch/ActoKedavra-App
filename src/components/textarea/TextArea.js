@@ -21,8 +21,8 @@ export const TextArea = ({
   const chars = message();
 
   return (
-    <div>
-      <label htmlFor={name} className={className}>
+    <div className={className}>
+      <label htmlFor={name} className="text-label">
         {labelText}
       </label>
       <textarea

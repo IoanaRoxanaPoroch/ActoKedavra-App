@@ -32,29 +32,29 @@ export const Card = ({
 
   return (
     <div className="card">
-      <div className="btn-card-container">
-        <Button className="close-btn">
+      <div className="card-close-btn-wrapper">
+        <Button type="close-btn" className="card-close-btn">
           <VscClose />
         </Button>
       </div>
-      <img src={sourceImage} alt={textImage} className="actor-img" />
-      <Title>{name}</Title>
-      <div className="job-likes">
-        <p className="jobs">{occupation}</p>
-        <p className="likes">
+      <img src={sourceImage} alt={textImage} className="card-actor-img" />
+      <Title className="card-title">{name}</Title>
+      <div className="card-job-likes-wrapper">
+        <p className="card-jobs">{occupation}</p>
+        <p className="card-likes">
           {likes}
           <AiOutlineLike />
         </p>
       </div>
-      <div className="tags-container">
+      <div className="card-tags">
         {hobbiesReceived.hobbies?.map((hobbie, index) => (
           <Tag key={index}>{hobbie}</Tag>
         ))}
       </div>
-      <div className="description">
+      <div className="card-description">
         <Content text={description} />
       </div>
-      <Button type="btn-type-2" onClick={onClickOpen}>
+      <Button type="btn-type-2" className="card-edit-btn" onClick={onClickOpen}>
         Edit
         <MdOutlineModeEdit className="edit-icon" />
       </Button>

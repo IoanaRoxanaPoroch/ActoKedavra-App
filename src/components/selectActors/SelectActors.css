@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 18px;
 }
 
 .delete-btn-container {
@@ -11,8 +12,22 @@
   justify-content: center;
 }
 
+.select-actors-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
 /* small */
 @media screen and (max-width: 480px) {
+  .select-actors-field {
+    margin: 24px auto;
+  }
+
+  .select-actors-field label {
+    font-size: 18px;
+  }
 }
 
 /* medium */
