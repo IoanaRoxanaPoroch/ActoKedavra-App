@@ -41,7 +41,7 @@ export const NotificationWindow = ({ isVisible, text, className }) => {
           <p>{text}</p>
         </div>
         <div className="close-btn-alert-container">
-          <Button className={`close-btn-notification-window ${className}`}>
+          <Button className={`notification-window-close-btn ${className}`}>
             <VscClose onClick={() => setIsVisible(false)} />
           </Button>
         </div>

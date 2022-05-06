@@ -30,7 +30,7 @@ export const Footer = () => {
 
   return (
     <div className="footer">
-      <p className="date-style">{date}</p>
+      <p className="footer-date">{date}</p>
       <Logo className="footer-logo" text="ActoKedavra" />
     </div>
   );

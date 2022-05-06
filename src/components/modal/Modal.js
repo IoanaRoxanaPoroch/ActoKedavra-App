@@ -10,7 +10,7 @@ export const Modal = ({ className, openModal, title, children }) => {
     <div className={className}>
       <div className={`modal ${className}`}>
         <div className="modal-close-btn-div">
-          <Button className={`modal-close-btn`}>
+          <Button type="close-btn" className="modal-close-btn">
             <VscClose onClick={() => openModal(false)} />
           </Button>
         </div>

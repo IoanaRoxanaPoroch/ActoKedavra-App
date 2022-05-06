@@ -16,7 +16,7 @@ const ReadMore = ({ children }) => {
       {isReadMore ? `${text?.slice(0, 50)}...` : text}
       <span onClick={toggleReadMore}>
         {isReadMore ? (
-          <Button className="read-more-read-less-btn">
+          <Button type="read-more-read-less-btn">
             Read more
             <IoIosArrowForward className="more-arrow" />
           </Button>

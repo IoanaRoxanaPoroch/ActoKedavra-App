@@ -42,13 +42,22 @@
 /* close button */
 .close-btn {
   background-color: var(--white);
-  border-radius: 30px;
   color: rgba(110, 113, 145, 1);
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-.close-btn-notification-window {
-  box-shadow: none;
+.card-close-btn {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+
+.modal-close-btn {
+  padding: 4px;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+}
+
+.notification-window-close-btn {
   opacity: 0.5;
 }
 
@@ -72,14 +81,8 @@
   line-height: 120%;
 }
 
-/* ascending arrow icon */
-.ascending-arrow-icon {
-  line-height: 160%;
-  font-weight: 600;
-}
-
-/* descending arrow icon */
-.descending-arrow-icon {
+/* ascending & descending arrow icon */
+.arrow-icon {
   line-height: 160%;
   font-weight: 600;
 }
@@ -100,6 +103,7 @@
 
 /* SMALL */
 @media screen and (max-width: 480px) {
+  /* sort, select */
   .btn-type-1 {
     width: 160px;
     height: 37px;
@@ -108,13 +112,14 @@
     gap: 4px;
   }
 
+  /* edit, delete, ascending, descending */
   .btn-type-2 {
-    width: 155px;
+    width: 144px;
     height: 40px;
     font-size: 10px;
-    /* margin: 10px 3.5px; */
   }
 
+  /* add new actor, update */
   .btn-primary {
     width: 335px;
     height: 56px;
@@ -123,8 +128,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin: 0px 20px;
-    padding: 16px 24px; */
   }
 
   /* close button */
@@ -132,7 +135,7 @@
     width: 24px;
     height: 24px;
     font-size: 15px;
-    /* padding: 4px; */
+    padding: 4px;
   }
 
   .close-btn-notification-window {
@@ -159,14 +162,8 @@
     margin-left: 4px;
   }
 
-  /* ascending arrow icon */
-  .ascending-arrow-icon {
-    font-size: 20px;
-    margin-right: 10px;
-  }
-
-  /* descending arrow icon */
-  .descending-arrow-icon {
+  /* ascending & descending arrow icon */
+  .arrow-icon {
     font-size: 20px;
     margin-right: 10px;
   }

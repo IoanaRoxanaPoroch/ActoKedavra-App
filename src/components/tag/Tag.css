@@ -1,24 +1,23 @@
 .hobbie-tag {
   background-color: rgba(229, 235, 254, 1);
+  color: rgba(3, 37, 150, 1);
   border-radius: 8px;
-  width: auto;
-  height: 21px;
-  margin: 0px 4px;
-  padding: 5px 8px;
+  font-weight: 500;
+  line-height: 120%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.hobbie-tag p {
-  color: rgba(3, 37, 150, 1);
-  font-weight: 500;
-  font-size: 9px;
-  line-height: 120%;
-}
-
 /* small */
 @media screen and (max-width: 480px) {
+  .hobbie-tag {
+    width: auto;
+    height: 20px;
+    margin: 4px;
+    padding: 4px 8px;
+    font-size: 9px;
+  }
 }
 
 /* medium */

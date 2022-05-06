@@ -1,19 +1,20 @@
-.add-actor {
+.add-edit-actor {
   display: flex;
   flex-direction: column;
 }
-
-.add-acto-group {
-  align-items: flex-start;
-  padding: 16px;
+.add-edit-actor-group {
+  display: flex;
+  flex-direction: column;
 }
-
-.btn-positioning {
-  margin: 16px 0px;
-}
-
 /* small */
 @media screen and (max-width: 480px) {
+  .add-edit-actor-group {
+    padding: 16px;
+  }
+
+  .add-edit-actor-changed-mind-btn {
+    margin: 16px 0px;
+  }
 }
 
 /* medium */

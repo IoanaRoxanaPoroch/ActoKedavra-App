@@ -1,56 +1,31 @@
 input[type="checkbox"] {
-  height: 32px;
-  width: 32px;
-  margin: -8px 10px 10px 200px;
   background-color: #d9dbe9;
-  -webkit-appearance: none;
   border-radius: 22px;
+  -webkit-appearance: none;
 }
 
-/* input checked border color */
 input[type="checkbox"]:checked {
-  border-color: #6308f7;
   background-color: #6308f7;
 }
 
-/* checkbox checked */
-/* vezi icon button selectat */
 input[type="checkbox"]:checked:before {
-  content: "";
-  display: block;
-  width: 7px;
-  height: 12px;
   border: solid var(--white);
   border-width: 0 2px 2px 0;
+  content: "";
+  display: block;
   transform: rotate(45deg);
-  margin-left: 10px;
-  margin-top: 7px;
-}
-
-.checkbox-select-modal {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 120%;
-  letter-spacing: 0.75px;
-  color: rgba(78, 75, 102, 1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
 }
 
 /* input text */
 input[type="text"] {
   background-color: #eff0f7;
-  width: 335px;
-  height: 50px;
-  padding: 16px;
   border-radius: 10px;
-  margin: 16px 0;
   display: inline-block;
   border: none;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 /* input text required */
@@ -68,27 +43,57 @@ input[type="text"]:required + span::after {
   content: "Field required";
   color: #98014c;
   font-weight: 600;
-  font-size: 13px;
-  line-height: 22px;
-  /* invalid selector */
 }
 
 .text-label {
   color: #4e4b66;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 120%;
-  margin: 0px 10px;
 }
 
 /* small */
 @media screen and (max-width: 480px) {
+  input[type="checkbox"] {
+    height: 32px;
+    width: 32px;
+    margin: -8px 10px 10px 200px;
+    /* alta solutie */
+  }
+
+  input[type="checkbox"]:checked:before {
+    width: 7px;
+    height: 12px;
+    margin-left: 10px;
+    margin-top: 7px;
+  }
+
+  input[type="text"] {
+    width: auto;
+    height: 50px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+
+  input[type="text"]:required + span::after {
+    font-size: 13px;
+    line-height: 22px;
+    margin: 0px 8px;
+  }
+
+  .text-label {
+    font-size: 15px;
+    line-height: 120%;
+    margin: 0px 8px;
+  }
 }
 
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  input[type="text"]:required + span::after {
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 
 /* large */

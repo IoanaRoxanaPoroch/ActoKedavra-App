@@ -13,6 +13,10 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .sort-title {
+    font-size: 30px;
+    line-height: 39px;
+  }
 }
 
 /* large */
