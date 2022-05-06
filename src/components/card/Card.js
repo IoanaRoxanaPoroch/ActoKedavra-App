@@ -60,9 +60,9 @@ export const Card = ({
       </Button>
       {open && (
         <Modal
+          className="modal-overlay"
           openModal={(open) => setIsOpen(open)}
           title="Edit actor"
-          className="modal-overlay"
         >
           <AddEditActor
             btnPrimaryText="Update"

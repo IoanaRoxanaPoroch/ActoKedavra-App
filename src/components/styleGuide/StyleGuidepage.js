@@ -10,41 +10,9 @@ import { NotificationWindow } from "../notificationWindow/NotificationWindow";
 import { NoActors } from "../noActors/NoActors";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
 
 const StyleGuidepage = () => {
-  const [actors, setActors] = useState(null);
-
-  const getActors = async () => {
-    return await axios.get("http://localhost:3000/actors");
-  };
-
-  const getActorById = async (id) => {
-    return await axios.get(`http://localhost:3000/actors/${id}`);
-  };
-
-  useEffect(() => {
-    const getResponse = async () => {
-      let response = await getActors();
-      if (response && response.data) {
-        setActors(response.data);
-      }
-    };
-    getResponse();
-  }, []);
-
-  const getUpdates = async (id, actorEdited) => {
-    let actor = await getActorById(id);
-    if (actor.data) {
-      let saveActor = { ...actor.data, ...actorEdited };
-      delete saveActor.characters;
-      await axios.put(`http://localhost:3000/actors/${id}`, saveActor);
-      setActors(actors.map((actor) => (actor.id === id ? saveActor : actor)));
-    }
-  };
-
   return (
     <div>
       <Header />
@@ -53,22 +21,24 @@ const StyleGuidepage = () => {
         <Button type="btn-type-1">Select</Button>
       </div>
       <div className="cards-container">
-        {actors?.map((actor, index) => (
-          <Card
-            key={index}
-            id={actor.id}
-            name={actor.name}
-            sourceImage={actor.picture}
-            textImage={actor.name}
-            occupation={actor.occupation}
-            likes={actor.score}
-            hobbies={actor.hobbies}
-            description={actor.description}
-            updates={getUpdates}
-          />
-        ))}
+        <Card
+          key={1}
+          id={1}
+          name={"Brad Pitt"}
+          sourceImage={
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Brad_Pitt_2019_by_Glenn_Francis.jpg/220px-Brad_Pitt_2019_by_Glenn_Francis.jpg"
+          }
+          textImage={"Brad Pitt"}
+          occupation={"Actor & Prooducer"}
+          likes={82}
+          hobbies={["Reading", "Swimming"]}
+          description={
+            "Pitt was born on December 18, 1963, in Shawnee, Oklahoma, to William Alvin Pitt, the proprietor of a trucking company."
+          }
+          updates={""}
+        />
       </div>
-      {/* <br />
+      <br />
       <br />
       <Button type="btn-type-2">
         Edit
@@ -131,7 +101,7 @@ const StyleGuidepage = () => {
         text="Your changes were not saved."
       />
       <br />
-      <br /> */}
+      <br />
       <Footer />
     </div>
   );
