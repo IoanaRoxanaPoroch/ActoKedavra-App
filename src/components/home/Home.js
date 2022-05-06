@@ -1,13 +1,7 @@
-import "./StyleGuidePage.css";
-import { MdOutlineModeEdit } from "react-icons/md";
+import "./Home.css";
 import { Button } from "../button/Button";
 import { Card } from "../card/Card";
-import { Tag } from "../tag/Tag";
 import { Modal } from "../modal/Modal";
-import { SortActors } from "../sortActors/SortActors";
-import { SelectActors } from "../selectActors/SelectActors";
-import { NotificationWindow } from "../notificationWindow/NotificationWindow";
-import { NoActors } from "../noActors/NoActors";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import { useState, useEffect } from "react";
@@ -16,6 +10,7 @@ import { AddEditActor } from "../addEditActor/AddEditActor";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
+  const [open, setIsOpen] = useState(false);
 
   const getActors = async () => {
     return await axios.get("http://localhost:3000/actors");
@@ -32,9 +27,18 @@ const Home = () => {
         setActors(response.data);
       }
     };
-    getResponse();
+    getResponse();  
   }, []);
 
+  // add functionality
+  const addActor = async (id, newActor) => {
+    delete newActor.characters;
+    const actorSave = { ...newActor, hobbies: newActor.hobbies.split(",") };
+    actors.push(actorSave);
+    axios.post("http://localhost:3000/actors", actorSave);
+  };
+
+  // edit functionality
   const getUpdates = async (id, actorEdited) => {
     let actor = await getActorById(id);
     if (actor.data) {
@@ -68,7 +72,30 @@ const Home = () => {
           />
         ))}
       </div>
-      <Button type="btn-primary">Add new actor</Button>
+      <Button
+        className="home-positiong"
+        type="btn-primary"
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        Add new actor
+      </Button>
+      {open && (
+        <Modal
+          className="modal-overlay"
+          openModal={(open) => setIsOpen(open)}
+          title="Add new actor"
+        >
+          <AddEditActor
+            btnPrimaryText="Add new actor"
+            openModal={(open) => setIsOpen(open)}
+            actorDetails={false}
+            updates={addActor}
+          />
+        </Modal>
+      )}
+
       <Footer />
     </div>
   );

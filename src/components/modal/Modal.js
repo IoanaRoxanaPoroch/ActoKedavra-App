@@ -5,7 +5,7 @@ import { VscClose } from "react-icons/vsc";
 import { Title } from "../title/Title";
 import ReactDom from "react-dom";
 
-export const Modal = ({ children, openModal, className, title }) => {
+export const Modal = ({ className, openModal, title, children }) => {
   return ReactDom.createPortal(
     <div className={className}>
       <div className={`modal ${className}`}>

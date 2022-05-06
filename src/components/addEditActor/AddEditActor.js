@@ -11,12 +11,12 @@ export const AddEditActor = ({
   updates,
 }) => {
   const [actor, setActor] = useState({
-    id: actorDetails?.id,
-    name: actorDetails?.name,
-    occupation: actorDetails?.occupation,
-    hobbies: actorDetails?.hobbies,
-    description: actorDetails?.description,
-    characters: actorDetails?.description.length,
+    id: actorDetails ? actorDetails.id : "",
+    name: actorDetails ? actorDetails.name : "",
+    occupation: actorDetails ? actorDetails.occupation : "",
+    hobbies: actorDetails ? actorDetails.hobbies : "",
+    description: actorDetails ? actorDetails.description : "",
+    characters: actorDetails ? actorDetails.description.length : 0,
   });
 
   const handleSubmit = (e) => {
