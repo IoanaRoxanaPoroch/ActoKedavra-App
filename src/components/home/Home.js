@@ -7,6 +7,7 @@ import { Footer } from "../footer/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
+import uuid from "react-uuid";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
@@ -27,25 +28,42 @@ const Home = () => {
         setActors(response.data);
       }
     };
-    getResponse();  
+    getResponse();
   }, []);
 
   // add functionality
   const addActor = async (id, newActor) => {
     delete newActor.characters;
-    const actorSave = { ...newActor, hobbies: newActor.hobbies.split(",") };
-    actors.push(actorSave);
+    const actorSave = {
+      ...newActor,
+      hobbies: newActor.hobbies.split(","),
+      id: uuid(),
+    };
     axios.post("http://localhost:3000/actors", actorSave);
+    setActors([...actors, actorSave]);
   };
 
-  // edit functionality
+  // edit & remove functionality
   const getUpdates = async (id, actorEdited) => {
-    let actor = await getActorById(id);
-    if (actor.data) {
-      let saveActor = { ...actor.data, ...actorEdited };
-      delete saveActor.characters;
-      await axios.put(`http://localhost:3000/actors/${id}`, saveActor);
-      setActors(actors.map((actor) => (actor.id === id ? saveActor : actor)));
+    if (actorEdited) {
+      let actor = await getActorById(id);
+      if (actor.data) {
+        let saveActor = { ...actor.data, ...actorEdited };
+        delete saveActor.characters;
+        await axios.put(`http://localhost:3000/actors/${id}`, saveActor);
+
+        setActors(actors.map((actor) => (actor.id === id ? saveActor : actor)));
+      }
+    } else {
+      let deleteActor = actors.find((actor) => {
+        return actor.id === id;
+      });
+      await axios.delete(`http://localhost:3000/actors/${id}`, deleteActor);
+      setActors(
+        actors.filter((actor) => {
+          return actor.id !== id;
+        })
+      );
     }
   };
 

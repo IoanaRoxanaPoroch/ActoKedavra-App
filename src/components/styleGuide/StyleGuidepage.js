@@ -35,7 +35,10 @@ const StyleGuidepage = () => {
           description={
             "Pitt was born on December 18, 1963, in Shawnee, Oklahoma, to William Alvin Pitt, the proprietor of a trucking company."
           }
-          updates={""}
+          updates={(id, actorEdited) => {
+            console.log(id);
+            console.log(actorEdited);
+          }}
         />
       </div>
       <br />

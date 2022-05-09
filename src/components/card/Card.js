@@ -33,7 +33,14 @@ export const Card = ({
   return (
     <div className="card">
       <div className="card-close-btn-wrapper">
-        <Button type="close-btn" className="card-close-btn">
+        <Button
+          type="close-btn"
+          className="card-close-btn"
+          onClick={() => {
+            
+            updates(id);
+          }}
+        >
           <VscClose />
         </Button>
       </div>

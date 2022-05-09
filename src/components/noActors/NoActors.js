@@ -6,7 +6,7 @@ import { HiOutlineEmojiSad } from "react-icons/hi";
 
 export const NoActors = ({ mainText }) => {
   return (
-    <div className="no-actors-container">
+    <div className="no-actors">
       <Header />
       <div className="content-wrapper">
         <div className="sad-icon-container">

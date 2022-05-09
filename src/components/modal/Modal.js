@@ -1,5 +1,5 @@
 import { Button } from "../button/Button";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./Modal.css";
 import { VscClose } from "react-icons/vsc";
 import { Title } from "../title/Title";
