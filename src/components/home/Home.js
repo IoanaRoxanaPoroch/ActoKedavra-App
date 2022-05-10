@@ -7,7 +7,10 @@ import { Footer } from "../footer/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
+import { NoActors } from "../noActors/NoActors";
 import uuid from "react-uuid";
+import { SortActors } from "../sortActors/SortActors";
+import { SelectActors } from "../selectActors/SelectActors";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
@@ -67,55 +70,84 @@ const Home = () => {
     }
   };
 
+  const onClickOpenModal = () => {
+    setIsOpen(true);
+  };
   return (
-    <div>
-      <Header />
-      <div className="top-btns-container">
-        <Button type="btn-type-1">Sort</Button>
-        <Button type="btn-type-1">Select</Button>
-      </div>
-      <div className="cards-container">
-        {actors?.map((actor, index) => (
-          <Card
-            key={index}
-            id={actor.id}
-            name={actor.name}
-            sourceImage={actor.picture}
-            textImage={actor.name}
-            occupation={actor.occupation}
-            likes={actor.score}
-            hobbies={actor.hobbies}
-            description={actor.description}
-            updates={getUpdates}
-          />
-        ))}
-      </div>
-      <Button
-        className="home-positiong"
-        type="btn-primary"
-        onClick={() => {
-          setIsOpen(true);
-        }}
-      >
-        Add new actor
-      </Button>
-      {open && (
-        <Modal
-          className="modal-overlay"
-          openModal={(open) => setIsOpen(open)}
-          title="Add new actor"
-        >
-          <AddEditActor
-            btnPrimaryText="Add new actor"
-            openModal={(open) => setIsOpen(open)}
-            actorDetails={false}
-            updates={addActor}
-          />
-        </Modal>
+    <>
+      {actors?.length > 0 && (
+        <div>
+          <Header />
+          <div className="top-btns-container">
+            <Button type="btn-type-1" onClick={onClickOpenModal}>
+              Sort
+            </Button>
+            {open && (
+              <Modal
+                className="modal-overlay"
+                openModal={(open) => setIsOpen(open)}
+                title="Select type of sort"
+              >
+                <SortActors openModal={(open) => setIsOpen(open)} />
+              </Modal>
+            )}
+            <Button type="btn-type-1" onClick={onClickOpenModal}>
+              Select
+            </Button>
+            {open && (
+              <Modal
+                className="modal-overlay"
+                openModal={(open) => setIsOpen(open)}
+                title="Number of items selected"
+              >
+                <SelectActors openModal={(open) => setIsOpen(open)} />
+              </Modal>
+            )}
+          </div>
+          <div className="cards-container">
+            {actors?.map((actor, index) => (
+              <Card
+                key={index}
+                id={actor.id}
+                name={actor.name}
+                sourceImage={actor.picture}
+                textImage={actor.name}
+                occupation={actor.occupation}
+                likes={actor.score}
+                hobbies={actor.hobbies}
+                description={actor.description}
+                updates={getUpdates}
+              />
+            ))}
+          </div>
+          <Button
+            className="home-btn-primary"
+            type="btn-primary"
+            onClick={onClickOpenModal}
+          >
+            Add new actor
+          </Button>
+          {open && (
+            <Modal
+              className="modal-overlay add-edit-actor-type"
+              openModal={(open) => setIsOpen(open)}
+              title="Add new actor"
+            >
+              <AddEditActor
+                btnPrimaryText="Add new actor"
+                openModal={(open) => setIsOpen(open)}
+                actorDetails={false}
+                updates={addActor}
+              />
+            </Modal>
+          )}
+          <Footer />
+        </div>
       )}
-
-      <Footer />
-    </div>
+      {actors?.length === 0 && (
+        <NoActors mainText="There are no actors here. Consider adding one." />
+      )}
+    </>
   );
 };
 

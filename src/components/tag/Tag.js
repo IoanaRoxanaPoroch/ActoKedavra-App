@@ -2,7 +2,7 @@ import "./Tag.css";
 
 export const Tag = ({ children }) => {
   return (
-    <div className="hobbie-tag">
+    <div className="tag">
       <p>{children}</p>
     </div>
   );

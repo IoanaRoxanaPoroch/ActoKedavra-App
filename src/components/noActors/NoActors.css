@@ -2,37 +2,40 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 812px;
 }
 
-.content-wrapper {
+.no-actors-content-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 24px 20px;
-}
-
-.content-wrapper p {
   color: var(--off-black);
   font-style: normal;
   font-weight: 400;
-  font-size: 24px;
   line-height: 40px;
-}
-
-.sad-icon {
-  width: 91px;
-  height: 91px;
-}
-
-.btn-container {
-  margin: 40px auto;
 }
 
 /* small */
 @media screen and (max-width: 480px) {
-  /* add new actor button */
+  .no-actors {
+    height: 812px;
+  }
+
+  .no-actors-content-wrapper {
+    margin: auto;
+    font-size: 24px;
+  }
+
+  .no-actors-sad-icon {
+    width: 91px;
+    height: 91px;
+    margin: auto;
+  }
+
+  .no-actors-btn-wrapper {
+    margin: 40px auto;
+  }
+
   .no-actors-add-actor-btn {
     width: 159px;
     height: 56px;

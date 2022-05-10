@@ -1,6 +1,6 @@
 /* small */
 @media screen and (max-width: 480px) {
-  .home-positiong {
+  .home-btn-primary {
     margin: 40px auto;
   }
 }

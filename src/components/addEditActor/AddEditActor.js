@@ -15,13 +15,12 @@ export const AddEditActor = ({
     name: actorDetails ? actorDetails.name : "",
     occupation: actorDetails ? actorDetails.occupation : "",
     hobbies: actorDetails ? actorDetails.hobbies : "",
-    description: actorDetails ? actorDetails.description : "",
+    description: actorDetails ? actorDetails.description: "",
     characters: actorDetails ? actorDetails.description.length : 0,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    openModal(false);
   };
 
   return (
@@ -58,7 +57,7 @@ export const AddEditActor = ({
         maxLength="180"
         labelText="Description"
         value={actor.description}
-        characters={actor.characters}  
+        characters={actor.characters}
         onChange={(e) =>
           setActor({
             ...actor,
@@ -71,6 +70,7 @@ export const AddEditActor = ({
         type="btn-primary"
         onClick={() => {
           updates(actor.id, actor);
+          openModal(false);
         }}
       >
         {btnPrimaryText}

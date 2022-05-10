@@ -57,13 +57,13 @@ const StyleGuidepage = () => {
       <Button type="btn-primary">Add new actor</Button>
       <br />
       <br />
-      <Modal isVisible={true} className="sort-type" title="Select type of sort">
+      <Modal openModal={true} className="sort-type" title="Select type of sort">
         <SortActors />
       </Modal>
       <br />
       <br />
       <Modal
-        isVisible={true}
+        openModal={true}
         className="select-type"
         title="Number of items selected"
       >
@@ -71,12 +71,20 @@ const StyleGuidepage = () => {
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true} className="add-actor-type" title="Add new actor">
+      <Modal
+        openModal={true}
+        className="add-edit-actor-type"
+        title="Add new actor"
+      >
         <AddEditActor btnPrimaryText="Add new actor" />
       </Modal>
       <br />
       <br />
-      <Modal isVisible={true} title="Edit actor">
+      <Modal
+        openModal={true}
+        className="add-edit-actor-type"
+        title="Edit actor"
+      >
         <AddEditActor btnPrimaryText="Update" />
       </Modal>
       <br />

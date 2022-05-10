@@ -5,25 +5,11 @@
   height: 96px;
 }
 
-/* For Tablets */
-/* vezi daca sunt corecte dimensiunile */
-/* @media (max-width: 960px) {
-  .header-logo {
-    font-size: 30px;
-    line-height: 36px;
-  }
-} */
-
-/* For Laptops/Desktop */
-/* @media (min-width: 1025px) {
-  .header-logo {
-    font-size: 32px;
-    line-height: 38px;
-  }
-} */
-
 /* small */
 @media screen and (max-width: 480px) {
+  .header {
+    height: 96px;
+  }
 }
 
 /* medium */

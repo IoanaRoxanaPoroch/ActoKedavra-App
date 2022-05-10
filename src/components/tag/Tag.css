@@ -1,4 +1,4 @@
-.hobbie-tag {
+.tag {
   background-color: rgba(229, 235, 254, 1);
   color: rgba(3, 37, 150, 1);
   border-radius: 8px;
@@ -11,7 +11,7 @@
 
 /* small */
 @media screen and (max-width: 480px) {
-  .hobbie-tag {
+  .tag {
     width: auto;
     height: 20px;
     margin: 4px;

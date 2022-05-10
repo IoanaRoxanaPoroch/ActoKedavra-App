@@ -1,22 +1,24 @@
 /* Sort modal */
-.frame-sort {
+.sort-actors {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 0px; */
 }
 
 /* small */
 @media screen and (max-width: 480px) {
+  .sort-actors {
+    margin-top: 28px;
+  }
+  .sort-actors-btn {
+    width: 324px;
+    margin: 12px auto;
+  }
 }
 
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
-  .sort-title {
-    font-size: 30px;
-    line-height: 39px;
-  }
 }
 
 /* large */

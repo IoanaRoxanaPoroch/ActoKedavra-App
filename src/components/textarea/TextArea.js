@@ -25,17 +25,19 @@ export const TextArea = ({
       <label htmlFor={name} className="text-label">
         {labelText}
       </label>
-      <textarea
-        type="text"
-        id={name}
-        name={name}
-        maxLength={maxLength}
-        value={value}
-        characters={characters}
-        onChange={onChange}
-        required
-      ></textarea>
-      <p className="chars-remained-text">{chars} characters remained</p>
+        <textarea
+          type="text"
+          id={name}
+          name={name}
+          maxLength={maxLength}
+          value={value}
+          characters={characters}
+          onChange={onChange}
+          required
+        ></textarea>
+        <div className="chars-remained-text">
+          <p>{chars} characters remained</p>
+        </div>
       <span></span>
     </div>
   );

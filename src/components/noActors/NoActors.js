@@ -8,12 +8,10 @@ export const NoActors = ({ mainText }) => {
   return (
     <div className="no-actors">
       <Header />
-      <div className="content-wrapper">
-        <div className="sad-icon-container">
-          <HiOutlineEmojiSad className="sad-icon" />
-        </div>
+      <div className="no-actors-content-wrapper">
+        <HiOutlineEmojiSad className="no-actors-sad-icon" />
         <p>{mainText}</p>
-        <div className="btn-container">
+        <div className="no-actors-btn-wrapper">
           <Button type="btn-primary" className="no-actors-add-actor-btn">
             Add new actor
           </Button>

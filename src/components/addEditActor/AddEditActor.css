@@ -5,6 +5,7 @@
 .add-edit-actor-group {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 /* small */
 @media screen and (max-width: 480px) {

@@ -1,10 +1,7 @@
-/* mobile styles */
-
-.notification {
+.notification-window {
   border-radius: 10px;
   box-sizing: border-box;
   width: 100%;
-  height: 72px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,19 +22,28 @@
   color: #ed2e7e;
 }
 
-.icon-text-container {
+.notification-window-icon-text {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 }
 
-.icon-text-container p {
+.notification-window-text {
   font-weight: 600;
-  font-size: 15px;
   line-height: 24px;
-  margin-left: 15px;
 }
 
 /* small */
 @media screen and (max-width: 480px) {
+  .notification-window {
+    height: 72px;
+  }
+
+  .notification-window-text {
+    font-size: 15px;
+    margin-left: 16px;
+  }
 }
 
 /* medium */

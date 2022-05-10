@@ -35,12 +35,10 @@ export const NotificationWindow = ({ isVisible, text, className }) => {
 
   return (
     visible && (
-      <div className={`notification ${className}`}>
-        <div className="icon-text-container">
+      <div className={`notification-window ${className}`}>
+        <div className="notification-window-icon-text">
           {type}
-          <p>{text}</p>
-        </div>
-        <div className="close-btn-alert-container">
+          <p className="notification-window-text">{text}</p>
           <Button className={`notification-window-close-btn ${className}`}>
             <VscClose onClick={() => setIsVisible(false)} />
           </Button>

@@ -37,7 +37,6 @@ export const Card = ({
           type="close-btn"
           className="card-close-btn"
           onClick={() => {
-            
             updates(id);
           }}
         >
