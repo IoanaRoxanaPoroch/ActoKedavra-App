@@ -9,6 +9,10 @@
   position: absolute;
 }
 
+.card-checkbox-wrapper {
+  position: absolute;
+}
+
 .card-actor-img {
   border-radius: 10px 10px 0px 0px;
   object-fit: cover;
@@ -54,6 +58,11 @@
   .card-close-btn-wrapper {
     left: 90%;
     top: -1%;
+  }
+
+  .card-checkbox-wrapper {
+    left: -50%;
+   
   }
 
   .card-actor-img {

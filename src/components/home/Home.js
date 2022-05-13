@@ -17,6 +17,9 @@ const Home = () => {
   const [open, setIsOpen] = useState(false);
   const [openSort, setIsOpenSort] = useState(false);
   const [openSelect, setOpenSelect] = useState(false);
+  const [selectAll, setSelectAll] = useState(false);
+
+  console.log("selectAll->", selectAll);
 
   const getActors = async () => {
     return await axios.get(`${process.env.REACT_APP_API_URL}/actors`);
@@ -128,11 +131,20 @@ const Home = () => {
               >
                 <SelectActors
                   openSelectModal={(openSelect) => setOpenSelect(openSelect)}
+                  allChecked={(selectAll) => {
+                    setSelectAll(selectAll);
+                  }}
                 />
               </Modal>
             )}
           </div>
-          <div className="cards-container">
+          <div
+            className={
+              openSelect
+                ? "cards-container home-cards-container-down"
+                : "cards-container"
+            }
+          >
             {actors?.map((actor, index) => (
               <Card
                 key={index}
@@ -145,6 +157,8 @@ const Home = () => {
                 hobbies={actor.hobbies}
                 description={actor.description}
                 updates={getUpdates}
+                openCheckBox={openSelect}
+                allActorsSelected={selectAll}
               />
             ))}
           </div>

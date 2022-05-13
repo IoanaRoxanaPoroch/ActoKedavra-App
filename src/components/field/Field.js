@@ -1,6 +1,16 @@
 import "./Field.css";
 import { useState } from "react";
 
+// const style = {
+//   ":checked:before": {
+//     border: "solid var(--white)",
+//     borderWidth: "0 2px 2px 0",
+//     content: "",
+//     display: "block",
+//     transform: "rotate(45deg)",
+//   },
+// };
+
 export const Field = ({
   className,
   value,
@@ -9,26 +19,35 @@ export const Field = ({
   onChange,
   spanText,
   onClick,
+  classNameChecked,
 }) => {
-  console.log("zzzz spanText", spanText);
   const [focused, setFocused] = useState(false);
   const handleFocus = () => {
     setFocused(true);
   };
+
   return (
     <div className={className}>
       <label htmlFor={value} className="text-label">
         {children}
       </label>
       <input
-        id={spanText && value.length === 0 ? "required" : ""}
+        id={
+          type === "text" && spanText && value.length === 0
+            ? "required"
+            : // : type === "checkbox" && classNameChecked
+              // ? "checked"
+              ""
+        }
         type={type}
         value={value}
+        checked={classNameChecked}
         onChange={onChange}
         onClick={onClick}
         required
         onBlur={handleFocus}
         focused={focused.toString()}
+        // style={classNameChecked && style}
       />
       <span
         className={

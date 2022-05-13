@@ -22,34 +22,43 @@ export const Card = ({
   hobbies,
   description,
   updates = { updates },
+  openCheckBox,
+  allActorsSelected,
 }) => {
   const [open, setIsOpen] = useState(false);
   const hobbiesReceived = { hobbies };
   const details = { id, name, occupation, hobbies, description };
-  const [isVisible, setIsVisible] = useState(false);
 
   const onClickOpen = () => {
     setIsOpen(true);
   };
 
-  const displayCheckBox = () => {
-    setIsVisible(true);
-  };
+  console.log("->allActorsSelected", allActorsSelected);
 
   return (
     <div className="card">
-      <div className="card-close-btn-wrapper">
-        <Button
-          type="close-btn"
-          className="card-close-btn"
-          onClick={() => {
-            updates(id);
-          }}
-        >
-          <VscClose />
-        </Button>
-      </div>
-      {isVisible && <Field type="checkbox"></Field>}
+      {openCheckBox ? (
+        <Field
+          type="checkbox"
+          value="all"
+          className="card-checkbox-wrapper"
+          classNameChecked={!allActorsSelected ? "checked" : ""}
+          onClick={() => console.log("")}
+        ></Field>
+      ) : (
+        <div className="card-close-btn-wrapper">
+          <Button
+            type="close-btn"
+            className="card-close-btn"
+            onClick={() => {
+              updates(id);
+            }}
+          >
+            <VscClose />
+          </Button>
+        </div>
+      )}
+
       <img src={sourceImage} alt={textImage} className="card-actor-img" />
       <Title className="card-title">{name}</Title>
       <div className="card-job-likes-wrapper">

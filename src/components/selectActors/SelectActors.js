@@ -3,16 +3,15 @@ import { Button } from "../button/Button";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useState } from "react";
 import "./SelectActors.css";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
-export const SelectActors = ({ openSelectModal, visible }) => {
+export const SelectActors = ({ openSelectModal, allChecked }) => {
   const [isActive, setActive] = useState(false);
   const [textTitle, setTitle] = useState("");
 
-  const toggleType = ({ visible }) => {
+  const toggleType = () => {
+    // setTitle("All Selected");
     setActive(!isActive);
-    setTitle("All Selected");
-    visible(true);
+    allChecked(isActive);
   };
 
   return (
