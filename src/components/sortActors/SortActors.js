@@ -2,13 +2,17 @@ import { Button } from "../button/Button";
 import "./SortActors.css";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 
-export const SortActors = (openModal) => {
+export const SortActors = ({ openSortModal }) => {
+  console.log("openModal receveid", openSortModal);
+  // const handleClick = () => {
+  //   openSortModal(false);
+  // };  
   return (
     <div className="sort-actors">
       <Button
         type="btn-type-2"
         className="sort-actors-btn"
-        onClick={() => openModal(false)}
+        onClick={() => openSortModal(false)}
       >
         <AiOutlineArrowUp className="arrow-icon" />
         Ascending
@@ -16,7 +20,7 @@ export const SortActors = (openModal) => {
       <Button
         type="btn-type-2"
         className="sort-actors-btn"
-        onClick={() => openModal(false)}
+        // onClick={handleClick}
       >
         <AiOutlineArrowDown className="arrow-icon" />
         Descending

@@ -10,6 +10,21 @@ textarea {
   z-index: 1;
 }
 
+textarea:focus {
+  outline: none !important;
+}
+
+textarea:invalid[focused="true"] {
+  border: 2px solid #ed2e7e;
+  box-sizing: border-box;
+  outline: none !important;
+  background-color: #ffe5f2;
+}
+
+textarea:invalid[focused="true"] ~ span {
+  display: block;
+}
+
 ::-webkit-textarea-placeholder {
   color: #6e7191;
   display: flex;
@@ -30,26 +45,6 @@ textarea {
   z-index: 2;
   position: absolute;
 }
-
-/* required */
-
-/* textarea:required {
-  background-color: #ffe5f2;
-}
-
-textarea:required:focus {
-  border: 2px solid #ed2e7e;
-  box-sizing: border-box;
-  outline: none !important;
-}
-
-textarea:required + span::after {
-  content: "Field required";
-  color: #98014c;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 22px;
-} */
 
 /* small */
 @media screen and (max-width: 480px) {

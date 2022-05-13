@@ -3,14 +3,16 @@ import { Button } from "../button/Button";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useState } from "react";
 import "./SelectActors.css";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
-export const SelectActors = (openModal) => {
+export const SelectActors = ({ openSelectModal, visible }) => {
   const [isActive, setActive] = useState(false);
   const [textTitle, setTitle] = useState("");
 
-  const toggleType = () => {
+  const toggleType = ({ visible }) => {
     setActive(!isActive);
     setTitle("All Selected");
+    visible(true);
   };
 
   return (
@@ -27,7 +29,7 @@ export const SelectActors = (openModal) => {
         <Button
           type={isActive ? "btn-type-2" : "btn-type-2-1"}
           className="select-actors-btn"
-          onClick={() => openModal(false)}
+          onClick={() => openSelectModal(false)}
         >
           <RiDeleteBinLine className="delete-icon" />
           Delete

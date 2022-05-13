@@ -9,27 +9,69 @@ export const AddEditActor = ({
   openModal,
   actorDetails,
   updates,
+  onSubmit,
 }) => {
-  const [actor, setActor] = useState({
+  const defaultActor = {
     id: actorDetails ? actorDetails.id : "",
     name: actorDetails ? actorDetails.name : "",
     occupation: actorDetails ? actorDetails.occupation : "",
     hobbies: actorDetails ? actorDetails.hobbies : "",
-    description: actorDetails ? actorDetails.description: "",
+    description: actorDetails ? actorDetails.description : "",
     characters: actorDetails ? actorDetails.description.length : 0,
-  });
+  };
+  const [actor, setActor] = useState(defaultActor);
+  const [errorMessage, setErrorMessage] = useState({});
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validate = () => {
+    const errorMessage = "Field required";
+    let errors = {};
+    if (!actor.name) {
+      errors.nameError = errorMessage;
+    }
+    if (!actor.occupation) {
+      errors.occupationError = errorMessage;
+    }
+    if (!actor.hobbies) {
+      errors.hobbiesError = errorMessage;
+    }
+    if (!actor.description) {
+      errors.descriptionError = errorMessage;
+    }
+    if (
+      errors.nameError ||
+      errors.occupationError ||
+      errors.hobbiesError ||
+      errors.descriptionError
+    ) {
+      console.log(errors);
+      setErrorMessage({ ...errors });
+      return false;
+    }
+    return true;
   };
 
+  const handleSubmit = (e) => {
+    e?.preventDefault();
+    const isValid = validate();
+    console.log("zzzz isValid ", isValid);
+    if (validate()) {
+      openModal(false);
+      // onSubmit(actor);
+      // setActor(defaultActor);
+      updates(actor.id, actor);
+    }
+  };
+  console.log("zzz zerr ", errorMessage);
   return (
-    <form onSubmit={handleSubmit} className="add-edit-actor">
+    <form className="add-edit-actor">
       <Field
         type="text"
         className="add-edit-actor-group"
         value={actor.name}
-        onChange={(e) => setActor({ ...actor, name: e.target.value })}
+        onChange={(e) => {
+          setActor({ ...actor, name: e.target.value });
+        }}
+        spanText={errorMessage?.nameError}
       >
         Name
       </Field>
@@ -39,6 +81,7 @@ export const AddEditActor = ({
         className="add-edit-actor-group"
         value={actor.occupation}
         onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
+        spanText={errorMessage?.occupationError}
       >
         Occupation besides acting
       </Field>
@@ -48,6 +91,7 @@ export const AddEditActor = ({
         className="add-edit-actor-group"
         value={actor.hobbies}
         onChange={(e) => setActor({ ...actor, hobbies: e.target.value })}
+        spanText={errorMessage?.hobbiesError}
       >
         Hobbies
       </Field>
@@ -57,7 +101,7 @@ export const AddEditActor = ({
         maxLength="180"
         labelText="Description"
         value={actor.description}
-        characters={actor.characters}
+        characters={actor?.characters}
         onChange={(e) =>
           setActor({
             ...actor,
@@ -65,14 +109,9 @@ export const AddEditActor = ({
             characters: e.target.value.length,
           })
         }
+        spanText={errorMessage?.descriptionError}
       />
-      <Button
-        type="btn-primary"
-        onClick={() => {
-          updates(actor.id, actor);
-          openModal(false);
-        }}
-      >
+      <Button type="btn-primary" onClick={handleSubmit}>
         {btnPrimaryText}
       </Button>
       <Button

@@ -28,21 +28,36 @@ input[type="text"] {
   align-items: flex-start;
 }
 
-/* input text required */
-input[type="text"]:required {
-  background-color: #ffe5f2;
-}
-
-input[type="text"]:required:focus {
-  border: 2px solid #ed2e7e;
-  box-sizing: border-box;
+input[type="text"]:focus {
   outline: none !important;
 }
 
-input[type="text"]:required + span::after {
-  content: "Field required";
+.span {
   color: #98014c;
   font-weight: 600;
+  line-height: 22px;
+}
+
+.span-none {
+  display: none;
+}
+
+.span-on-blur::after {
+  content: "Field required";
+}
+
+input[type="text"]:invalid[focused="true"] {
+  border: 2px solid #ed2e7e;
+  box-sizing: border-box;
+  outline: none !important;
+  background-color: #ffe5f2;
+}
+
+#required {
+  background-color: #ffe5f2;
+  border: 2px solid #ed2e7e;
+  box-sizing: border-box;
+  outline: none !important;
 }
 
 .text-label {
@@ -74,11 +89,17 @@ input[type="text"]:required + span::after {
     margin: 16px 0;
   }
 
+  .span {
+    font-size: 13px;
+    margin: 0px 8px;
+  }
+
+  /* 
   input[type="text"]:required + span::after {
     font-size: 13px;
     line-height: 22px;
     margin: 0px 8px;
-  }
+  } */
 
   .text-label {
     font-size: 15px;

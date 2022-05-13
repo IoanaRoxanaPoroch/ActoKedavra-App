@@ -10,6 +10,7 @@ import Content from "../readMoreLess/ReadMore";
 import { useState } from "react";
 import { Modal } from "../modal/Modal";
 import { AddEditActor } from "../addEditActor/AddEditActor";
+import { Field } from "../field/Field";
 
 export const Card = ({
   id,
@@ -25,9 +26,14 @@ export const Card = ({
   const [open, setIsOpen] = useState(false);
   const hobbiesReceived = { hobbies };
   const details = { id, name, occupation, hobbies, description };
+  const [isVisible, setIsVisible] = useState(false);
 
   const onClickOpen = () => {
     setIsOpen(true);
+  };
+
+  const displayCheckBox = () => {
+    setIsVisible(true);
   };
 
   return (
@@ -43,6 +49,7 @@ export const Card = ({
           <VscClose />
         </Button>
       </div>
+      {isVisible && <Field type="checkbox"></Field>}
       <img src={sourceImage} alt={textImage} className="card-actor-img" />
       <Title className="card-title">{name}</Title>
       <div className="card-job-likes-wrapper">

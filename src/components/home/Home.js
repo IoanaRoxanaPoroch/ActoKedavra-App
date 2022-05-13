@@ -15,22 +15,25 @@ import { SelectActors } from "../selectActors/SelectActors";
 const Home = () => {
   const [actors, setActors] = useState(null);
   const [open, setIsOpen] = useState(false);
+  const [openSort, setIsOpenSort] = useState(false);
+  const [openSelect, setOpenSelect] = useState(false);
 
   const getActors = async () => {
-    return await axios.get("http://localhost:3000/actors");
+    return await axios.get(`${process.env.REACT_APP_API_URL}/actors`);
   };
 
   const getActorById = async (id) => {
     return await axios.get(`http://localhost:3000/actors/${id}`);
   };
 
+  const getResponse = async () => {
+    let response = await getActors();
+    if (response && response.data) {
+      setActors(response.data);
+    }
+  };
+
   useEffect(() => {
-    const getResponse = async () => {
-      let response = await getActors();
-      if (response && response.data) {
-        setActors(response.data);
-      }
-    };
     getResponse();
   }, []);
 
@@ -42,8 +45,14 @@ const Home = () => {
       hobbies: newActor.hobbies.split(","),
       id: uuid(),
     };
-    axios.post("http://localhost:3000/actors", actorSave);
-    setActors([...actors, actorSave]);
+    // validation
+    const response = await axios.post(
+      "http://localhost:3000/actors",
+      actorSave
+    );
+    if (response.statusText === "Created") {
+      setActors([...actors, actorSave]);
+    }
   };
 
   // edit & remove functionality
@@ -54,7 +63,7 @@ const Home = () => {
         let saveActor = { ...actor.data, ...actorEdited };
         delete saveActor.characters;
         await axios.put(`http://localhost:3000/actors/${id}`, saveActor);
-
+        // validare response
         setActors(actors.map((actor) => (actor.id === id ? saveActor : actor)));
       }
     } else {
@@ -62,6 +71,7 @@ const Home = () => {
         return actor.id === id;
       });
       await axios.delete(`http://localhost:3000/actors/${id}`, deleteActor);
+      // validare response
       setActors(
         actors.filter((actor) => {
           return actor.id !== id;
@@ -73,34 +83,52 @@ const Home = () => {
   const onClickOpenModal = () => {
     setIsOpen(true);
   };
+
+  const onClickOpenSortModal = () => {
+    setIsOpenSort(true);
+  };
+
   return (
     <>
       {actors?.length > 0 && (
         <div>
           <Header />
           <div className="top-btns-container">
-            <Button type="btn-type-1" onClick={onClickOpenModal}>
+            <Button type="btn-type-1" onClick={onClickOpenSortModal}>
               Sort
             </Button>
-            {open && (
+            {openSort && (
               <Modal
-                className="modal-overlay"
-                openModal={(open) => setIsOpen(open)}
+                className="modal-overlay sort-type"
+                openModal={(openSort) => {
+                  setIsOpenSort(openSort);
+                }}
                 title="Select type of sort"
               >
-                <SortActors openModal={(open) => setIsOpen(open)} />
+                <SortActors
+                  openSortModal={(openSort) => {
+                    setIsOpenSort(openSort);
+                  }}
+                />
               </Modal>
             )}
-            <Button type="btn-type-1" onClick={onClickOpenModal}>
+            <Button
+              type="btn-type-1"
+              onClick={() => {
+                setOpenSelect(true);
+              }}
+            >
               Select
             </Button>
-            {open && (
+            {openSelect && (
               <Modal
-                className="modal-overlay"
-                openModal={(open) => setIsOpen(open)}
+                className="modal-overlay select-type"
+                openModal={(openSelect) => setOpenSelect(openSelect)}
                 title="Number of items selected"
               >
-                <SelectActors openModal={(open) => setIsOpen(open)} />
+                <SelectActors
+                  openSelectModal={(openSelect) => setOpenSelect(openSelect)}
+                />
               </Modal>
             )}
           </div>
