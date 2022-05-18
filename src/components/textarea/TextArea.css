@@ -7,6 +7,7 @@ textarea {
   align-items: flex-start;
   flex-direction: column;
   justify-content: flex-end;
+  text-align: justify;
   z-index: 1;
 }
 
@@ -33,7 +34,6 @@ textarea:invalid[focused="true"] ~ span {
   font-style: normal;
   font-weight: 300;
   line-height: 130%;
-  /* stanga jos */
 }
 
 .chars-remained-text {
@@ -44,6 +44,8 @@ textarea:invalid[focused="true"] ~ span {
   color: #4e4b66;
   z-index: 2;
   position: absolute;
+  background-color: #eff0f7;
+  border-radius: 10px;
 }
 
 /* small */
@@ -53,6 +55,7 @@ textarea:invalid[focused="true"] ~ span {
     height: 150px;
     padding: 16px;
     margin: 16px 0px;
+    padding-bottom: 50px;
   }
 
   ::-webkit-textarea-placeholder {
@@ -62,9 +65,10 @@ textarea:invalid[focused="true"] ~ span {
   .chars-remained-text {
     font-weight: 300;
     font-size: 10px;
-    left: 32px;
-    margin-top: 45%;
-    /* situatia in care textul e mai mare */
+    left: 20px;
+    bottom: 32px;
+    padding: 5px;
+    width: 85%;
   }
 }
 

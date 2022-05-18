@@ -16,10 +16,10 @@ input[type="checkbox"]:checked:before {
   transform: rotate(45deg);
 }
 
-#checked {
+/* #checked {
   background-color: #6308f7;
   content: "";
-}
+} */
 
 /* input text */
 input[type="text"] {

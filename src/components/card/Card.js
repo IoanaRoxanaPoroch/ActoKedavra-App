@@ -24,7 +24,9 @@ export const Card = ({
   updates = { updates },
   openCheckBox,
   allActorsSelected,
+  actorsSelected,
 }) => {
+  // console.log("card id", id);
   const [open, setIsOpen] = useState(false);
   const hobbiesReceived = { hobbies };
   const details = { id, name, occupation, hobbies, description };
@@ -33,18 +35,16 @@ export const Card = ({
     setIsOpen(true);
   };
 
-  console.log("->allActorsSelected", allActorsSelected);
-
   return (
     <div className="card">
       {openCheckBox ? (
         <Field
+          id={id}
           type="checkbox"
-          value="all"
           className="card-checkbox-wrapper"
-          classNameChecked={!allActorsSelected ? "checked" : ""}
-          onClick={() => console.log("")}
-        ></Field>
+          valueOfChecked={allActorsSelected}
+          actorsSelected={actorsSelected}
+        />
       ) : (
         <div className="card-close-btn-wrapper">
           <Button

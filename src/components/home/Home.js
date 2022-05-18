@@ -8,9 +8,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
 import { NoActors } from "../noActors/NoActors";
-import uuid from "react-uuid";
 import { SortActors } from "../sortActors/SortActors";
 import { SelectActors } from "../selectActors/SelectActors";
+import { getActors } from "../../api/actors";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
@@ -18,16 +18,10 @@ const Home = () => {
   const [openSort, setIsOpenSort] = useState(false);
   const [openSelect, setOpenSelect] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
-
-  console.log("selectAll->", selectAll);
-
-  const getActors = async () => {
-    return await axios.get(`${process.env.REACT_APP_API_URL}/actors`);
-  };
-
-  const getActorById = async (id) => {
-    return await axios.get(`http://localhost:3000/actors/${id}`);
-  };
+  const [selectTitle, setSelectTitle] = useState("");
+  const [number, setNumber] = useState(0);
+  let [actorsToDelete, setActorsToDelete] = useState([]);
+  let [arrActors, setArrActors] = useState([]);
 
   const getResponse = async () => {
     let response = await getActors();
@@ -46,40 +40,39 @@ const Home = () => {
     const actorSave = {
       ...newActor,
       hobbies: newActor.hobbies.split(","),
-      id: uuid(),
     };
-    // validation
     const response = await axios.post(
       "http://localhost:3000/actors",
       actorSave
     );
-    if (response.statusText === "Created") {
-      setActors([...actors, actorSave]);
+    if (response.status === 201) {
+      setActors([...actors, response.data]);
     }
   };
 
   // edit & remove functionality
   const getUpdates = async (id, actorEdited) => {
     if (actorEdited) {
-      let actor = await getActorById(id);
+      let actor = await getActors(id);
       if (actor.data) {
         let saveActor = { ...actor.data, ...actorEdited };
         delete saveActor.characters;
-        await axios.put(`http://localhost:3000/actors/${id}`, saveActor);
+        const response = await axios.put(
+          `http://localhost:3000/actors/${id}`,
+          saveActor
+        );
         // validare response
-        setActors(actors.map((actor) => (actor.id === id ? saveActor : actor)));
+        if (response.status === 200) {
+          setActors(
+            actors.map((actor) => (actor.id === id ? saveActor : actor))
+          );
+        }
       }
     } else {
-      let deleteActor = actors.find((actor) => {
-        return actor.id === id;
-      });
+      let deleteActor = actors.find((actor) => actor.id === id);
       await axios.delete(`http://localhost:3000/actors/${id}`, deleteActor);
       // validare response
-      setActors(
-        actors.filter((actor) => {
-          return actor.id !== id;
-        })
-      );
+      setActors(actors.filter((actor) => actor.id !== id));
     }
   };
 
@@ -89,6 +82,29 @@ const Home = () => {
 
   const onClickOpenSortModal = () => {
     setIsOpenSort(true);
+  };
+
+  const numberOfActorsSelected = (param, id) => {
+    let actorSelected = actors.find((actor) => actor.id === parseInt(id));
+    if (param) {
+      setArrActors([...arrActors, actorSelected]);
+    } else {
+      arrActors = actorsToDelete.filter((actor) => actor.id !== parseInt(id));
+      setArrActors(arrActors);
+    }
+  };
+
+  useEffect(() => {
+    setActorsToDelete(arrActors);
+    setNumber(arrActors.length);
+  }, [arrActors]);
+
+  const setTitle = (title) => {
+    if (title !== "All Selected") {
+      return `${number} Selected`;
+    } else {
+      return title;
+    }
   };
 
   return (
@@ -119,6 +135,7 @@ const Home = () => {
               type="btn-type-1"
               onClick={() => {
                 setOpenSelect(true);
+                setArrActors([]);
               }}
             >
               Select
@@ -127,12 +144,15 @@ const Home = () => {
               <Modal
                 className="modal-overlay select-type"
                 openModal={(openSelect) => setOpenSelect(openSelect)}
-                title="Number of items selected"
+                title={setTitle(selectTitle)}
               >
                 <SelectActors
                   openSelectModal={(openSelect) => setOpenSelect(openSelect)}
                   allChecked={(selectAll) => {
                     setSelectAll(selectAll);
+                  }}
+                  textTitle={(selectTitle) => {
+                    setSelectTitle(selectTitle);
                   }}
                 />
               </Modal>
@@ -159,6 +179,7 @@ const Home = () => {
                 updates={getUpdates}
                 openCheckBox={openSelect}
                 allActorsSelected={selectAll}
+                actorsSelected={numberOfActorsSelected}
               />
             ))}
           </div>

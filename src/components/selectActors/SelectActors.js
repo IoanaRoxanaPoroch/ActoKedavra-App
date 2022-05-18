@@ -1,18 +1,23 @@
 import { Field } from "../field/Field";
 import { Button } from "../button/Button";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SelectActors.css";
 
-export const SelectActors = ({ openSelectModal, allChecked }) => {
+export const SelectActors = ({ openSelectModal, allChecked, textTitle }) => {
   const [isActive, setActive] = useState(false);
-  const [textTitle, setTitle] = useState("");
-
   const toggleType = () => {
-    // setTitle("All Selected");
     setActive(!isActive);
-    allChecked(isActive);
   };
+
+  useEffect(() => {
+    allChecked(isActive);
+    if (isActive) {
+      textTitle("All Selected");
+    } else {
+      textTitle("0 Selected");
+    }
+  }, [isActive]);
 
   return (
     <div className="select-actors">

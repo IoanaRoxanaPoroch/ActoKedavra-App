@@ -56,12 +56,9 @@ export const AddEditActor = ({
     console.log("zzzz isValid ", isValid);
     if (validate()) {
       openModal(false);
-      // onSubmit(actor);
-      // setActor(defaultActor);
       updates(actor.id, actor);
     }
   };
-  console.log("zzz zerr ", errorMessage);
   return (
     <form className="add-edit-actor">
       <Field

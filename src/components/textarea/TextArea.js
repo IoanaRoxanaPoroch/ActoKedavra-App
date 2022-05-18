@@ -42,7 +42,7 @@ export const TextArea = ({
         required
         onBlur={handleFocus}
         focused={focused.toString()}
-      ></textarea>
+      />
       <div className="chars-remained-text">
         <p>{chars} characters remained</p>
       </div>
