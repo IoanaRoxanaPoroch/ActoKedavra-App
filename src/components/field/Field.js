@@ -15,7 +15,9 @@ export const Field = ({
 }) => {
   const [focused, setFocused] = useState(false);
   const handleFocus = () => {
-    setFocused(true);
+    if (value.length === 0) {
+      setFocused(true);
+    }
   };
   const [isChecked, setIsChecked] = useState(false);
   const [checkedInCard, setCheckedInCard] = useState(false);

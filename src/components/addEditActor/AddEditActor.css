@@ -1,14 +1,19 @@
 .add-edit-actor {
   display: flex;
-  flex-direction: column;
 }
+
 .add-edit-actor-group {
   display: flex;
   flex-direction: column;
   position: relative;
 }
+
 /* small */
 @media screen and (max-width: 480px) {
+  .add-edit-actor {
+    flex-direction: column;
+  }
+
   .add-edit-actor-group {
     padding: 16px;
   }
@@ -21,8 +26,67 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .add-edit-actor {
+    flex-direction: column;
+    width: 896px;
+    margin: auto;
+  }
+
+  .add-edit-actor :nth-child(2) {
+    width: 896px;
+    height: auto;
+    /* margin: auto; */
+  }
+
+  .add-edit-actor-group {
+    padding: 16px;
+  }
+
+  .add-edit-actor-name-occupation {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-edit-actor-name-occupation input[type="text"] {
+    width: 432px;
+  }
+
+  .add-edit-actor-changed-mind-btn {
+    margin: 16px 0px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .add-edit-actor {
+    flex-direction: column;
+    margin: 48px 64px;
+  }
+
+  .add-edit-actor :nth-child(2) {
+    width: auto;
+    height: auto;
+    /* margin: auto; */
+  }
+
+  .add-edit-actor-group {
+    padding: 16px;
+  }
+
+  .add-edit-actor-name-occupation {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .add-edit-actor-name-occupation input[type="text"] {
+    width: 852px;
+  }
+
+  .add-edit-actor-update-btn {
+    margin-top: 80px;
+  }
+
+  .add-edit-actor-changed-mind-btn {
+    margin: 16px 0px;
+  }
 }

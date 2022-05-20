@@ -16,11 +16,6 @@ input[type="checkbox"]:checked:before {
   transform: rotate(45deg);
 }
 
-/* #checked {
-  background-color: #6308f7;
-  content: "";
-} */
-
 /* input text */
 input[type="text"] {
   background-color: #eff0f7;
@@ -89,22 +84,21 @@ input[type="text"]:invalid[focused="true"] {
 
   input[type="text"] {
     width: auto;
-    height: 50px;
+    height: 64px;
     padding: 16px;
     margin: 16px 0;
+    font-size: 15px;
+  }
+
+  input[type="text"]:required + span::after {
+    font-size: 22px;
+    line-height: 24px;
   }
 
   .span {
     font-size: 13px;
     margin: 0px 8px;
   }
-
-  /* 
-  input[type="text"]:required + span::after {
-    font-size: 13px;
-    line-height: 22px;
-    margin: 0px 8px;
-  } */
 
   .text-label {
     font-size: 15px;
@@ -116,12 +110,82 @@ input[type="text"]:invalid[focused="true"] {
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  input[type="checkbox"] {
+    height: 32px;
+    width: 32px;
+    margin: -7px 10px 10px 392px;
+    /* alta solutie */
+  }
+
+  input[type="checkbox"]:checked:before {
+    width: 7px;
+    height: 12px;
+    margin-left: 10px;
+    margin-top: 7px;
+  }
+
+  input[type="text"] {
+    width: auto;
+    height: 64px;
+    padding: 16px;
+    margin: 16px 0;
+    font-size: 22px;
+  }
+
   input[type="text"]:required + span::after {
     font-size: 20px;
     line-height: 24px;
+  }
+
+  .span {
+    font-size: 13px;
+    margin: 0px 8px;
+  }
+
+  .text-label {
+    font-size: 22px;
+    line-height: 120%;
+    margin: 0px 8px;
   }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  input[type="checkbox"] {
+    height: 32px;
+    width: 32px;
+    margin: -7px 10px 10px 392px;
+    /* alta solutie */
+  }
+
+  input[type="checkbox"]:checked:before {
+    width: 7px;
+    height: 12px;
+    margin-left: 10px;
+    margin-top: 7px;
+  }
+
+  input[type="text"] {
+    width: auto;
+    height: 64px;
+    padding: 16px;
+    margin: 16px 0;
+    font-size: 22px;
+  }
+
+  input[type="text"]:required + span::after {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .span {
+    font-size: 13px;
+    margin: 0px 8px;
+  }
+
+  .text-label {
+    font-size: 22px;
+    line-height: 120%;
+    margin: 0px 8px;
+  }
 }

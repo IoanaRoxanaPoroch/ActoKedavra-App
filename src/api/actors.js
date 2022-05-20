@@ -6,7 +6,20 @@ export const getActors = async (id) => {
   );
 };
 
+export const addNewActor = async (actor) => {
+  return await axios.post(`${process.env.REACT_APP_API_URL}/actors`, actor);
+};
 
-// const getActorById = async (id) => {
-//     return await axios.get(`http://localhost:3000/actors/${id}`);
-//   };
+export const deleteActor = async (actor) => {
+  return await axios.delete(
+    `${process.env.REACT_APP_API_URL}/actors/${actor.id}`,
+    actor
+  );
+};
+
+export const updateActor = async (actor) => {
+  return await axios.put(
+    `${process.env.REACT_APP_API_URL}/actors/${actor.id}`,
+    actor
+  );
+};

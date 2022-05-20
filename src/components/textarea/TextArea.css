@@ -26,16 +26,6 @@ textarea:invalid[focused="true"] ~ span {
   display: block;
 }
 
-::-webkit-textarea-placeholder {
-  color: #6e7191;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  font-style: normal;
-  font-weight: 300;
-  line-height: 130%;
-}
-
 .chars-remained-text {
   font-style: normal;
   line-height: 130%;
@@ -48,6 +38,10 @@ textarea:invalid[focused="true"] ~ span {
   border-radius: 10px;
 }
 
+.chars-remaind-text-required {
+  background-color: #ffe5f2;
+}
+
 /* small */
 @media screen and (max-width: 480px) {
   textarea {
@@ -56,10 +50,7 @@ textarea:invalid[focused="true"] ~ span {
     padding: 16px;
     margin: 16px 0px;
     padding-bottom: 50px;
-  }
-
-  ::-webkit-textarea-placeholder {
-    font-size: 10px;
+    font-size: 15px;
   }
 
   .chars-remained-text {
@@ -75,8 +66,46 @@ textarea:invalid[focused="true"] ~ span {
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  textarea {
+    width: auto;
+    height: auto;
+    padding: 16px;
+    margin: 16px 0px;
+    padding-bottom: 50px;
+    font-size: 22px;
+  }
+
+  .chars-remained-text {
+    font-weight: 300;
+    font-size: 18px;
+    left: 20px;
+    bottom: 32px;
+    padding: 5px;
+    width: 97%;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  textarea {
+    width: auto;
+    height: auto;
+    padding: 16px;
+    margin: 16px 0px;
+    padding-bottom: 50px;
+    font-size: 22px;
+  }
+
+  .chars-remained-text {
+    font-weight: 300;
+    font-size: 18px;
+    left: 20px;
+    bottom: 32px;
+    padding: 5px;
+    width: 96.8%;
+  }
+
+  .chars-remaind-text-required {
+    bottom: 60px;
+  }
 }

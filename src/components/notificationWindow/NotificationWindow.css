@@ -49,8 +49,24 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .notification-window {
+    height: 116px;
+  }
+
+  .notification-window-text {
+    font-size: 24px;
+    margin-left: 69px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .notification-window {
+    height: 116px;
+  }
+
+  .notification-window-text {
+    font-size: 24px;
+    margin-left: 69px;
+  }
 }

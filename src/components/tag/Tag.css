@@ -14,7 +14,7 @@
   .tag {
     width: auto;
     height: 20px;
-    margin: 4px;
+    margin: 8px;
     padding: 4px 8px;
     font-size: 9px;
   }
@@ -23,8 +23,22 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .tag {
+    width: auto;
+    height: 31px;
+    margin: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .tag {
+    width: auto;
+    height: 41px;
+    margin: 8px;
+    padding: 8px 12px;
+    font-size: 21px;
+  }
 }

@@ -46,8 +46,56 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .no-actors {
+    height: auto;
+  }
+
+  .no-actors-content-wrapper {
+    margin: auto;
+    font-size: 36px;
+  }
+
+  .no-actors-sad-icon {
+    width: 91px;
+    height: 91px;
+    margin: auto;
+  }
+
+  .no-actors-btn-wrapper {
+    margin: 40px auto;
+  }
+
+  .no-actors-add-actor-btn {
+    width: 500px;
+    height: 72px;
+    font-size: 24px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .no-actors {
+    height: auto;
+  }
+
+  .no-actors-content-wrapper {
+    margin: auto;
+    font-size: 36px;
+  }
+
+  .no-actors-sad-icon {
+    width: 91px;
+    height: 91px;
+    margin: auto;
+  }
+
+  .no-actors-btn-wrapper {
+    margin: 40px auto;
+  }
+
+  .no-actors-add-actor-btn {
+    width: 500px;
+    height: 72px;
+    font-size: 24px;
+  }
 }

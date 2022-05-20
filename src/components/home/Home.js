@@ -5,12 +5,17 @@ import { Modal } from "../modal/Modal";
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { AddEditActor } from "../addEditActor/AddEditActor";
 import { NoActors } from "../noActors/NoActors";
 import { SortActors } from "../sortActors/SortActors";
 import { SelectActors } from "../selectActors/SelectActors";
-import { getActors } from "../../api/actors";
+
+import {
+  getActors,
+  deleteActor,
+  addNewActor,
+  updateActor,
+} from "../../api/actors";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
@@ -20,7 +25,7 @@ const Home = () => {
   const [selectAll, setSelectAll] = useState(false);
   const [selectTitle, setSelectTitle] = useState("");
   const [number, setNumber] = useState(0);
-  let [actorsToDelete, setActorsToDelete] = useState([]);
+  const [actorsToDelete, setActorsToDelete] = useState([]);
   let [arrActors, setArrActors] = useState([]);
 
   const getResponse = async () => {
@@ -37,14 +42,11 @@ const Home = () => {
   // add functionality
   const addActor = async (id, newActor) => {
     delete newActor.characters;
-    const actorSave = {
+    const actorToAdd = {
       ...newActor,
       hobbies: newActor.hobbies.split(","),
     };
-    const response = await axios.post(
-      "http://localhost:3000/actors",
-      actorSave
-    );
+    const response = await addNewActor(actorToAdd);
     if (response.status === 201) {
       setActors([...actors, response.data]);
     }
@@ -55,24 +57,21 @@ const Home = () => {
     if (actorEdited) {
       let actor = await getActors(id);
       if (actor.data) {
-        let saveActor = { ...actor.data, ...actorEdited };
-        delete saveActor.characters;
-        const response = await axios.put(
-          `http://localhost:3000/actors/${id}`,
-          saveActor
-        );
-        // validare response
+        let actorToEdit = { ...actor.data, ...actorEdited };
+        delete actorToEdit.characters;
+        const response = await updateActor(actorToEdit);
         if (response.status === 200) {
           setActors(
-            actors.map((actor) => (actor.id === id ? saveActor : actor))
+            actors.map((actor) => (actor.id === id ? actorToEdit : actor))
           );
         }
       }
     } else {
-      let deleteActor = actors.find((actor) => actor.id === id);
-      await axios.delete(`http://localhost:3000/actors/${id}`, deleteActor);
-      // validare response
-      setActors(actors.filter((actor) => actor.id !== id));
+      let actorToDelete = actors.find((actor) => actor.id === id);
+      const resp = await deleteActor(actorToDelete.id);
+      if (resp.status === 200) {
+        setActors(actors.filter((actor) => actor.id !== id));
+      }
     }
   };
 
@@ -107,6 +106,27 @@ const Home = () => {
     }
   };
 
+  //delete
+  // const deleteActorsSelected = async () => {
+  //   if (deleteBtnClicked) {
+  //     console.log("1. delete btn was clicked");
+  //     if (selectTitle === "All Selected") {
+  //       // let idsActors = "";
+  //       // actors.forEach((actor) => (idsActors += actor.id + ", "));
+  //       // idsActors.forEach((id) => deleteActor(idsActors));
+
+  //       // actors.forEach((actor) => await deleteActor(actor));
+  //       // let response = actors.forEach(
+  //       //   async (actor) => await deleteActor(actor)
+  //       // );
+
+  //       setActors([]);
+  //     } else if (actorsToDelete.length > 0) {
+  //       actorsToDelete.forEach((actor) => deleteActor(actor));
+  //     }
+  //   }
+  // };
+
   return (
     <>
       {actors?.length > 0 && (
@@ -128,6 +148,7 @@ const Home = () => {
                   openSortModal={(openSort) => {
                     setIsOpenSort(openSort);
                   }}
+                  actorsToSort={actors}
                 />
               </Modal>
             )}
@@ -154,13 +175,17 @@ const Home = () => {
                   textTitle={(selectTitle) => {
                     setSelectTitle(selectTitle);
                   }}
+                  number={number}
+                  actorsToDelete={
+                    selectTitle === "All Selected" ? actors : actorsToDelete
+                  }
                 />
               </Modal>
             )}
           </div>
           <div
             className={
-              openSelect
+              openSelect || openSort
                 ? "cards-container home-cards-container-down"
                 : "cards-container"
             }

@@ -43,7 +43,7 @@ export const AddEditActor = ({
       errors.hobbiesError ||
       errors.descriptionError
     ) {
-      console.log(errors);
+      // console.log(errors);
       setErrorMessage({ ...errors });
       return false;
     }
@@ -53,7 +53,7 @@ export const AddEditActor = ({
   const handleSubmit = (e) => {
     e?.preventDefault();
     const isValid = validate();
-    console.log("zzzz isValid ", isValid);
+    // console.log("zzzz isValid ", isValid);
     if (validate()) {
       openModal(false);
       updates(actor.id, actor);
@@ -61,27 +61,29 @@ export const AddEditActor = ({
   };
   return (
     <form className="add-edit-actor">
-      <Field
-        type="text"
-        className="add-edit-actor-group"
-        value={actor.name}
-        onChange={(e) => {
-          setActor({ ...actor, name: e.target.value });
-        }}
-        spanText={errorMessage?.nameError}
-      >
-        Name
-      </Field>
+      <div className="add-edit-actor-name-occupation">
+        <Field
+          type="text"
+          className="add-edit-actor-group"
+          value={actor.name}
+          onChange={(e) => {
+            setActor({ ...actor, name: e.target.value });
+          }}
+          spanText={errorMessage?.nameError}
+        >
+          Name
+        </Field>
 
-      <Field
-        type="text"
-        className="add-edit-actor-group"
-        value={actor.occupation}
-        onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
-        spanText={errorMessage?.occupationError}
-      >
-        Occupation besides acting
-      </Field>
+        <Field
+          type="text"
+          className="add-edit-actor-group"
+          value={actor.occupation}
+          onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
+          spanText={errorMessage?.occupationError}
+        >
+          Occupation besides acting
+        </Field>
+      </div>
 
       <Field
         type="text"
@@ -108,7 +110,11 @@ export const AddEditActor = ({
         }
         spanText={errorMessage?.descriptionError}
       />
-      <Button type="btn-primary" onClick={handleSubmit}>
+      <Button
+        type="btn-primary"
+        onClick={handleSubmit}
+        className="add-edit-actor-update-btn"
+      >
         {btnPrimaryText}
       </Button>
       <Button

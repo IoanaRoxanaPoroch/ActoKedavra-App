@@ -27,6 +27,7 @@
 .card-jobs {
   color: rgba(78, 75, 102, 1);
   font-style: normal;
+  font-weight: 300;
   line-height: 120%;
 }
 
@@ -62,7 +63,6 @@
 
   .card-checkbox-wrapper {
     left: -50%;
-   
   }
 
   .card-actor-img {
@@ -80,7 +80,6 @@
   }
 
   .card-jobs {
-    font-weight: 300;
     font-size: 11px;
   }
 
@@ -106,8 +105,106 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .card {
+    width: 285px;
+    height: auto;
+  }
+
+  .card-close-btn-wrapper {
+    left: 90%;
+    top: -1%;
+  }
+
+  .card-checkbox-wrapper {
+    left: -50%;
+  }
+
+  .card-actor-img {
+    width: 285px;
+    height: 301px;
+  }
+
+  .card-title {
+    font-size: 20px;
+    margin: 12px 16px 8px;
+  }
+
+  .card-job-likes-wrapper {
+    margin: 0px auto 12px;
+  }
+
+  .card-jobs {
+    font-size: 16px;
+  }
+
+  .card-likes {
+    font-size: 16px;
+    margin-left: 68px;
+  }
+
+  .card-tags {
+    margin: 2px 16px;
+  }
+
+  .card-description {
+    font-size: 16px;
+    margin: 8px 16px;
+  }
+
+  .card-edit-btn {
+    margin: 12px auto;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .card {
+    width: 350px;
+    height: auto;
+  }
+
+  .card-close-btn-wrapper {
+    left: 90%;
+    top: -1%;
+  }
+
+  .card-checkbox-wrapper {
+    left: -50%;
+  }
+
+  .card-actor-img {
+    width: 350px;
+    height: 301px;
+  }
+
+  .card-title {
+    font-size: 26px;
+    margin: 20px 16px 12px 24px;
+  }
+
+  .card-job-likes-wrapper {
+    margin: 0px auto 12px 0px;
+  }
+
+  .card-jobs {
+    font-size: 23px;
+  }
+
+  .card-likes {
+    font-size: 23px;
+    margin-left: 52px;
+  }
+
+  .card-tags {
+    margin: 2px 16px;
+  }
+
+  .card-description {
+    font-size: 21px;
+    margin: 8px 24px;
+  }
+
+  .card-edit-btn {
+    margin: 16px auto;
+  }
 }

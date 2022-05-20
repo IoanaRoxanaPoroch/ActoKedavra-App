@@ -29,8 +29,32 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .logo {
+    font-size: 30px;
+  }
+
+  .header-logo {
+    padding: 34px 133px 17px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    margin-right: 36px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .logo {
+    font-size: 32px;
+  }
+
+  .header-logo {
+    padding: 34px 133px 17px;
+  }
+
+  .footer-logo {
+    font-size: 20px;
+    margin-right: 200px;
+  }
 }

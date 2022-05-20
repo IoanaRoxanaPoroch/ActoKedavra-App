@@ -19,6 +19,14 @@
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  .sort-actors {
+    margin-top: 32px;
+  }
+  .sort-actors-btn {
+    width: 324px;
+    margin: 12px auto;
+    font-size: 24px;
+  }
 }
 
 /* large */

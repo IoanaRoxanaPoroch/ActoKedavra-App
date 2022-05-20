@@ -25,21 +25,9 @@
   align-items: center;
 }
 
-.btn-type-2-1 {
-  background: var(--white);
-  border-radius: 10px;
-  border: 1px solid var(--primary);
-  color: var(--primary);
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn-opacity {
   opacity: 0.5;
 }
-
-/* solutie pt btn-type-2-1 */
 
 /* add new actor, update */
 .btn-primary {
@@ -111,13 +99,13 @@
 /* changed mind button */
 .changed-mind-btn {
   background-color: var(--white);
-  color: var(--off-black);
+  color: #4e4b66;
   font-weight: 600;
   line-height: 120%;
   text-align: center;
 }
 
-/* SMALL */
+/* small */
 @media screen and (max-width: 480px) {
   /* sort, select */
   .btn-type-1 {
@@ -135,20 +123,11 @@
     font-size: 10px;
   }
 
-  .btn-type-2-1 {
-    width: 144px;
-    height: 40px;
-    font-size: 10px;
-  }
   /* add new actor, update */
   .btn-primary {
     width: 335px;
-    height: 56px;
+    height: 52px;
     font-size: 15px;
-    letter-spacing: 0.75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   /* close button */
@@ -204,9 +183,10 @@
   }
 }
 
-/* MEDIUM */
+/* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
+  /* sort, select */
   .btn-type-1 {
     font-weight: 500;
     font-size: 27px;
@@ -214,10 +194,77 @@
     width: 442px;
     height: 52px;
   }
+
+  /* edit, delete, ascending, descending */
+  .btn-type-2 {
+    width: 252px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  /* add new actor, update */
+  .btn-primary {
+    width: 500px;
+    height: 72px;
+    font-size: 24px;
+  }
+
+  /* close button */
+  .close-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 22px;
+    padding: 6px;
+  }
+
+  .notification-window-close-btn {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: 64px;
+  }
+
+  /* readMore/readLess button */
+  .read-more-read-less-btn {
+    font-size: 16px;
+    margin: 16px 0px;
+  }
+
+  .more-arrow {
+    margin: -3px 3px;
+  }
+
+  .less-arrow {
+    margin: -3px 3px;
+  }
+
+  /* edit icon */
+  .edit-icon {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  /* ascending & descending arrow icon */
+  .arrow-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  /* delete icon */
+  .delete-icon {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  /* changed mind button */
+  .changed-mind-btn {
+    font-size: 24px;
+  }
 }
 
-/* LARGE */
+/* large */
 @media (min-width: 1025px) {
+  /* sort, select */
   .btn-type-1 {
     font-weight: 400;
     font-size: 24px;
@@ -225,5 +272,71 @@
     width: 440px;
     height: 52px;
     /* nu sunt definite width si heigth */
+  }
+
+  /* edit, delete, ascending, descending*/
+  .btn-type-2 {
+    width: 300px;
+    height: 50px;
+    font-size: 21px;
+  }
+
+  /* add new actor, update */
+  .btn-primary {
+    width: 500px;
+    height: 72px;
+    font-size: 24px;
+  }
+
+  /* close button */
+  .close-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 15px;
+    padding: 4px;
+  }
+
+  .notification-window-close-btn {
+    font-size: 20px;
+    margin-top: 4px;
+    margin-left: 64px;
+  }
+
+  /* readMore/readLess button */
+  .read-more-read-less-btn {
+    font-size: 21px;
+    margin: 10px 0px;
+  }
+
+  .more-arrow {
+    margin: -3px 3px;
+  }
+
+  .less-arrow {
+    margin: -3px 3px;
+  }
+
+  /* edit icon */
+  .edit-icon {
+    font-size: 21px;
+    margin-left: 8px;
+  }
+
+  /* ascending & descending arrow icon */
+  .arrow-icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  /* delete icon */
+  .delete-icon {
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+  }
+
+  /* changed mind button */
+  .changed-mind-btn {
+    font-size: 24px;
   }
 }

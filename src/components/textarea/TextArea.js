@@ -26,6 +26,7 @@ export const TextArea = ({
   const handleFocus = () => {
     setFocused(true);
   };
+  console.log("spanText", spanText);
   return (
     <div className={className}>
       <label htmlFor={name} className="text-label">
@@ -43,7 +44,13 @@ export const TextArea = ({
         onBlur={handleFocus}
         focused={focused.toString()}
       />
-      <div className="chars-remained-text">
+      <div
+        className={
+          (spanText && value.length === 0) || focused === true
+            ? "chars-remained-text chars-remaind-text-required"
+            : "chars-remained-text"
+        }
+      >
         <p>{chars} characters remained</p>
       </div>
       <span

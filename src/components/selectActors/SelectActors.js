@@ -3,8 +3,16 @@ import { Button } from "../button/Button";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import "./SelectActors.css";
+import { deleteActor } from "../../api/actors";
 
-export const SelectActors = ({ openSelectModal, allChecked, textTitle }) => {
+export const SelectActors = ({
+  openSelectModal,
+  allChecked,
+  textTitle,
+  number,
+
+  actorsToDelete,
+}) => {
   const [isActive, setActive] = useState(false);
   const toggleType = () => {
     setActive(!isActive);
@@ -19,6 +27,14 @@ export const SelectActors = ({ openSelectModal, allChecked, textTitle }) => {
     }
   }, [isActive]);
 
+  const deleteActors = async () => {
+    actorsToDelete.forEach(async (actor) => {
+      if (actor) {
+        await deleteActor(actor);
+      }
+    });
+  };
+
   return (
     <div className="select-actors">
       <Field
@@ -31,9 +47,15 @@ export const SelectActors = ({ openSelectModal, allChecked, textTitle }) => {
       </Field>
       <div className="select-actors-delete-btn">
         <Button
-          type={isActive ? "btn-type-2" : "btn-type-2-1"}
+          type={
+            isActive || number > 0 ? "btn-type-2" : "btn-type-2 btn-opacity"
+          }
           className="select-actors-btn"
-          onClick={() => openSelectModal(false)}
+          onClick={() => {
+            openSelectModal(false);
+
+            deleteActors();
+          }}
         >
           <RiDeleteBinLine className="delete-icon" />
           Delete
