@@ -4,20 +4,14 @@ import "./AddEditActor.css";
 import { Button } from "../button/Button";
 import { useState } from "react";
 
-export const AddEditActor = ({
-  btnPrimaryText,
-  openModal,
-  actorDetails,
-  updates,
-  onSubmit,
-}) => {
+export const AddEditActor = (props) => {
   const defaultActor = {
-    id: actorDetails ? actorDetails.id : "",
-    name: actorDetails ? actorDetails.name : "",
-    occupation: actorDetails ? actorDetails.occupation : "",
-    hobbies: actorDetails ? actorDetails.hobbies : "",
-    description: actorDetails ? actorDetails.description : "",
-    characters: actorDetails ? actorDetails.description.length : 0,
+    id: props.actorDetails ? props.actorDetails.id : "",
+    name: props.actorDetails ? props.actorDetails.name : "",
+    occupation: props.actorDetails ? props.actorDetails.occupation : "",
+    hobbies: props.actorDetails ? props.actorDetails.hobbies : "",
+    description: props.actorDetails ? props.actorDetails.description : "",
+    characters: props.actorDetails ? props.actorDetails.description.length : 0,
   };
   const [actor, setActor] = useState(defaultActor);
   const [errorMessage, setErrorMessage] = useState({});
@@ -55,8 +49,8 @@ export const AddEditActor = ({
     const isValid = validate();
     // console.log("zzzz isValid ", isValid);
     if (validate()) {
-      openModal(false);
-      updates(actor.id, actor);
+      props.openModal(false);
+      props.updates(actor.id, actor);
     }
   };
   return (
@@ -115,12 +109,12 @@ export const AddEditActor = ({
         onClick={handleSubmit}
         className="add-edit-actor-update-btn"
       >
-        {btnPrimaryText}
+        {props.btnPrimaryText}
       </Button>
       <Button
         className="changed-mind-btn add-edit-actor-changed-mind-btn"
         onClick={() => {
-          openModal(false);
+          props.openModal(false);
         }}
       >
         I changed my mind

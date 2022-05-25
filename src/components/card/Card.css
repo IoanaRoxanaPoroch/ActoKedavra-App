@@ -21,9 +21,9 @@
 
 .card-job-likes-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
-/* aici am ramas */
+
 .card-jobs {
   color: rgba(78, 75, 102, 1);
   font-style: normal;
@@ -35,6 +35,7 @@
   color: rgba(244, 183, 64, 1);
   font-weight: 600;
   line-height: 130%;
+  display: flex;
 }
 
 .card-tags {
@@ -52,7 +53,7 @@
 /* small */
 @media screen and (max-width: 480px) {
   .card {
-    width: 162px;
+    width: auto;
     height: auto;
   }
 
@@ -66,7 +67,7 @@
   }
 
   .card-actor-img {
-    width: 162px;
+    width: 100%;
     height: 173px;
   }
 

@@ -65,4 +65,40 @@
 
 /* large */
 @media (min-width: 1025px) {
+  .select-actors {
+    font-size: 22px;
+    margin-top: 28px;
+  }
+
+  .select-title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+  }
+
+  .select-actors-field {
+    margin: 24px auto;
+  }
+
+  .select-actors-field label {
+    font-size: 22px;
+  }
+
+  .select-actors-btn {
+    width: 404px;
+  }
+
+  .select-actors-delete-btn {
+    margin-top: 72px;
+  }
+
+  /* .select-actors-large{
+
+  } */
+
+  .sort-actors-select-btn {
+    border: none;
+    cursor: pointer;
+    margin-left: 56px;
+  }
 }

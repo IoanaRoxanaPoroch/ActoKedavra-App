@@ -1,6 +1,7 @@
 .top-btns-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .cards-container {
@@ -54,12 +55,18 @@
   .home-btn-primary {
     margin: 100px auto;
   }
+
+  .home-cards-container-down {
+    margin-top: 332px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
   .top-btns-container {
-    margin: 32px auto;
+    background-color: #eff0f6;
+    margin: 0 auto;
+    height: 100px;
   }
 
   .cards-container {
@@ -73,5 +80,9 @@
 
   .home-btn-primary {
     margin: 120px auto;
+  }
+
+  .home-cards-container-down {
+    margin-top: 344px;
   }
 }

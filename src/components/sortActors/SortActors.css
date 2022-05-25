@@ -31,4 +31,12 @@
 
 /* large */
 @media (min-width: 1025px) {
+  .sort-actors {
+    margin-top: 100px;
+  }
+  .sort-actors-btn {
+    width: 324px;
+    margin: 12px auto;
+    font-size: 24px;
+  }
 }

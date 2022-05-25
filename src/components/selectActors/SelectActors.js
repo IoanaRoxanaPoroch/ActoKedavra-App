@@ -10,7 +10,6 @@ export const SelectActors = ({
   allChecked,
   textTitle,
   number,
-
   actorsToDelete,
 }) => {
   const [isActive, setActive] = useState(false);
@@ -34,17 +33,18 @@ export const SelectActors = ({
       }
     });
   };
-
   return (
     <div className="select-actors">
-      <Field
-        type="checkbox"
-        value="all"
-        className="select-actors-field"
-        onClick={toggleType}
-      >
-        Select all
-      </Field>
+      <div className={window.innerWidth > 1025 ? "select-actors-large" : ""}>
+        <Field
+          type="checkbox"
+          value="all"
+          className="select-actors-field"
+          onClick={toggleType}
+        >
+          Select all
+        </Field>
+      </div>
       <div className="select-actors-delete-btn">
         <Button
           type={
@@ -53,7 +53,6 @@ export const SelectActors = ({
           className="select-actors-btn"
           onClick={() => {
             openSelectModal(false);
-
             deleteActors();
           }}
         >

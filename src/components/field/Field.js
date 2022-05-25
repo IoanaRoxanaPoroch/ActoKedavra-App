@@ -1,21 +1,10 @@
 import "./Field.css";
 import { useState, useEffect } from "react";
 
-export const Field = ({
-  id,
-  className,
-  value,
-  children,
-  type,
-  onChange,
-  spanText,
-  onClick,
-  valueOfChecked,
-  actorsSelected,
-}) => {
+export const Field = (props) => {
   const [focused, setFocused] = useState(false);
   const handleFocus = () => {
-    if (value.length === 0) {
+    if (props.value?.length === 0) {
       setFocused(true);
     }
   };
@@ -23,44 +12,48 @@ export const Field = ({
   const [checkedInCard, setCheckedInCard] = useState(false);
 
   useEffect(() => {
-    setCheckedInCard(valueOfChecked);
-  }, [valueOfChecked]);
+    setCheckedInCard(props.valueOfChecked);
+  }, [props.valueOfChecked]);
 
   const handleChange = (event) => {
     setIsChecked(event.target.checked);
     setCheckedInCard(event.target.checked);
-    if (actorsSelected) {
-      actorsSelected(event.target.checked, event.target.id);
+    if (props.actorsSelected) {
+      props.actorsSelected(event.target.checked, event.target.id);
       // console.log("test", event.target.id);
     }
   };
 
   return (
-    <div className={className}>
-      <label htmlFor={value} className="text-label">
-        {children}
+    <div className={props.className}>
+      <label htmlFor={props.value} className="text-label">
+        {props.children}
       </label>
       <input
-        id={type === "text" && spanText && value.length === 0 ? "required" : id}
-        type={type}
-        value={value}
-        onChange={type === "text" ? onChange : handleChange}
-        onClick={onClick}
+        id={
+          props.type === "text" && props.spanText && props.value.length === 0
+            ? "required"
+            : props.id
+        }
+        type={props.type}
+        value={props.value}
+        onChange={props.type === "text" ? props.onChange : handleChange}
+        onClick={props.onClick}
         required
         onBlur={handleFocus}
         focused={focused.toString()}
-        checked={valueOfChecked ? checkedInCard : isChecked}
+        checked={props.valueOfChecked ? checkedInCard : isChecked}
       />
       <span
         className={
-          spanText && value?.length === 0
+          props.spanText && props.value?.length === 0
             ? "span"
-            : !spanText && value?.length === 0 && focused
+            : !props.spanText && props.value?.length === 0 && focused
             ? "span span-on-blur"
             : "span-none"
         }
       >
-        {spanText}
+        {props.spanText}
       </span>
     </div>
   );

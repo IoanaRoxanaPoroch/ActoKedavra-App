@@ -124,18 +124,14 @@
     padding: 12px;
   }
 
-  .modal-title {
-    font-size: 30px;
-    line-height: 39px;
-  }
-/* 
   .sort-type {
     height: 407px;
   }
 
   .select-type {
-    height: 407px;
-  } */
+    height: 48px;
+    width: 504px;
+  }
 
   .add-edit-actor-type {
     height: auto;

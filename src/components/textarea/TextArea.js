@@ -1,22 +1,13 @@
 import "./TextArea.css";
 import { useState } from "react";
 
-export const TextArea = ({
-  className,
-  name,
-  maxLength,
-  labelText,
-  value,
-  characters,
-  onChange,
-  spanText,
-}) => {
+export const TextArea = (props) => {
   const message = () => {
     let result;
-    if (characters > 180 || characters === 180) {
+    if (props.characters > 180 || props.characters === 180) {
       result = 0;
     } else {
-      result = 180 - characters;
+      result = 180 - props.characters;
     }
     return result;
   };
@@ -24,29 +15,27 @@ export const TextArea = ({
   const [focused, setFocused] = useState(false);
 
   const handleFocus = () => {
-    setFocused(true);
+    if (props.value.length === 0) setFocused(true);
   };
-  console.log("spanText", spanText);
+
   return (
-    <div className={className}>
-      <label htmlFor={name} className="text-label">
-        {labelText}
-      </label>
+    <div className={props.className}>
+      <label className="text-label">{props.labelText}</label>
       <textarea
         type="text"
-        id={spanText && value.length === 0 ? "required" : ""}
-        name={name}
-        maxLength={maxLength}
-        value={value}
-        characters={characters}
-        onChange={onChange}
+        id={props.spanText && props.value.length === 0 ? "required" : ""}
+        name={props.name}
+        maxLength={props.maxLength}
+        value={props.value}
+        characters={props.characters}
+        onChange={props.onChange}
         required
         onBlur={handleFocus}
         focused={focused.toString()}
       />
       <div
         className={
-          (spanText && value.length === 0) || focused === true
+          (props.spanText && props.value.length === 0) || focused
             ? "chars-remained-text chars-remaind-text-required"
             : "chars-remained-text"
         }
@@ -55,14 +44,14 @@ export const TextArea = ({
       </div>
       <span
         className={
-          spanText && value.length === 0
+          props.spanText && props.value.length === 0
             ? "span"
-            : !spanText && value.length === 0 && focused
+            : !props.spanText && props.value.length === 0 && focused
             ? " span span-on-blur"
             : " span-none"
         }
       >
-        {spanText}
+        {props.spanText}
       </span>
     </div>
   );

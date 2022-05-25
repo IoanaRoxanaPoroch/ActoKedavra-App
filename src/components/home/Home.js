@@ -9,6 +9,7 @@ import { AddEditActor } from "../addEditActor/AddEditActor";
 import { NoActors } from "../noActors/NoActors";
 import { SortActors } from "../sortActors/SortActors";
 import { SelectActors } from "../selectActors/SelectActors";
+import { useRef } from "react";
 
 import {
   getActors,
@@ -16,10 +17,11 @@ import {
   addNewActor,
   updateActor,
 } from "../../api/actors";
+import { NotificationWindow } from "../notificationWindow/NotificationWindow";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
-  const [open, setIsOpen] = useState(false);
+  const [openAdd, setOpenAdd] = useState(false);
   const [openSort, setIsOpenSort] = useState(false);
   const [openSelect, setOpenSelect] = useState(false);
   const [selectAll, setSelectAll] = useState(false);
@@ -27,6 +29,12 @@ const Home = () => {
   const [number, setNumber] = useState(0);
   const [actorsToDelete, setActorsToDelete] = useState([]);
   let [arrActors, setArrActors] = useState([]);
+  const [visibleSuccesWindow, setIsVisibleSuccesWindow] = useState(false);
+  const [visibleWarningWindow, setIsVisibleWarningWindow] = useState(false);
+  const countRef = useRef(0);
+  const [visibleDangerWindow, setIsVisibleDangerWindow] = useState(false);
+
+  // console.log("actors", actors);
 
   const getResponse = async () => {
     let response = await getActors();
@@ -48,7 +56,9 @@ const Home = () => {
     };
     const response = await addNewActor(actorToAdd);
     if (response.status === 201) {
+      countRef.current++;
       setActors([...actors, response.data]);
+      setIsVisibleSuccesWindow(true);
     }
   };
 
@@ -64,19 +74,17 @@ const Home = () => {
           setActors(
             actors.map((actor) => (actor.id === id ? actorToEdit : actor))
           );
+        } else {
+          setIsVisibleDangerWindow(true);
         }
       }
     } else {
       let actorToDelete = actors.find((actor) => actor.id === id);
-      const resp = await deleteActor(actorToDelete.id);
+      const resp = await deleteActor(actorToDelete);
       if (resp.status === 200) {
         setActors(actors.filter((actor) => actor.id !== id));
       }
     }
-  };
-
-  const onClickOpenModal = () => {
-    setIsOpen(true);
   };
 
   const onClickOpenSortModal = () => {
@@ -111,31 +119,67 @@ const Home = () => {
   //   if (deleteBtnClicked) {
   //     console.log("1. delete btn was clicked");
   //     if (selectTitle === "All Selected") {
-  //       // let idsActors = "";
-  //       // actors.forEach((actor) => (idsActors += actor.id + ", "));
-  //       // idsActors.forEach((id) => deleteActor(idsActors));
 
-  //       // actors.forEach((actor) => await deleteActor(actor));
-  //       // let response = actors.forEach(
-  //       //   async (actor) => await deleteActor(actor)
-  //       // );
+  //       actors.forEach((actor) => await deleteActor(actor));
 
-  //       setActors([]);
   //     } else if (actorsToDelete.length > 0) {
-  //       actorsToDelete.forEach((actor) => deleteActor(actor));
+  //       actorsToDelete.forEach((actor) => await deleteActor(actor));
   //     }
   //   }
+  //   setActors([]);
   // };
+  // deleteActorsSelected();
+
+  const onClickOpenModal = () => {
+    if (countRef.current === 2) {
+      setOpenAdd(false);
+      setIsVisibleWarningWindow(true);
+      countRef.current = 0; //?
+    } else {
+      setOpenAdd(true);
+    }
+  };
 
   return (
     <>
       {actors?.length > 0 && (
         <div>
+          {visibleSuccesWindow && (
+            <NotificationWindow
+              isVisible={(visibleSuccesWindow) => {
+                setIsVisibleSuccesWindow(visibleSuccesWindow);
+              }}
+              className="success"
+              text="Actor added successfully."
+            />
+          )}
+
+          {visibleWarningWindow && (
+            <NotificationWindow
+              isVisible={(visibleWarningWindow) => {
+                setIsVisibleWarningWindow(visibleWarningWindow);
+              }}
+              className="warning"
+              text="You can add max. 7 actors."
+            />
+          )}
+          {visibleDangerWindow && (
+            <NotificationWindow
+              isVisible={(visibleDangerWindow) => {
+                setIsVisibleDangerWindow(visibleDangerWindow);
+              }}
+              className="danger"
+              text="Your changes were not saved."
+            />
+          )}
+
           <Header />
           <div className="top-btns-container">
-            <Button type="btn-type-1" onClick={onClickOpenSortModal}>
-              Sort
-            </Button>
+            {window.innerWidth < 1025 && (
+              <Button type={"btn-type-1"} onClick={onClickOpenSortModal}>
+                Sort
+              </Button>
+            )}
             {openSort && (
               <Modal
                 className="modal-overlay sort-type"
@@ -152,8 +196,16 @@ const Home = () => {
                 />
               </Modal>
             )}
+
+            {window.innerWidth > 1024 && (
+              <SortActors
+                actorsToSort={actors}
+                sortedActors={(actors) => setActors(actors)}
+              />
+            )}
+
             <Button
-              type="btn-type-1"
+              type={window.innerWidth > 1025 ? "btn-type-4" : "btn-type-1"}
               onClick={() => {
                 setOpenSelect(true);
                 setArrActors([]);
@@ -215,20 +267,21 @@ const Home = () => {
           >
             Add new actor
           </Button>
-          {open && (
+          {openAdd && (
             <Modal
               className="modal-overlay add-edit-actor-type"
-              openModal={(open) => setIsOpen(open)}
+              openModal={(open) => setOpenAdd(open)}
               title="Add new actor"
             >
               <AddEditActor
                 btnPrimaryText="Add new actor"
-                openModal={(open) => setIsOpen(open)}
+                openModal={(openAdd) => setOpenAdd(openAdd)}
                 actorDetails={false}
                 updates={addActor}
               />
             </Modal>
           )}
+
           <Footer />
         </div>
       )}

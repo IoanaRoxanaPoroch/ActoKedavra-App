@@ -7,6 +7,33 @@
   align-items: center;
 }
 
+.show {
+  animation: slideLeft 2s ease forwards;
+}
+
+.notification-window .hide {
+  animation-name: slideRight;
+  animation-duration: 4s;
+}
+
+@keyframes slideLeft {
+  0% {
+    margin-left: 120%;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: 120%;
+  }
+}
+
 .success {
   background-color: #e5fff2;
   color: #00994d;

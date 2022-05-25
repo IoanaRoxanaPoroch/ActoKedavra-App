@@ -1,13 +1,19 @@
 import { Button } from "../button/Button";
 import "./NotificationWindow.css";
 import { VscClose } from "react-icons/vsc";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BsQuestionCircle } from "react-icons/bs";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { BsExclamationCircle } from "react-icons/bs";
 
 export const NotificationWindow = ({ isVisible, text, className }) => {
-  const [visible, setIsVisible] = useState(isVisible);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      isVisible(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const alertTypes = {
     success: {
@@ -34,16 +40,24 @@ export const NotificationWindow = ({ isVisible, text, className }) => {
   const type = getAlert({ className });
 
   return (
-    visible && (
-      <div className={`notification-window ${className}`}>
-        <div className="notification-window-icon-text">
-          {type}
-          <p className="notification-window-text">{text}</p>
-          <Button className={`notification-window-close-btn ${className}`}>
-            <VscClose onClick={() => setIsVisible(false)} />
-          </Button>
-        </div>
+    <div
+      className={
+        isVisible
+          ? `notification-window ${className} show`
+          : `notification-window ${className} hide`
+      }
+    >
+      <div className="notification-window-icon-text">
+        {type}
+        <span className="notification-window-text">{text}</span>
+        <Button className={`notification-window-close-btn ${className}`}>
+          <VscClose
+            onClick={() => {
+              isVisible(false);
+            }}
+          />
+        </Button>
       </div>
-    )
+    </div>
   );
 };
