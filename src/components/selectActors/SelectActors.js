@@ -11,20 +11,23 @@ export const SelectActors = ({
   textTitle,
   number,
   actorsToDelete,
+  isOpenDeleteWarning,
 }) => {
   const [isActive, setActive] = useState(false);
+  const [allSelected, setAllSelected] = useState(false);
   const toggleType = () => {
     setActive(!isActive);
   };
 
   useEffect(() => {
     allChecked(isActive);
+    setAllSelected(isActive);
     if (isActive) {
       textTitle("All Selected");
     } else {
       textTitle("0 Selected");
     }
-  }, [isActive]);
+  }, [isActive, allChecked, textTitle]);
 
   const deleteActors = async () => {
     actorsToDelete.forEach(async (actor) => {
@@ -35,7 +38,7 @@ export const SelectActors = ({
   };
   return (
     <div className="select-actors">
-      <div className={window.innerWidth > 1025 ? "select-actors-large" : ""}>
+      <div className={window.innerWidth > 1024 ? "select-actors-large" : ""}>
         <Field
           type="checkbox"
           value="all"
@@ -45,15 +48,25 @@ export const SelectActors = ({
           Select all
         </Field>
       </div>
-      <div className="select-actors-delete-btn">
+      <div className="select-actors-delete-btn-wrapper">
         <Button
           type={
-            isActive || number > 0 ? "btn-type-2" : "btn-type-2 btn-opacity"
+            window.innerWidth < 1025 && (isActive || number > 0)
+              ? "btn-type-2"
+              : window.innerWidth < 1025 && (!isActive || number === 0)
+              ? "btn-type-2 btn-opacity"
+              : window.innerWidth > 1025 && (isActive || number > 0)
+              ? "btn-primary select-actors-delete-btn"
+              : "btn-primary btn-opacity select-actors-delete-btn"
           }
           className="select-actors-btn"
           onClick={() => {
+            if (isActive && allSelected) {
+              isOpenDeleteWarning(true);
+            } else {
+              deleteActors();
+            }
             openSelectModal(false);
-            deleteActors();
           }}
         >
           <RiDeleteBinLine className="delete-icon" />

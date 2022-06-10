@@ -1,7 +1,7 @@
 import { Button } from "../button/Button";
 import "./NotificationWindow.css";
 import { VscClose } from "react-icons/vsc";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BsQuestionCircle } from "react-icons/bs";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { BsExclamationCircle } from "react-icons/bs";

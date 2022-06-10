@@ -37,7 +37,6 @@ export const AddEditActor = (props) => {
       errors.hobbiesError ||
       errors.descriptionError
     ) {
-      // console.log(errors);
       setErrorMessage({ ...errors });
       return false;
     }
@@ -47,7 +46,6 @@ export const AddEditActor = (props) => {
   const handleSubmit = (e) => {
     e?.preventDefault();
     const isValid = validate();
-    // console.log("zzzz isValid ", isValid);
     if (validate()) {
       props.openModal(false);
       props.updates(actor.id, actor);

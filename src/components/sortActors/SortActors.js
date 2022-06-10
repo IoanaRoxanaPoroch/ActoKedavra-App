@@ -1,9 +1,14 @@
 import { Button } from "../button/Button";
 import "./SortActors.css";
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export const SortActors = ({ openSortModal, actorsToSort, sortedActors }) => {
+export const SortActors = ({
+  openSortModal,
+  actorsToSort,
+  sortedActors,
+  className,
+}) => {
   const [actorsSort, setActorsSort] = useState(actorsToSort);
 
   const sortAscending = () => {
@@ -25,30 +30,24 @@ export const SortActors = ({ openSortModal, actorsToSort, sortedActors }) => {
   };
 
   const handleChange = (e) => {
-    console.log("in functie");
     if (e.target.value === "ascending") {
       setActorsSort(
         actorsSort.sort((a, b) => {
           return a.score - b.score;
         })
       );
-      console.log("bbbb");
+
+      sortedActors(actorsSort);
     } else {
       setActorsSort(
         actorsSort.sort((a, b) => {
           return b.score - a.score;
         })
       );
-      console.log("desc");
-    }
-    console.log("zzz", actorsSort);
-  };
 
-  useEffect(() => {
-    console.log("in useEffect");
-    console.log("use effect actorsSort", actorsSort);
-    sortedActors(actorsSort);
-  }, [actorsSort]);
+      sortedActors(actorsSort);
+    }
+  };
 
   return (
     <>
@@ -56,15 +55,16 @@ export const SortActors = ({ openSortModal, actorsToSort, sortedActors }) => {
         <select
           name="cards"
           id="cards"
-          className="btn-type-4 sort-actors-select-btn"
+          className={`btn-type-4 sort-actors-select-btn ${className}`}
           onChange={handleChange}
         >
+          <option value="sort">Sort</option>
           <option value="ascending">Ascending</option>
           <option value="descending">Descending</option>
         </select>
       )}
       {window.innerWidth < 1025 && (
-        <div className="sort-actors">
+        <div className={`sort-actors `}>
           <Button
             type="btn-type-2"
             className="sort-actors-btn"

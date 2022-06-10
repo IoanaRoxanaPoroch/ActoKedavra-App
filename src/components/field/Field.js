@@ -20,7 +20,6 @@ export const Field = (props) => {
     setCheckedInCard(event.target.checked);
     if (props.actorsSelected) {
       props.actorsSelected(event.target.checked, event.target.id);
-      // console.log("test", event.target.id);
     }
   };
 

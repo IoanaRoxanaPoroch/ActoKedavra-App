@@ -26,7 +26,6 @@ export const Card = ({
   allActorsSelected,
   actorsSelected,
 }) => {
-  // console.log("card id", id);
   const [open, setIsOpen] = useState(false);
   const hobbiesReceived = { hobbies };
   const details = { id, name, occupation, hobbies, description };

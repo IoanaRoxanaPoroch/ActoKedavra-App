@@ -169,6 +169,14 @@
     top: -1%;
   }
 
+  .card-close-btn {
+    display: none;
+  }
+
+  .card:hover .card-close-btn {
+    display: initial;
+  }
+
   .card-checkbox-wrapper {
     left: -50%;
   }

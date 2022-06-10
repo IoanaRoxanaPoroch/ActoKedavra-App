@@ -5,16 +5,32 @@ import { Title } from "../title/Title";
 import ReactDom from "react-dom";
 
 export const Modal = ({ className, openModal, title, children }) => {
- 
   return ReactDom.createPortal(
     <div className={`modal ${className}`}>
-      <div className="modal-close-btn-wrapper">
-        <Button type="close-btn" className="modal-close-btn">
+      <div
+        className={
+          title !== "0 Selected"
+            ? "modal-close-btn-wrapper"
+            : "select-modal-close-btn-wrapper "
+        }
+      >
+        <Button
+          type="close-btn"
+          className={
+            title === "0 Selected"
+              ? "select-actors-close-btn"
+              : "modal-close-btn"
+          }
+        >
           <VscClose onClick={() => openModal(false)} />
         </Button>
       </div>
       <Title
-        className={window.innerWidth > 1024 ? "select-title" : "modal-title"}
+        className={
+          window.innerWidth > 1024 && title === "0 Selected"
+            ? "select-title"
+            : "modal-title"
+        }
       >
         {title}
       </Title>

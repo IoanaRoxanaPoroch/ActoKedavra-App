@@ -44,7 +44,6 @@
 }
 
 /* medium */
-
 @media (min-width: 481px) and (max-width: 1024px) {
   .no-actors {
     height: auto;

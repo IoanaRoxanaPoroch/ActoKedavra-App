@@ -25,29 +25,3 @@ button {
 * {
   font-family: "Poppins", sans-serif;
 }
-
-/* mobile styles */
-
-/* For Tablets */
-/* vezi daca sunt corecte dimensiunile */
-/* @media (max-width: 960px) {
- 
-  } */
-
-/* For Laptops/Desktop */
-/* @media (min-width: 1025px) {
-
-} */
-
-/* small */
-@media screen and (max-width: 480px) {
-}
-
-/* medium */
-
-@media (min-width: 481px) and (max-width: 1024px) {
-}
-
-/* large */
-@media (min-width: 1025px) {
-}

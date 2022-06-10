@@ -7,15 +7,21 @@
 
 /* small */
 @media screen and (max-width: 480px) {
- 
+  .title {
+    font-size: 24px;
+  }
 }
 
 /* medium */
-
 @media (min-width: 481px) and (max-width: 1024px) {
-
+  .title {
+    font-size: 30px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .title {
+    font-size: 30px;
+  }
 }

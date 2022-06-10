@@ -38,7 +38,6 @@ export const NoActors = ({ mainText, updates }) => {
                 actorDetails={false}
                 updates={updates}
               />
-              {/* datele din modal? */}
             </Modal>
           )}
         </div>

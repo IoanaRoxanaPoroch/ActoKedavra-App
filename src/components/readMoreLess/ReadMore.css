@@ -13,10 +13,15 @@
 }
 
 /* medium */
-
 @media (min-width: 481px) and (max-width: 1024px) {
+  .read-more-read-less-wrapper {
+    padding: 0px 12px;
+  }
 }
 
 /* large */
 @media (min-width: 1025px) {
+  .read-more-read-less-wrapper {
+    padding: 0px 12px;
+  }
 }

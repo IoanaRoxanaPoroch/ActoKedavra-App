@@ -10,7 +10,6 @@ import { NoActors } from "../noActors/NoActors";
 import { SortActors } from "../sortActors/SortActors";
 import { SelectActors } from "../selectActors/SelectActors";
 import { useRef } from "react";
-
 import {
   getActors,
   deleteActor,
@@ -18,6 +17,7 @@ import {
   updateActor,
 } from "../../api/actors";
 import { NotificationWindow } from "../notificationWindow/NotificationWindow";
+import DeleteWarning from "../deleteWarning/DeleteAWarning";
 
 const Home = () => {
   const [actors, setActors] = useState(null);
@@ -33,8 +33,7 @@ const Home = () => {
   const [visibleWarningWindow, setIsVisibleWarningWindow] = useState(false);
   const countRef = useRef(0);
   const [visibleDangerWindow, setIsVisibleDangerWindow] = useState(false);
-
-  // console.log("actors", actors);
+  const [openDeleteWarning, setDeleteWarning] = useState(false);
 
   const getResponse = async () => {
     let response = await getActors();
@@ -114,27 +113,11 @@ const Home = () => {
     }
   };
 
-  //delete
-  // const deleteActorsSelected = async () => {
-  //   if (deleteBtnClicked) {
-  //     console.log("1. delete btn was clicked");
-  //     if (selectTitle === "All Selected") {
-
-  //       actors.forEach((actor) => await deleteActor(actor));
-
-  //     } else if (actorsToDelete.length > 0) {
-  //       actorsToDelete.forEach((actor) => await deleteActor(actor));
-  //     }
-  //   }
-  //   setActors([]);
-  // };
-  // deleteActorsSelected();
-
   const onClickOpenModal = () => {
     if (countRef.current === 2) {
       setOpenAdd(false);
       setIsVisibleWarningWindow(true);
-      countRef.current = 0; //?
+      countRef.current = 0;
     } else {
       setOpenAdd(true);
     }
@@ -201,11 +184,13 @@ const Home = () => {
               <SortActors
                 actorsToSort={actors}
                 sortedActors={(actors) => setActors(actors)}
+                className={openSelect ? "none" : ""}
               />
             )}
 
             <Button
-              type={window.innerWidth > 1025 ? "btn-type-4" : "btn-type-1"}
+              type={window.innerWidth > 1024 ? "btn-type-4" : "btn-type-1"}
+              className={openSelect ? "none" : ""}
               onClick={() => {
                 setOpenSelect(true);
                 setArrActors([]);
@@ -231,6 +216,25 @@ const Home = () => {
                   actorsToDelete={
                     selectTitle === "All Selected" ? actors : actorsToDelete
                   }
+                  isOpenDeleteWarning={(openDeleteWarning) => {
+                    setDeleteWarning(openDeleteWarning);
+                  }}
+                />
+              </Modal>
+            )}
+            {openDeleteWarning && (
+              <Modal
+                className="modal-overlay delete-type"
+                openModal={(openDeleteWarning) =>
+                  setDeleteWarning(openDeleteWarning)
+                }
+                title="Are you sure you want to delete the selection?"
+              >
+                <DeleteWarning
+                  isOpenDeleteWarning={(openDeleteWarning) => {
+                    setDeleteWarning(openDeleteWarning);
+                  }}
+                  actorsToDelete={actors}
                 />
               </Modal>
             )}
@@ -281,7 +285,6 @@ const Home = () => {
               />
             </Modal>
           )}
-
           <Footer />
         </div>
       )}

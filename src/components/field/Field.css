@@ -152,16 +152,16 @@ input[type="text"]:invalid[focused="true"] {
 /* large */
 @media (min-width: 1025px) {
   input[type="checkbox"] {
-    height: 32px;
-    width: 32px;
-    margin: -7px 10px 10px 392px;
+    height: 36px;
+    width: 36px;
+    margin: -16px 10px 10px 480px;
     /* alta solutie */
   }
 
   input[type="checkbox"]:checked:before {
     width: 7px;
     height: 12px;
-    margin-left: 10px;
+    margin-left: 12px;
     margin-top: 7px;
   }
 

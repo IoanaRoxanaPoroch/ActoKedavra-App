@@ -1,4 +1,3 @@
-/* Sort modal */
 .sort-actors {
   display: flex;
   flex-direction: column;
@@ -17,7 +16,6 @@
 }
 
 /* medium */
-
 @media (min-width: 481px) and (max-width: 1024px) {
   .sort-actors {
     margin-top: 32px;
@@ -34,9 +32,18 @@
   .sort-actors {
     margin-top: 100px;
   }
+
+  .none {
+    display: none;
+  }
+
   .sort-actors-btn {
     width: 324px;
     margin: 12px auto;
     font-size: 24px;
+  }
+
+  select:focus {
+    outline: none !important;
   }
 }

@@ -60,7 +60,7 @@
 @media (min-width: 1025px) {
   .add-edit-actor {
     flex-direction: column;
-    margin: 48px 64px;
+    margin: 0px 20px;
   }
 
   .add-edit-actor :nth-child(2) {

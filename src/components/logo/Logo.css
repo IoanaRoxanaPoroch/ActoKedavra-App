@@ -1,4 +1,3 @@
-/* mobile styles */
 .logo {
   color: var(--off-black);
   font-weight: 700;
@@ -27,7 +26,6 @@
 }
 
 /* medium */
-
 @media (min-width: 481px) and (max-width: 1024px) {
   .logo {
     font-size: 30px;
