@@ -1,4 +1,4 @@
-textarea {
+.textarea {
   background-color: #eff0f7;
   border-radius: 10px;
   border: none;
@@ -11,19 +11,26 @@ textarea {
   z-index: 1;
 }
 
-textarea:focus {
+.textarea:focus {
   outline: none !important;
 }
 
-textarea:invalid[focused="true"] {
+.textarea:invalid[focused='true'] {
   border: 2px solid #ed2e7e;
   box-sizing: border-box;
   outline: none !important;
   background-color: #ffe5f2;
 }
 
-textarea:invalid[focused="true"] ~ span {
+.textarea:invalid[focused='true'] ~ span {
   display: block;
+}
+
+.required {
+  background-color: #ffe5f2;
+  border: 2px solid #ed2e7e;
+  box-sizing: border-box;
+  outline: none !important;
 }
 
 .chars-remained-text {
@@ -44,7 +51,7 @@ textarea:invalid[focused="true"] ~ span {
 
 /* small */
 @media screen and (max-width: 480px) {
-  textarea {
+  .textarea {
     width: auto;
     height: 150px;
     padding: 16px;
@@ -66,7 +73,7 @@ textarea:invalid[focused="true"] ~ span {
 /* medium */
 
 @media (min-width: 481px) and (max-width: 1024px) {
-  textarea {
+  .textarea {
     width: auto;
     height: auto;
     padding: 16px;
@@ -87,7 +94,7 @@ textarea:invalid[focused="true"] ~ span {
 
 /* large */
 @media (min-width: 1025px) {
-  textarea {
+  .textarea {
     width: auto;
     height: auto;
     padding: 16px;

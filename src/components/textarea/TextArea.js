@@ -1,58 +1,60 @@
-import "./TextArea.css";
-import { useState } from "react";
+import { useState } from 'react'
 
-export const TextArea = (props) => {
+import './TextArea.css'
+
+export const TextArea = ({ characters, value, className, labelText, spanText, name, maxLength, onChange }) => {
   const message = () => {
-    let result;
-    if (props.characters > 180 || props.characters === 180) {
-      result = 0;
+    let result
+
+    if (characters > 180 || characters === 180) {
+      result = 0
     } else {
-      result = 180 - props.characters;
+      result = 180 - characters
     }
-    return result;
-  };
-  const chars = message();
-  const [focused, setFocused] = useState(false);
+    return result
+  }
+
+  const chars = message()
+  const [focused, setFocused] = useState(false)
 
   const handleFocus = () => {
-    if (props.value.length === 0) setFocused(true);
-  };
+    if (value?.length === 0) setFocused(true)
+  }
 
   return (
-    <div className={props.className}>
-      <label className="text-label">{props.labelText}</label>
+    <div className={className}>
+      <label className='text-label'>{labelText}</label>
       <textarea
-        type="text"
-        id={props.spanText && props.value.length === 0 ? "required" : ""}
-        name={props.name}
-        maxLength={props.maxLength}
-        value={props.value}
-        characters={props.characters}
-        onChange={props.onChange}
+        className={spanText && value.length === 0 ? 'textarea required' : 'textarea'}
+        type='text'
+        // id={spanText && value?.length === 0 ? 'required' : ''}
+        name={name}
+        maxLength={maxLength}
+        value={value}
+        characters={characters}
+        onChange={onChange}
         required
         onBlur={handleFocus}
         focused={focused.toString()}
       />
       <div
         className={
-          (props.spanText && props.value.length === 0) || focused
-            ? "chars-remained-text chars-remaind-text-required"
-            : "chars-remained-text"
-        }
-      >
+          (spanText && value?.length === 0) || focused
+            ? 'chars-remained-text chars-remaind-text-required'
+            : 'chars-remained-text'
+        }>
         <p>{chars} characters remained</p>
       </div>
       <span
         className={
-          props.spanText && props.value.length === 0
-            ? "span"
-            : !props.spanText && props.value.length === 0 && focused
-            ? " span span-on-blur"
-            : " span-none"
-        }
-      >
-        {props.spanText}
+          spanText && value?.length === 0
+            ? 'span'
+            : !spanText && value?.length === 0 && focused
+            ? ' span span-on-blur'
+            : ' span-none'
+        }>
+        {spanText}
       </span>
     </div>
-  );
-};
+  )
+}

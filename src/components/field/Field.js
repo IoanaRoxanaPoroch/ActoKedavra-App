@@ -1,59 +1,67 @@
-import "./Field.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react'
+
+import './Field.css'
 
 export const Field = (props) => {
-  const [focused, setFocused] = useState(false);
-  const handleFocus = () => {
-    if (props.value?.length === 0) {
-      setFocused(true);
-    }
-  };
-  const [isChecked, setIsChecked] = useState(false);
-  const [checkedInCard, setCheckedInCard] = useState(false);
+  const { type, className, children, value, spanText, id, onChange, onClick, valueOfChecked, actorsSelected } = props
+
+  const [isChecked, setIsChecked] = useState(false)
+  const [checkedInCard, setCheckedInCard] = useState(false)
+
+  const [focused, setFocused] = useState(false)
 
   useEffect(() => {
-    setCheckedInCard(props.valueOfChecked);
-  }, [props.valueOfChecked]);
+    setCheckedInCard(valueOfChecked)
+  }, [valueOfChecked])
+
+  const handleFocus = () => {
+    if (value?.length === 0) {
+      setFocused(true)
+    }
+  }
 
   const handleChange = (event) => {
-    setIsChecked(event.target.checked);
-    setCheckedInCard(event.target.checked);
-    if (props.actorsSelected) {
-      props.actorsSelected(event.target.checked, event.target.id);
+    setIsChecked(event.target.checked)
+    setCheckedInCard(event.target.checked)
+    if (actorsSelected) {
+      actorsSelected(event.target.checked, event.target.id)
     }
-  };
+  }
 
   return (
-    <div className={props.className}>
-      <label htmlFor={props.value} className="text-label">
-        {props.children}
+    <div className={className}>
+      <label htmlFor={value} className='text-label'>
+        {children}
       </label>
+
       <input
-        id={
-          props.type === "text" && props.spanText && props.value.length === 0
-            ? "required"
-            : props.id
-        }
-        type={props.type}
-        value={props.value}
-        onChange={props.type === "text" ? props.onChange : handleChange}
-        onClick={props.onClick}
+        type={type}
+        value={value}
+        onChange={type === 'text' ? onChange : handleChange}
+        onClick={onClick}
         required
         onBlur={handleFocus}
         focused={focused.toString()}
-        checked={props.valueOfChecked ? checkedInCard : isChecked}
+        checked={valueOfChecked ? checkedInCard : isChecked}
+        className={
+          type === 'text' && spanText && value.length === 0
+            ? 'input-text required'
+            : type === 'checkbox'
+            ? 'input-checkbox'
+            : 'input-text'
+        }
       />
+
       <span
         className={
-          props.spanText && props.value?.length === 0
-            ? "span"
-            : !props.spanText && props.value?.length === 0 && focused
-            ? "span span-on-blur"
-            : "span-none"
-        }
-      >
-        {props.spanText}
+          spanText && value?.length === 0
+            ? 'span'
+            : !spanText && value?.length === 0 && focused
+            ? 'span span-on-blur'
+            : 'span-none'
+        }>
+        {spanText}
       </span>
     </div>
-  );
-};
+  )
+}

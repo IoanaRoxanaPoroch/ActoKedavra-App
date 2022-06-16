@@ -2,9 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Create an env file
+
+### Available Scripts
 
 In the project directory, you can run:
+
+### `json-server --watch data/actorsdata.json`
+
+Start json-server and display the list of actors.
+Open [ http://localhost:3000/actors] to view it in your browser.
 
 ### `npm start`
 

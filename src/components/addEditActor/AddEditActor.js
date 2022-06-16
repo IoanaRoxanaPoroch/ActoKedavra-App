@@ -1,96 +1,99 @@
-import { Field } from "../field/Field";
-import { TextArea } from "../textarea/TextArea";
-import "./AddEditActor.css";
-import { Button } from "../button/Button";
-import { useState } from "react";
+import { useState } from 'react'
 
-export const AddEditActor = (props) => {
+import { Field } from 'components/field/Field'
+import { TextArea } from 'components/textarea/TextArea'
+import { Button } from 'components/button/Button'
+
+import './AddEditActor.css'
+
+export const AddEditActor = ({ actorDetails, openModal, updates, btnPrimaryText }) => {
   const defaultActor = {
-    id: props.actorDetails ? props.actorDetails.id : "",
-    name: props.actorDetails ? props.actorDetails.name : "",
-    occupation: props.actorDetails ? props.actorDetails.occupation : "",
-    hobbies: props.actorDetails ? props.actorDetails.hobbies : "",
-    description: props.actorDetails ? props.actorDetails.description : "",
-    characters: props.actorDetails ? props.actorDetails.description.length : 0,
-  };
-  const [actor, setActor] = useState(defaultActor);
-  const [errorMessage, setErrorMessage] = useState({});
+    id: actorDetails ? actorDetails.id : '',
+    name: actorDetails ? actorDetails.name : '',
+    occupation: actorDetails ? actorDetails.occupation : '',
+    hobbies: actorDetails ? actorDetails.hobbies : '',
+    description: actorDetails ? actorDetails.description : '',
+    characters: actorDetails ? actorDetails.description.length : 0,
+  }
+  const [actor, setActor] = useState(defaultActor)
+
+  const [errorMessage, setErrorMessage] = useState({})
 
   const validate = () => {
-    const errorMessage = "Field required";
-    let errors = {};
+    const errorMessage = 'Field required'
+    let errors = {}
+
     if (!actor.name) {
-      errors.nameError = errorMessage;
+      errors.nameError = errorMessage
     }
+
     if (!actor.occupation) {
-      errors.occupationError = errorMessage;
+      errors.occupationError = errorMessage
     }
+
     if (!actor.hobbies) {
-      errors.hobbiesError = errorMessage;
+      errors.hobbiesError = errorMessage
     }
+
     if (!actor.description) {
-      errors.descriptionError = errorMessage;
+      errors.descriptionError = errorMessage
     }
-    if (
-      errors.nameError ||
-      errors.occupationError ||
-      errors.hobbiesError ||
-      errors.descriptionError
-    ) {
-      setErrorMessage({ ...errors });
-      return false;
+
+    if (errors.nameError || errors.occupationError || errors.hobbiesError || errors.descriptionError) {
+      setErrorMessage({ ...errors })
+      return false
     }
-    return true;
-  };
+    return true
+  }
 
   const handleSubmit = (e) => {
-    e?.preventDefault();
-    const isValid = validate();
+    e?.preventDefault()
+    const isValid = validate()
+
     if (validate()) {
-      props.openModal(false);
-      props.updates(actor.id, actor);
+      openModal(false)
+      updates(actor.id, actor)
     }
-  };
+  }
+
   return (
-    <form className="add-edit-actor">
-      <div className="add-edit-actor-name-occupation">
+    <form className='add-edit-actor'>
+      <div className='add-edit-actor-name-occupation'>
         <Field
-          type="text"
-          className="add-edit-actor-group"
+          type='text'
+          className='add-edit-actor-group'
           value={actor.name}
           onChange={(e) => {
-            setActor({ ...actor, name: e.target.value });
+            setActor({ ...actor, name: e.target.value })
           }}
-          spanText={errorMessage?.nameError}
-        >
+          spanText={errorMessage?.nameError}>
           Name
         </Field>
 
         <Field
-          type="text"
-          className="add-edit-actor-group"
+          type='text'
+          className='add-edit-actor-group'
           value={actor.occupation}
           onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
-          spanText={errorMessage?.occupationError}
-        >
+          spanText={errorMessage?.occupationError}>
           Occupation besides acting
         </Field>
       </div>
 
       <Field
-        type="text"
-        className="add-edit-actor-group"
+        type='text'
+        className='add-edit-actor-group'
         value={actor.hobbies}
         onChange={(e) => setActor({ ...actor, hobbies: e.target.value })}
-        spanText={errorMessage?.hobbiesError}
-      >
+        spanText={errorMessage?.hobbiesError}>
         Hobbies
       </Field>
+
       <TextArea
-        className="add-edit-actor-group"
-        name="description"
-        maxLength="180"
-        labelText="Description"
+        className='add-edit-actor-group'
+        name='description'
+        maxLength='180'
+        labelText='Description'
         value={actor.description}
         characters={actor?.characters}
         onChange={(e) =>
@@ -102,21 +105,18 @@ export const AddEditActor = (props) => {
         }
         spanText={errorMessage?.descriptionError}
       />
-      <Button
-        type="btn-primary"
-        onClick={handleSubmit}
-        className="add-edit-actor-update-btn"
-      >
-        {props.btnPrimaryText}
+
+      <Button type='btn-primary' onClick={handleSubmit} className='add-edit-actor-update-btn'>
+        {btnPrimaryText}
       </Button>
+
       <Button
-        className="changed-mind-btn add-edit-actor-changed-mind-btn"
+        className='changed-mind-btn add-edit-actor-changed-mind-btn'
         onClick={() => {
-          props.openModal(false);
-        }}
-      >
+          openModal(false)
+        }}>
         I changed my mind
       </Button>
     </form>
-  );
-};
+  )
+}

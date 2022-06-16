@@ -1,127 +1,166 @@
-import "./Home.css";
-import { Button } from "../button/Button";
-import { Card } from "../card/Card";
-import { Modal } from "../modal/Modal";
-import { Header } from "../header/Header";
-import { Footer } from "../footer/Footer";
-import { useState, useEffect } from "react";
-import { AddEditActor } from "../addEditActor/AddEditActor";
-import { NoActors } from "../noActors/NoActors";
-import { SortActors } from "../sortActors/SortActors";
-import { SelectActors } from "../selectActors/SelectActors";
-import { useRef } from "react";
-import {
-  getActors,
-  deleteActor,
-  addNewActor,
-  updateActor,
-} from "../../api/actors";
-import { NotificationWindow } from "../notificationWindow/NotificationWindow";
-import DeleteWarning from "../deleteWarning/DeleteAWarning";
+import { useState, useEffect } from 'react'
+import { useRef } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
+import { getActors, deleteActor, addNewActor, updateActor } from '../../api/actors'
+
+import { Header } from '../header/Header'
+import { Button } from '../button/Button'
+import { Card } from '../card/Card'
+import { Modal } from '../modal/Modal'
+import { AddEditActor } from '../addEditActor/AddEditActor'
+import { NoActors } from '../noActors/NoActors'
+import { SortActors } from '../sortActors/SortActors'
+import { SelectActors } from '../selectActors/SelectActors'
+import { NotificationWindow } from '../notificationWindow/NotificationWindow'
+import DeleteWarning from '../deleteWarning/DeleteAWarning'
+import { Footer } from '../footer/Footer'
+import { screenWidthResize } from 'features/windowWidth/WindowWidthSlice'
+
+import './Home.css'
 
 const Home = () => {
-  const [actors, setActors] = useState(null);
-  const [openAdd, setOpenAdd] = useState(false);
-  const [openSort, setIsOpenSort] = useState(false);
-  const [openSelect, setOpenSelect] = useState(false);
-  const [selectAll, setSelectAll] = useState(false);
-  const [selectTitle, setSelectTitle] = useState("");
-  const [number, setNumber] = useState(0);
-  const [actorsToDelete, setActorsToDelete] = useState([]);
-  let [arrActors, setArrActors] = useState([]);
-  const [visibleSuccesWindow, setIsVisibleSuccesWindow] = useState(false);
-  const [visibleWarningWindow, setIsVisibleWarningWindow] = useState(false);
-  const countRef = useRef(0);
-  const [visibleDangerWindow, setIsVisibleDangerWindow] = useState(false);
-  const [openDeleteWarning, setDeleteWarning] = useState(false);
+  const countRef = useRef(0)
 
-  const getResponse = async () => {
-    let response = await getActors();
-    if (response && response.data) {
-      setActors(response.data);
-    }
-  };
+  const [actors, setActors] = useState(null)
+  const [actorsToDelete, setActorsToDelete] = useState([])
+  let [arrActors, setArrActors] = useState([])
+
+  const [openAdd, setOpenAdd] = useState(false)
+  const [openSort, setIsOpenSort] = useState(false)
+  const [openSelect, setOpenSelect] = useState(false)
+  const [openDeleteWarning, setDeleteWarning] = useState(false)
+
+  const [selectAll, setSelectAll] = useState(false)
+  const [selectTitle, setSelectTitle] = useState('')
+
+  const [number, setNumber] = useState(0)
+
+  const [visibleSuccesWindow, setIsVisibleSuccesWindow] = useState(false)
+  const [visibleWarningWindow, setIsVisibleWarningWindow] = useState(false)
+  const [visibleDangerWindow, setIsVisibleDangerWindow] = useState(false)
+
+  const [error, setError] = useState('')
+
+  const screenWidth = useSelector((state) => state.screen.width)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    getResponse();
-  }, []);
+    const onResize = () => {
+      dispatch(screenWidthResize(window.innerWidth))
+    }
+
+    window.addEventListener('resize', onResize)
+
+    return () => {
+      window.removeEventListener('resize', onResize)
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    const getResponse = async () => {
+      await getActors()
+        .then((response) => {
+          setActors(response.data)
+          setError('')
+        })
+        
+        .catch((err) => {
+          setError(err.message)
+          setActors(null)
+        })
+    }
+
+    getResponse()
+  }, [error])
 
   // add functionality
   const addActor = async (id, newActor) => {
-    delete newActor.characters;
+    delete newActor.characters
+
     const actorToAdd = {
       ...newActor,
-      hobbies: newActor.hobbies.split(","),
-    };
-    const response = await addNewActor(actorToAdd);
-    if (response.status === 201) {
-      countRef.current++;
-      setActors([...actors, response.data]);
-      setIsVisibleSuccesWindow(true);
+      hobbies: newActor.hobbies.split(','),
     }
-  };
+
+    const response = await addNewActor(actorToAdd)
+
+    if (response.status === 201) {
+      countRef.current++
+
+      setActors([...actors, response.data])
+      setIsVisibleSuccesWindow(true)
+    }
+  }
 
   // edit & remove functionality
   const getUpdates = async (id, actorEdited) => {
     if (actorEdited) {
-      let actor = await getActors(id);
+      let actor = await getActors(id)
+
       if (actor.data) {
-        let actorToEdit = { ...actor.data, ...actorEdited };
-        delete actorToEdit.characters;
-        const response = await updateActor(actorToEdit);
+        let actorToEdit = { ...actor.data, ...actorEdited }
+        delete actorToEdit.characters
+        const response = await updateActor(actorToEdit)
+
         if (response.status === 200) {
-          setActors(
-            actors.map((actor) => (actor.id === id ? actorToEdit : actor))
-          );
+          setActors(actors.map((actor) => (actor.id === id ? actorToEdit : actor)))
         } else {
-          setIsVisibleDangerWindow(true);
+          setIsVisibleDangerWindow(true)
         }
       }
     } else {
-      let actorToDelete = actors.find((actor) => actor.id === id);
-      const resp = await deleteActor(actorToDelete);
+      let actorToDelete = actors.find((actor) => actor.id === id)
+      const resp = await deleteActor(actorToDelete)
+
       if (resp.status === 200) {
-        setActors(actors.filter((actor) => actor.id !== id));
+        setActors(actors.filter((actor) => actor.id !== id))
       }
     }
-  };
+  }
 
   const onClickOpenSortModal = () => {
-    setIsOpenSort(true);
-  };
+    setIsOpenSort(true)
+  }
 
   const numberOfActorsSelected = (param, id) => {
-    let actorSelected = actors.find((actor) => actor.id === parseInt(id));
+    let actorSelected = actors.find((actor) => actor.id === parseInt(id))
+
     if (param) {
-      setArrActors([...arrActors, actorSelected]);
+      setArrActors([...arrActors, actorSelected])
     } else {
-      arrActors = actorsToDelete.filter((actor) => actor.id !== parseInt(id));
-      setArrActors(arrActors);
+      arrActors = actorsToDelete.filter((actor) => actor.id !== parseInt(id))
+
+      setArrActors(arrActors)
     }
-  };
+  }
 
   useEffect(() => {
-    setActorsToDelete(arrActors);
-    setNumber(arrActors.length);
-  }, [arrActors]);
+    setActorsToDelete(arrActors)
+    setNumber(arrActors.length)
+  }, [arrActors])
 
   const setTitle = (title) => {
-    if (title !== "All Selected") {
-      return `${number} Selected`;
+    if (title !== 'All Selected') {
+      return `${number} Selected`
     } else {
-      return title;
+      return title
     }
-  };
+  }
 
   const onClickOpenModal = () => {
     if (countRef.current === 2) {
-      setOpenAdd(false);
-      setIsVisibleWarningWindow(true);
-      countRef.current = 0;
+      setOpenAdd(false)
+      setIsVisibleWarningWindow(true)
+
+      countRef.current = 0
     } else {
-      setOpenAdd(true);
+      setOpenAdd(true)
     }
-  };
+  }
+
 
   return (
     <>
@@ -130,122 +169,111 @@ const Home = () => {
           {visibleSuccesWindow && (
             <NotificationWindow
               isVisible={(visibleSuccesWindow) => {
-                setIsVisibleSuccesWindow(visibleSuccesWindow);
+                setIsVisibleSuccesWindow(visibleSuccesWindow)
               }}
-              className="success"
-              text="Actor added successfully."
+              className='success'
+              text='Actor added successfully.'
             />
           )}
 
           {visibleWarningWindow && (
             <NotificationWindow
               isVisible={(visibleWarningWindow) => {
-                setIsVisibleWarningWindow(visibleWarningWindow);
+                setIsVisibleWarningWindow(visibleWarningWindow)
               }}
-              className="warning"
-              text="You can add max. 7 actors."
+              className='warning'
+              text='You can add max. 7 actors.'
             />
           )}
           {visibleDangerWindow && (
             <NotificationWindow
               isVisible={(visibleDangerWindow) => {
-                setIsVisibleDangerWindow(visibleDangerWindow);
+                setIsVisibleDangerWindow(visibleDangerWindow)
               }}
-              className="danger"
-              text="Your changes were not saved."
+              className='danger'
+              text='Your changes were not saved.'
             />
           )}
 
           <Header />
-          <div className="top-btns-container">
-            {window.innerWidth < 1025 && (
-              <Button type={"btn-type-1"} onClick={onClickOpenSortModal}>
+          <div className='top-btns-container'>
+            {screenWidth < 1025 && (
+              <Button type={'btn-type-1'} onClick={onClickOpenSortModal}>
                 Sort
               </Button>
             )}
             {openSort && (
               <Modal
-                className="modal-overlay sort-type"
+                className='modal-overlay sort-type'
                 openModal={(openSort) => {
-                  setIsOpenSort(openSort);
+                  setIsOpenSort(openSort)
                 }}
-                title="Select type of sort"
-              >
+                title='Select type of sort'>
                 <SortActors
                   openSortModal={(openSort) => {
-                    setIsOpenSort(openSort);
+                    setIsOpenSort(openSort)
                   }}
                   actorsToSort={actors}
                 />
               </Modal>
             )}
 
-            {window.innerWidth > 1024 && (
+            {screenWidth > 1024 && (
               <SortActors
                 actorsToSort={actors}
                 sortedActors={(actors) => setActors(actors)}
-                className={openSelect ? "none" : ""}
+                className={openSelect ? 'none' : ''}
               />
             )}
 
             <Button
-              type={window.innerWidth > 1024 ? "btn-type-4" : "btn-type-1"}
-              className={openSelect ? "none" : ""}
+              type={screenWidth > 1024 ? 'btn-type-4' : 'btn-type-1'}
+              className={openSelect ? 'none' : ''}
               onClick={() => {
-                setOpenSelect(true);
-                setArrActors([]);
-              }}
-            >
+                setOpenSelect(true)
+                setArrActors([])
+              }}>
               Select
             </Button>
+
             {openSelect && (
               <Modal
-                className="modal-overlay select-type"
+                className='modal-overlay select-type'
                 openModal={(openSelect) => setOpenSelect(openSelect)}
-                title={setTitle(selectTitle)}
-              >
+                title={setTitle(selectTitle)}>
                 <SelectActors
                   openSelectModal={(openSelect) => setOpenSelect(openSelect)}
                   allChecked={(selectAll) => {
-                    setSelectAll(selectAll);
+                    setSelectAll(selectAll)
                   }}
                   textTitle={(selectTitle) => {
-                    setSelectTitle(selectTitle);
+                    setSelectTitle(selectTitle)
                   }}
                   number={number}
-                  actorsToDelete={
-                    selectTitle === "All Selected" ? actors : actorsToDelete
-                  }
+                  actorsToDelete={selectTitle === 'All Selected' ? actors : actorsToDelete}
                   isOpenDeleteWarning={(openDeleteWarning) => {
-                    setDeleteWarning(openDeleteWarning);
+                    setDeleteWarning(openDeleteWarning)
                   }}
                 />
               </Modal>
             )}
+
             {openDeleteWarning && (
               <Modal
-                className="modal-overlay delete-type"
-                openModal={(openDeleteWarning) =>
-                  setDeleteWarning(openDeleteWarning)
-                }
-                title="Are you sure you want to delete the selection?"
-              >
+                className='modal-overlay delete-type'
+                openModal={(openDeleteWarning) => setDeleteWarning(openDeleteWarning)}
+                title='Are you sure you want to delete the selection?'>
                 <DeleteWarning
                   isOpenDeleteWarning={(openDeleteWarning) => {
-                    setDeleteWarning(openDeleteWarning);
+                    setDeleteWarning(openDeleteWarning)
                   }}
                   actorsToDelete={actors}
                 />
               </Modal>
             )}
           </div>
-          <div
-            className={
-              openSelect || openSort
-                ? "cards-container home-cards-container-down"
-                : "cards-container"
-            }
-          >
+
+          <div className={openSelect || openSort ? 'cards-container home-cards-container-down' : 'cards-container'}>
             {actors?.map((actor, index) => (
               <Card
                 key={index}
@@ -264,35 +292,34 @@ const Home = () => {
               />
             ))}
           </div>
-          <Button
-            className="home-btn-primary"
-            type="btn-primary"
-            onClick={onClickOpenModal}
-          >
+
+          <Button className='home-btn-primary' type='btn-primary' onClick={onClickOpenModal}>
             Add new actor
           </Button>
+
           {openAdd && (
             <Modal
-              className="modal-overlay add-edit-actor-type"
+              className='modal-overlay add-edit-actor-type'
               openModal={(open) => setOpenAdd(open)}
-              title="Add new actor"
-            >
+              title='Add new actor'>
               <AddEditActor
-                btnPrimaryText="Add new actor"
+                btnPrimaryText='Add new actor'
                 openModal={(openAdd) => setOpenAdd(openAdd)}
                 actorDetails={false}
                 updates={addActor}
               />
             </Modal>
           )}
+
           <Footer />
         </div>
       )}
-      {actors?.length === 0 && (
-        <NoActors mainText="There are no actors here. Consider adding one." />
-      )}
-    </>
-  );
-};
 
-export default Home;
+      {error && <h1 className='home-error'>{error}</h1>}
+
+      {actors?.length === 0 && !error && <NoActors mainText='There are no actors here. Consider adding one.' />}
+    </>
+  )
+}
+
+export default Home

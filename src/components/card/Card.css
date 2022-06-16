@@ -5,11 +5,7 @@
   position: relative;
 }
 
-.card-close-btn-wrapper {
-  position: absolute;
-}
-
-.card-checkbox-wrapper {
+.card-checkbox {
   position: absolute;
 }
 
@@ -57,12 +53,7 @@
     height: auto;
   }
 
-  .card-close-btn-wrapper {
-    left: 90%;
-    top: -1%;
-  }
-
-  .card-checkbox-wrapper {
+  .card-checkbox {
     left: -50%;
   }
 
@@ -111,12 +102,7 @@
     height: auto;
   }
 
-  .card-close-btn-wrapper {
-    left: 90%;
-    top: -1%;
-  }
-
-  .card-checkbox-wrapper {
+  .card-checkbox {
     left: -50%;
   }
 
@@ -164,11 +150,6 @@
     height: auto;
   }
 
-  .card-close-btn-wrapper {
-    left: 90%;
-    top: -1%;
-  }
-
   .card-close-btn {
     display: none;
   }
@@ -177,7 +158,7 @@
     display: initial;
   }
 
-  .card-checkbox-wrapper {
+  .card-checkbox {
     left: -50%;
   }
 

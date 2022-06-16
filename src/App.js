@@ -1,7 +1,9 @@
-import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import StyleGuidepage from "./components/styleGuide/StyleGuidepage";
+
 import Home from "./components/home/Home";
+import StyleGuidepage from "./components/styleGuide/StyleGuidepage";
+
+import "./App.css";
 
 function App() {
   const actor = {
