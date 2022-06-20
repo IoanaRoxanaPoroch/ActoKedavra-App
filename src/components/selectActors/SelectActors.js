@@ -9,14 +9,7 @@ import { Button } from 'components/button/Button'
 
 import './SelectActors.css'
 
-export const SelectActors = ({
-  openSelectModal,
-  isOpenDeleteWarning,
-  allChecked,
-  textTitle,
-  number,
-  actorsToDelete,
-}) => {
+export const SelectActors = ({ openSelectModal, isOpenDeleteModal, allChecked, textTitle, number, actorsToDelete }) => {
   const [isActive, setActive] = useState(false)
 
   const [allSelected, setAllSelected] = useState(false)
@@ -53,6 +46,7 @@ export const SelectActors = ({
           Select all
         </Field>
       </div>
+
       <div className='select-actors-delete-btn-wrapper'>
         <Button
           type={
@@ -67,7 +61,7 @@ export const SelectActors = ({
           className='select-actors-btn'
           onClick={() => {
             if (isActive && allSelected) {
-              isOpenDeleteWarning(true)
+              isOpenDeleteModal(true)
             } else {
               deleteActors()
             }

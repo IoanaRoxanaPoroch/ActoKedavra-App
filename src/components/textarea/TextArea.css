@@ -12,13 +12,13 @@
 }
 
 .textarea:focus {
-  outline: none !important;
+  outline: black solid 0px;
 }
 
 .textarea:invalid[focused='true'] {
   border: 2px solid #ed2e7e;
   box-sizing: border-box;
-  outline: none !important;
+  outline: black solid 0px;
   background-color: #ffe5f2;
 }
 
@@ -30,7 +30,7 @@
   background-color: #ffe5f2;
   border: 2px solid #ed2e7e;
   box-sizing: border-box;
-  outline: none !important;
+  outline: solid #ed2e7e;
 }
 
 .chars-remained-text {

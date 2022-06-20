@@ -14,11 +14,11 @@ import { NoActors } from '../noActors/NoActors'
 import { SortActors } from '../sortActors/SortActors'
 import { SelectActors } from '../selectActors/SelectActors'
 import { NotificationWindow } from '../notificationWindow/NotificationWindow'
-import DeleteWarning from '../deleteWarning/DeleteAWarning'
 import { Footer } from '../footer/Footer'
 import { screenWidthResize } from 'features/windowWidth/WindowWidthSlice'
 
 import './Home.css'
+import DeleteModal from 'components/deleteModal/DeleteModal'
 
 const Home = () => {
   const countRef = useRef(0)
@@ -30,7 +30,7 @@ const Home = () => {
   const [openAdd, setOpenAdd] = useState(false)
   const [openSort, setIsOpenSort] = useState(false)
   const [openSelect, setOpenSelect] = useState(false)
-  const [openDeleteWarning, setDeleteWarning] = useState(false)
+  const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
   const [selectAll, setSelectAll] = useState(false)
   const [selectTitle, setSelectTitle] = useState('')
@@ -66,7 +66,7 @@ const Home = () => {
           setActors(response.data)
           setError('')
         })
-        
+
         .catch((err) => {
           setError(err.message)
           setActors(null)
@@ -161,7 +161,6 @@ const Home = () => {
     }
   }
 
-
   return (
     <>
       {actors?.length > 0 && (
@@ -204,7 +203,7 @@ const Home = () => {
             )}
             {openSort && (
               <Modal
-                className='modal-overlay sort-type'
+                className='sort-type'
                 openModal={(openSort) => {
                   setIsOpenSort(openSort)
                 }}
@@ -251,26 +250,12 @@ const Home = () => {
                   }}
                   number={number}
                   actorsToDelete={selectTitle === 'All Selected' ? actors : actorsToDelete}
-                  isOpenDeleteWarning={(openDeleteWarning) => {
-                    setDeleteWarning(openDeleteWarning)
-                  }}
+                  isOpenDeleteModal={setOpenDeleteModal}
                 />
               </Modal>
             )}
 
-            {openDeleteWarning && (
-              <Modal
-                className='modal-overlay delete-type'
-                openModal={(openDeleteWarning) => setDeleteWarning(openDeleteWarning)}
-                title='Are you sure you want to delete the selection?'>
-                <DeleteWarning
-                  isOpenDeleteWarning={(openDeleteWarning) => {
-                    setDeleteWarning(openDeleteWarning)
-                  }}
-                  actorsToDelete={actors}
-                />
-              </Modal>
-            )}
+            {openDeleteModal && <DeleteModal isOpenDeleteModal={setOpenDeleteModal} />}
           </div>
 
           <div className={openSelect || openSort ? 'cards-container home-cards-container-down' : 'cards-container'}>
@@ -298,17 +283,18 @@ const Home = () => {
           </Button>
 
           {openAdd && (
-            <Modal
-              className='modal-overlay add-edit-actor-type'
-              openModal={(open) => setOpenAdd(open)}
-              title='Add new actor'>
-              <AddEditActor
-                btnPrimaryText='Add new actor'
-                openModal={(openAdd) => setOpenAdd(openAdd)}
-                actorDetails={false}
-                updates={addActor}
-              />
-            </Modal>
+            // <Modal
+            //   className='modal-overlay add-edit-actor-type'
+            //   openModal={(open) => setOpenAdd(open)}
+            //   title='Add new actor'>
+            //   <AddEditActor
+            //     btnPrimaryText='Add new actor'
+            //     openModal={(openAdd) => setOpenAdd(openAdd)}
+            //     actorDetails={false}
+            //     updates={addActor}
+            //   />
+            // </Modal>
+            <AddEditActor openModal={setOpenAdd} actorDetails={false} updates={addActor}  btnPrimaryText='Add new actor'/>
           )}
 
           <Footer />

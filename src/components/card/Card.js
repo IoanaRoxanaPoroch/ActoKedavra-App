@@ -93,6 +93,7 @@ export const Card = ({
             updates={updates}
           />
         </Modal>
+        //  <AddEditActor openModal={setOpenAdd} actorDetails={false} updates={addActor}  btnPrimaryText='Add new actor'/>
       )}
     </div>
   )

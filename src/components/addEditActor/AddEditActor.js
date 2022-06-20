@@ -5,6 +5,7 @@ import { TextArea } from 'components/textarea/TextArea'
 import { Button } from 'components/button/Button'
 
 import './AddEditActor.css'
+import { Modal } from 'components/modal/Modal'
 
 export const AddEditActor = ({ actorDetails, openModal, updates, btnPrimaryText }) => {
   const defaultActor = {
@@ -57,66 +58,68 @@ export const AddEditActor = ({ actorDetails, openModal, updates, btnPrimaryText 
   }
 
   return (
-    <form className='add-edit-actor'>
-      <div className='add-edit-actor-name-occupation'>
-        <Field
-          type='text'
-          className='add-edit-actor-group'
-          value={actor.name}
-          onChange={(e) => {
-            setActor({ ...actor, name: e.target.value })
-          }}
-          spanText={errorMessage?.nameError}>
-          Name
-        </Field>
+    <Modal title={actorDetails ? 'Edit Actor' : 'Add new actor'} openModal={(isOpenModal) => openModal(isOpenModal)}>
+      <form className='add-edit-actor'>
+        <div className='add-edit-actor-name-occupation'>
+          <Field
+            type='text'
+            className='add-edit-actor-group'
+            value={actor.name}
+            onChange={(e) => {
+              setActor({ ...actor, name: e.target.value })
+            }}
+            spanText={errorMessage?.nameError}>
+            Name
+          </Field>
+
+          <Field
+            type='text'
+            className='add-edit-actor-group'
+            value={actor.occupation}
+            onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
+            spanText={errorMessage?.occupationError}>
+            Occupation besides acting
+          </Field>
+        </div>
 
         <Field
           type='text'
           className='add-edit-actor-group'
-          value={actor.occupation}
-          onChange={(e) => setActor({ ...actor, occupation: e.target.value })}
-          spanText={errorMessage?.occupationError}>
-          Occupation besides acting
+          value={actor.hobbies}
+          onChange={(e) => setActor({ ...actor, hobbies: e.target.value })}
+          spanText={errorMessage?.hobbiesError}>
+          Hobbies
         </Field>
-      </div>
 
-      <Field
-        type='text'
-        className='add-edit-actor-group'
-        value={actor.hobbies}
-        onChange={(e) => setActor({ ...actor, hobbies: e.target.value })}
-        spanText={errorMessage?.hobbiesError}>
-        Hobbies
-      </Field>
+        <TextArea
+          className='add-edit-actor-group'
+          name='description'
+          maxLength='180'
+          labelText='Description'
+          value={actor.description}
+          characters={actor?.characters}
+          onChange={(e) =>
+            setActor({
+              ...actor,
+              description: e.target.value,
+              characters: e.target.value.length,
+            })
+          }
+          spanText={errorMessage?.descriptionError}
+        />
 
-      <TextArea
-        className='add-edit-actor-group'
-        name='description'
-        maxLength='180'
-        labelText='Description'
-        value={actor.description}
-        characters={actor?.characters}
-        onChange={(e) =>
-          setActor({
-            ...actor,
-            description: e.target.value,
-            characters: e.target.value.length,
-          })
-        }
-        spanText={errorMessage?.descriptionError}
-      />
+        <Button type='btn-primary' onClick={handleSubmit} className='add-edit-actor-update-btn'>
+          {btnPrimaryText}
+        </Button>
 
-      <Button type='btn-primary' onClick={handleSubmit} className='add-edit-actor-update-btn'>
-        {btnPrimaryText}
-      </Button>
-
-      <Button
-        className='changed-mind-btn add-edit-actor-changed-mind-btn'
-        onClick={() => {
-          openModal(false)
-        }}>
-        I changed my mind
-      </Button>
-    </form>
+        <Button
+          className='changed-mind-btn add-edit-actor-changed-mind-btn'
+          onClick={() => {
+            openModal(false)
+          }}>
+          I changed my mind
+        </Button>
+      </form>
+    </Modal>
   )
 }
