@@ -6,7 +6,7 @@ import { Button } from 'components/button/Button'
 
 import './SortActors.css'
 
-export const SortActors = ({ openSortModal, actorsToSort, sortedActors, className }) => {
+export const SortActors = ({ openSortModal, actorsToSort, sortedActors, className, onChangeSort }) => {
   const [actorsSort, setActorsSort] = useState(actorsToSort)
 
   const screenWidth = useSelector((state) => state.screen.width)
@@ -32,23 +32,25 @@ export const SortActors = ({ openSortModal, actorsToSort, sortedActors, classNam
   }
 
   const handleChange = (e) => {
-    if (e.target.value === 'ascending') {
-      setActorsSort(
-        actorsSort.sort((a, b) => {
-          return a.score - b.score
-        }),
-      )
+    onChangeSort(e.target.value)
 
-      sortedActors(actorsSort)
-    } else {
-      setActorsSort(
-        actorsSort.sort((a, b) => {
-          return b.score - a.score
-        }),
-      )
+    // if (e.target.value === 'ascending') {
+    //   setActorsSort(
+    //     actorsSort.sort((a, b) => {
+    //       return a.score - b.score
+    //     }),
+    //   )
 
-      sortedActors(actorsSort)
-    }
+    //   sortedActors(actorsSort)
+    // } else {
+    //   setActorsSort(
+    //     actorsSort.sort((a, b) => {
+    //       return b.score - a.score
+    //     }),
+    //   )
+
+    //   sortedActors(actorsSort)
+    // }
   }
 
   return (
@@ -59,10 +61,8 @@ export const SortActors = ({ openSortModal, actorsToSort, sortedActors, classNam
           id='cards'
           className={`btn-type-4 sort-actors-select-btn ${className}`}
           onChange={handleChange}>
-          <option value='sort'>Sort</option>
-
+          <option value='none'>Sort</option>
           <option value='ascending'>Ascending</option>
-
           <option value='descending'>Descending</option>
         </select>
       )}

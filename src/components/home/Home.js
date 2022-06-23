@@ -19,6 +19,7 @@ import { screenWidthResize } from 'features/windowWidth/WindowWidthSlice'
 
 import './Home.css'
 import DeleteModal from 'components/deleteModal/DeleteModal'
+import { BsConeStriped } from 'react-icons/bs'
 
 const Home = () => {
   const countRef = useRef(0)
@@ -90,7 +91,7 @@ const Home = () => {
     if (response.status === 201) {
       countRef.current++
 
-      setActors([...actors, response.data])
+      setActors((prevActors) => [...prevActors, response.data])
       setIsVisibleSuccesWindow(true)
     }
   }
@@ -123,6 +124,22 @@ const Home = () => {
 
   const onClickOpenSortModal = () => {
     setIsOpenSort(true)
+  }
+
+  const changeSort = (order) => {
+    if (order === 'ascending') {
+      setActors(
+        actors.sort((a, b) => {
+          return a.score - b.score
+        }),
+      )
+    } else {
+      setActors(
+        actors.sort((a, b) => {
+          return b.score - a.score
+        }),
+      )
+    }
   }
 
   const numberOfActorsSelected = (param, id) => {
@@ -184,6 +201,7 @@ const Home = () => {
               text='You can add max. 7 actors.'
             />
           )}
+
           {visibleDangerWindow && (
             <NotificationWindow
               isVisible={(visibleDangerWindow) => {
@@ -222,6 +240,7 @@ const Home = () => {
                 actorsToSort={actors}
                 sortedActors={(actors) => setActors(actors)}
                 className={openSelect ? 'none' : ''}
+                onChangeSort={changeSort}
               />
             )}
 
@@ -294,7 +313,12 @@ const Home = () => {
             //     updates={addActor}
             //   />
             // </Modal>
-            <AddEditActor openModal={setOpenAdd} actorDetails={false} updates={addActor}  btnPrimaryText='Add new actor'/>
+            <AddEditActor
+              openModal={setOpenAdd}
+              actorDetails={false}
+              updates={addActor}
+              btnPrimaryText='Add new actor'
+            />
           )}
 
           <Footer />
